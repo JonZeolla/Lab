@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Kali environment setup
+wget ftp://ftp.freeradius.org/pub/radius/old/freeradius-server-2.1.12.tar.bz2
+wget https://raw.github.com/brad-anton/freeradius-wpe/master/freeradius-wpe.patch
+tar -jxvf freeradius-server-2.1.12.tar.bz2
+cd freeradius-server-2.1.12
+patch -p1 < ../freeradius-wpe.patch
+./configure
+make
+make install
+ldconfig
+
+# Verify FreeRADIUS-WPE has been installed properly
+radiusd -v
+
+# A third way to scan the airwaves
+airmon-ng start wlan0
+kismet
+# Set a source of mon0, then Close Console Window for better view
+# option+k,shift+q,enter to quit
+
+# Capture some sample traffic
+airodump-ng mon0 --bssid <Test AP> --channel 6 --write /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-Enterprise_Demo
+
+# Cleanup
+airmon-ng stop mon0
+rm /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-Enterprise_Demo
