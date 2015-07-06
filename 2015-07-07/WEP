@@ -6,7 +6,7 @@ airmon-ng start wlan0
 airodump-ng mon0
 
 ## Crack using ARP replay
-aireplay-ng --arpreplay -e wirelessdont -h EC:88:92:79:FB:0E mon0
+aireplay-ng --arpreplay -e <ESSID> -h <Test Client> mon0
 
 ## Point and shoot WEP cracking tool
 /usr/bin/wifite
