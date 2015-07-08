@@ -24,7 +24,7 @@ wireshark /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breakin
 http.host matches "google\.com$"
 ip.dst_host eq www.google.com
 
-## WPS to bypass the WPA2-PSK security
+## Attempt attacking WPS to circumvent the WPA2-PSK security
 reaver -i mon0 -b <Test AP> -c 6 -vv
 
 ## Cleanup
