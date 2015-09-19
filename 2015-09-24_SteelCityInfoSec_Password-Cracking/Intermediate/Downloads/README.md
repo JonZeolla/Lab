@@ -46,6 +46,13 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 
 ## Word Lists  
 [crackstation.txt.gz.torrent](https://crackstation.net/downloads/crackstation.txt.gz.torrent)\*  
+[BX698V7M.dic](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/BX698V7M.dic)
+[casos.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/casos.txt)
+[cmde.dic](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cmde.dic)
+[distilled-users.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/distilled-users.txt)
+[distilled.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/distilled.txt)
+[gmail5m.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/gmail5m.txt)
+[ipmi.dic](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ipmi.dic)
 \* Not hosted on my GitHub due to their large size  
 
 
