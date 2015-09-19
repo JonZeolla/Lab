@@ -9,7 +9,7 @@
 ## Step 2
 * Crack the password dumps as fast and thoroughly as possible
 
-Hints for each step are provided at [Beginner/Hints](https://github.com/JonZeolla/Presentation_Materials/tree/master/2015-09-24_SteelCityInfoSec_Password-Cracking/Beginner/Hints]
+Hints for each step are provided at [Beginner/Hints](https://github.com/JonZeolla/Presentation_Materials/tree/master/2015-09-24_SteelCityInfoSec_Password-Cracking/Beginner/Hints)
 
 Good luck!
 
