@@ -25,7 +25,7 @@ See the hint for this step if you're not sure what to use or install.
 \* Unofficial binary build written by the JTR user community members.  This also assumes you have a 64-bit operating system.  
 
 ### Ophcrack  
-[__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][9]
+[__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][9]  
 [__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][10]  
 \* This assumes you have 64-bit operating system.  
 
