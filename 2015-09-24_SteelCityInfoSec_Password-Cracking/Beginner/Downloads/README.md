@@ -5,7 +5,7 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 
 See the hint for this step if you're not sure what to use or install.  
 
-## Password Cracking Software  
+## Password Retrieval/Cracking Software  
 ### Hashcat  
 [__Mac, Windows, Linux__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
 [__Mac, Windows, Linux__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
@@ -13,7 +13,7 @@ See the hint for this step if you're not sure what to use or install.
 ### Multiforcer  
 [__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][3]  
 [__Windows__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Windows_x64_1_31a.zip)\*, [Original location][4]  
-\* This assumes you have 64-bit operating system.
+\* This assumes you have 64-bit operating system.  
 
 ### L0phtcrack  
 [__Windows__ L0phtcrack - v6.0.20](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/lc6setup_v6.0.20.exe), [Original location][5]  
@@ -24,31 +24,39 @@ See the hint for this step if you're not sure what to use or install.
 [__Linux__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/john-1.7.9-jumbo-7-Linux-x86-64.tar.gz)\*, [Original location][8]  
 \* Unofficial binary build written by the JTR user community members.  This also assumes you have a 64-bit operating system.  
 
+### Ophcrack
+[__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][9]  
+[__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][10]  
+\* This assumes you have 64-bit operating system.  
+
+### fgdump
+[__Windows__ fgdump - v2.1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/fgdump.exe), [Original location][11]  
+
 ### Cain & Abel
-[__Windows__ Cain & Abel - v4.9.56](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ca_setup.exe), [Original location][9]  
+[__Windows__ Cain & Abel - v4.9.56](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ca_setup.exe), [Original location][12]  
 
 ### Hash Suite  
-[__Windows__ Hash Suite - v3.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Hash_Suite_Free_3_2.zip), [Original location][10]  
+[__Windows__ Hash Suite - v3.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Hash_Suite_Free_3_2.zip), [Original location][13]  
 
 ### Hash Manager  
-[__Windows__ Hash Manager - v1.2.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/HM.zip), [Original location][11]  
+[__Windows__ Hash Manager - v1.2.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/HM.zip), [Original location][14]  
 
 ### Extreme GPU Bruteforcer  
-[__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/EGB.zip), [Original location][12]  
+[__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/EGB.zip), [Original location][15]  
 
 
 ## Password Auditing Software  
 ### PassPal  
-[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][13]  
+[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][16]  
 \* Requires Ruby 1.9  
 
 
 ## Word Lists  
 ### Word List Generators
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][14]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/crunch-3.6.tgz), [Original location][15]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][16]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][17]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][17]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/crunch-3.6.tgz), [Original location][18]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][19]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][20]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
@@ -109,13 +117,16 @@ See the hint for this step if you're not sure what to use or install.
 [6]: http://openwall.info/wiki/_media/john/john-1.7.9-jumbo-7-macosx-Intel-2.zip  
 [7]: http://www.openwall.com/john/h/john179w2.zip  
 [8]: http://openwall.info/wiki/_media/john/john-1.7.9-jumbo-7-Linux-x86-64.tar.gz  
-[9]: http://www.oxid.it/downloads/ca_setup.exe
-[10]: http://hashsuite.openwall.net/downloads/Hash_Suite_Free_3_2.zip  
-[11]: http://www.insidepro.com/download/HM.zip  
-[12]: http://www.insidepro.com/download/EGB.zip  
-[13]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
-[14]: https://digi.ninja/files/cewl_5.1.tar.bz2
-[15]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz
-[16]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1
-[17]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe
+[9]: http://downloads.sourceforge.net/project/ophcrack/ophcrack/3.6.0/ophcrack-win64-installer-3.6.0.exe  
+[10]: http://downloads.sourceforge.net/project/ophcrack/ophcrack/3.6.0/ophcrack-3.6.0.tar.bz2  
+[11]: http://www.foofus.net/fizzgig/fgdump/fgdump-2.1.0-exeonly.zip
+[12]: http://www.oxid.it/downloads/ca_setup.exe  
+[13]: http://hashsuite.openwall.net/downloads/Hash_Suite_Free_3_2.zip  
+[14]: http://www.insidepro.com/download/HM.zip  
+[15]: http://www.insidepro.com/download/EGB.zip  
+[16]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
+[17]: https://digi.ninja/files/cewl_5.1.tar.bz2
+[18]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz
+[19]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1
+[20]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe
 
