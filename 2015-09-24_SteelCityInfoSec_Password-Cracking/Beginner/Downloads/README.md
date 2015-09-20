@@ -7,18 +7,13 @@ See the hint for this step if you're not sure what to use or install.
 
 ## Password Cracking Software  
 ### Hashcat  
-[__Mac__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
-[__Windows__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
-[__Linux__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
+[__Mac, Windows, Linux__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
 
-[__Mac__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
-[__Windows__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
-[__Linux__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
+[__Mac, Windows, Linux__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
 
 ### Multiforcer  
-[__Mac__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][3]  
+[__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][3]  
 [__Windows__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Windows_x64_1_31a.zip)\*, [Original location][4]  
-[__Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][3]  
 \* This assumes you have 64-bit operating system.
 
 ### L0phtcrack  
@@ -42,11 +37,19 @@ See the hint for this step if you're not sure what to use or install.
 
 ## Password Auditing Software  
 ### PassPal  
-[PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][12]  
+[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][12]  
 \* Requires Ruby 1.9  
 
 
 ## Word Lists  
+### Word List Generators
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][13]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/crunch-3.6.tgz), [Original location][14]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][15]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe
+\* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
+
+### Static Word Lists
 [crackstation.txt.gz.torrent](https://crackstation.net/downloads/crackstation.txt.gz.torrent)\*  
 [BX698V7M.dic](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/BX698V7M.dic)  
 [casos.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/casos.txt)  
@@ -55,7 +58,45 @@ See the hint for this step if you're not sure what to use or install.
 [distilled.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/distilled.txt)  
 [gmail5m.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/gmail5m.txt)  
 [ipmi.dic](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ipmi.dic)  
-\* Not hosted on my GitHub due to their large size
+[us_cities.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/us_cities.txt.bz2)  
+[english.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/english.txt.bz2)  
+[singles.org.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/singles.org.txt.bz2)  
+[carders.cc.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/carders.cc.txt.bz2)  
+[facebook-phished.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/facebook-phished.txt.bz2)  
+[tuscl.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/tuscl.txt.bz2)  
+[porn-unknown.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/porn-unknown.txt.bz2)  
+[facebook-pastebay.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/facebook-pastebay.txt.bz2)  
+[alypaa.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/alypaa.txt.bz2)  
+[hak5.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/hak5.txt.bz2)  
+[elitehacker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/elitehacker.txt.bz2)  
+[faithwriters.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/faithwriters.txt.bz2)  
+[hotmail.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/hotmail.txt.bz2)  
+[myspace.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/myspace.txt.bz2)  
+[phpbb.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/phpbb.txt.bz2)  
+[twitter-banned.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/twitter-banned.txt.bz2)  
+[500-worst-passwords.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/500-worst-passwords.txt.bz2)  
+[conficker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/nconficker.txt.bz2)  
+[cain.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cain.txt.bz2)  
+[john.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/john.txt.bz2)  
+[common-4.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/common-4.txt)  
+[common-3.txt](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/common-3.txt)  
+[Unabr.dict.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Unabr.dict.zip)  
+[d8.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/d8.zip)  
+[dic-0294.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/dic-0294.zip)  
+[common-passwords.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/common-passwords.zip)  
+[alt12dicts-4.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/alt12dicts-4.zip)  
+[jargon-wl-4.2.0-1.tar.gz](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/jargon-wl-4.2.0-1.tar.gz)  
+[ispell-enwl-3.1.20.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ispell-enwl-3.1.20.zip)  
+[scowl-7.1.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/scowl-7.1.zip)  
+[agid-4.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/agid-4.zip)  
+[varcon-5.1.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/varcon-5.1.zip)  
+[pos-1.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/pos-1.zip)  
+[passlist1.zip](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passlist1.zip)  
+[koran.gz](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/koran.gz)  
+[kj-bible.gz](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/kj-bible.gz)  
+[viruses.gz](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/viruses.gz)  
+[tech.gz](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/tech.gz)  
+\* Not hosted on my GitHub due to its large size
 
 
 [1]: http://hashcat.net/files/oclHashcat-1.37.7z  
@@ -70,4 +111,8 @@ See the hint for this step if you're not sure what to use or install.
 [10]: http://www.insidepro.com/download/HM.zip  
 [11]: http://www.insidepro.com/download/EGB.zip  
 [12]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
+[13]: https://digi.ninja/files/cewl_5.1.tar.bz2
+[14]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz
+[15]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1
+[16]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe
 
