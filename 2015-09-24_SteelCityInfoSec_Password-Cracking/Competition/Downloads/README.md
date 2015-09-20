@@ -22,15 +22,15 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 [__Linux__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/john-1.7.9-jumbo-7-Linux-x86-64.tar.gz)\*, [Original location][8]  
 \* Unofficial binary build written by the JTR user community members.  This also assumes you have a 64-bit operating system.  
 
-### Ophcrack
+### Ophcrack  
 [__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][9]
 [__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][10]  
 \* This assumes you have 64-bit operating system.  
 
-### fgdump
+### fgdump  
 [__Windows__ fgdump - v2.1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/fgdump.exe), [Original location][11]  
 
-### Cain & Abel
+### Cain & Abel  
 [__Windows__ Cain & Abel - v4.9.56](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ca_setup.exe), [Original location][12]  
 
 ### Hash Suite  
@@ -42,13 +42,13 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 ### Extreme GPU Bruteforcer  
 [__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/EGB.zip), [Original location][15]  
 
-### Wisecracker (distributed cracking)
-[__Mac, Linux__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/wisecracker_v1.0.tar.gz), [Original location][16]
-[__Windows__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/wisecracker_v1.0.zip), [Original location][17]
+### Wisecracker (distributed cracking)  
+[__Mac, Linux__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/wisecracker_v1.0.tar.gz), [Original location][16]  
+[__Windows__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/wisecracker_v1.0.zip), [Original location][17]  
 
-### RainbowCrack
-[__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][18]
-[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-win64.zip)\*, [Original location][19]
+### RainbowCrack  
+[__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][18]  
+[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-win64.zip)\*, [Original location][19]  
 \* This assumes you have 64-bit operating system.  
 
 
