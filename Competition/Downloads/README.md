@@ -64,6 +64,10 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 [__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/passpal.rb)\*, [Original location][23]  
 \* Requires Ruby 1.9  
 
+### PiPal  
+[__Mac, Linux__ PiPal - v1.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/pipal_1.1.tar.bz2)\*, [Original location][24]  
+\* Requires Ruby 1.9  
+
 
 ## Word Lists  
 ### Word List Generators
@@ -146,8 +150,9 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 [21]: https://hashes.org/mdxfind.php?get=35
 [22]: https://hashes.org/mdxfind.php?get=32
 [23]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
-[24]: https://digi.ninja/files/cewl_5.1.tar.bz2  
-[25]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
-[26]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
-[27]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
+[24]: https://digi.ninja/files/pipal_1.1.tar.bz2  
+[25]: https://digi.ninja/files/cewl_5.1.tar.bz2  
+[26]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
+[27]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
+[28]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
 
