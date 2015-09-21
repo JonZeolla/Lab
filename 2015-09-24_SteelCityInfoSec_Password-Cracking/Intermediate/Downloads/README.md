@@ -11,7 +11,7 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 ### Cryptohaze Multiforcer  
 [__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][3]  
 [__Windows__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/Cryptohaze-Windows_x64_1_31a.zip)\*, [Original location][4]  
-\* This assumes you have 64-bit operating system.  
+\* This assumes you have a 64-bit operating system.  
 
 ### L0phtcrack  
 [__Windows__ L0phtcrack - v6.0.20](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/lc6setup_v6.0.20.exe), [Original location][5]  
@@ -25,7 +25,7 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 ### Ophcrack  
 [__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][9]  
 [__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][10]  
-\* This assumes you have 64-bit operating system.  
+\* This assumes you have a 64-bit operating system.  
 
 ### fgdump  
 [__Windows__ fgdump - v2.1.0](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/fgdump.exe), [Original location][11]  
@@ -48,22 +48,29 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 
 ### RainbowCrack  
 [__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][18]  
-[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-win64.zip)\*, [Original location][19]  
-\* This assumes you have 64-bit operating system.  
+[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/rainbowcrack-1.6.1-win64.zip)\*\*, [Original location][19]  
+\* This assumes you have a 64-bit operating system.  
+\*\* This assumes you have a 64-bit operating system AND is able to make use of OpenCL/CUDA GPUs (AMD and NVidia), and is therefore the preferred platform.  
+
+### MDXfind
+[__Mac__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/MDXfind_Mac), [Original location][20]  
+[__Windows__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/MDXfind.exe)\*, [Original location][21]  
+[__Linux__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/MDXfind_Linux)\*, [Original location][22]  
+\* This assumes you have a 64-bit operating system.  
 
 
 ## Password Auditing Software  
 ### PassPal  
-[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][20]  
+[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/passpal.rb)\*, [Original location][23]  
 \* Requires Ruby 1.9  
 
 
 ## Word Lists  
 ### Word List Generators
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][21]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/crunch-3.6.tgz), [Original location][22]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][23]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][24]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][24]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/crunch-3.6.tgz), [Original location][25]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][26]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/blob/master/2015-09-24_SteelCityInfoSec_Password-Cracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][27]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
@@ -135,9 +142,12 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 [17]: http://selectiveintellect.com/wisecracker_v1.0.zip  
 [18]: http://project-rainbowcrack.com/rainbowcrack-1.6.1-linux64.zip
 [19]: http://project-rainbowcrack.com/rainbowcrack-1.6.1-win64.zip
-[20]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
-[21]: https://digi.ninja/files/cewl_5.1.tar.bz2  
-[22]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
-[23]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
-[24]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
+[20]: https://hashes.org/mdxfind.php?get=33
+[21]: https://hashes.org/mdxfind.php?get=35
+[22]: https://hashes.org/mdxfind.php?get=32
+[23]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
+[24]: https://digi.ninja/files/cewl_5.1.tar.bz2  
+[25]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
+[26]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
+[27]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
 
