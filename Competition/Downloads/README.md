@@ -42,7 +42,7 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 ### Extreme GPU Bruteforcer  
 [__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/EGB.zip), [Original location][15]  
 
-### Wisecracker (distributed cracking)  
+### Wisecracker  
 [__Mac, Linux__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/wisecracker_v1.0.tar.gz), [Original location][16]  
 [__Windows__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/wisecracker_v1.0.zip), [Original location][17]  
 
