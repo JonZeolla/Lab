@@ -69,12 +69,16 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 \* Requires Ruby 1.9  
 
 
-## Word Lists  
+## Supplementary Software  
+### [__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gfxCardStatus-2.3.zip), [Original location][25]  
+
+
+## Password Cracking Input  
 ### Word List Generators
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][24]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][25]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][26]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][27]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][26]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][27]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][28]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][29]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
@@ -151,8 +155,9 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 [22]: https://hashes.org/mdxfind.php?get=32
 [23]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
 [24]: https://digi.ninja/files/pipal_1.1.tar.bz2  
-[25]: https://digi.ninja/files/cewl_5.1.tar.bz2  
-[26]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
-[27]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
-[28]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
+[25]: http://gfx.io/downloads/gfxCardStatus-2.3.zip  
+[26]: https://digi.ninja/files/cewl_5.1.tar.bz2  
+[27]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
+[28]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
+[29]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
 
