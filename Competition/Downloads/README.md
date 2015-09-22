@@ -135,6 +135,19 @@ __Mac, Windows, Linux__ Ruby\*
 [tech.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/tech.gz)  
 \* Not hosted on my GitHub due to its large size
 
+### Word List and Rainbow Table Aggregators
+https://hashes.org/public.php  
+http://project-rainbowcrack.com/table.htm  
+https://www.freerainbowtables.com/en/tables2/  
+http://cyberwarzone.com/cyberwarfare/password-cracking-mega-collection-password-cracking-word-lists
+http://www.pwcrack.com/rainbowtables.shtml  
+http://hashcrack.blogspot.de/p/wordlist-downloads_29.html
+http://www.skullsecurity.org/wiki/index.php/Passwords
+http://packetstormsecurity.org/Crackers/wordlists/
+http://blog.g0tmi1k.com/2011/06/dictionaries-wordlists/
+http://www.md5this.com/tools/wordlists.html
+http://www.md5decrypter.co.uk/downloads.aspx
+
 
 [1]: http://hashcat.net/files/oclHashcat-1.37.7z  
 [2]: http://hashcat.net/files/cudaHashcat-1.37.7z  
