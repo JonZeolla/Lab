@@ -72,11 +72,16 @@ See the hint for this step if you're not sure what to use or install.
 
 
 ## Supplementary Software  
-### [__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gfxCardStatus-2.3.zip), [Original location][25]  
+### gfxCardStatus  
+[__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gfxCardStatus-2.3.zip), [Original location][25]  
+
+### Ruby  
+__Mac, Windows, Linux__ Ruby\*  
+\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
 
 ## Password Cracking Input  
-### Word List Generators
+### Word List Generators  
 [__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][26]  
 [__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][27]  
 [__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][28]  
