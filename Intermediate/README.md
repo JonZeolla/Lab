@@ -3,7 +3,7 @@
 There are no hints for the Intermediate lab, you'll have to do this on your own...  Fall back to the Beginner lab if necessary.  
 
 ## Step 0  
-* Clone the Password Cracking branch by replacing the _<Username>_ with your GitHub username in the following command.  If you haven't created an account, go to [https://github.com/join].
+* Clone the Password Cracking branch by replacing the _<Username>_ with your GitHub username in the following command.  If you haven't created an account, go to https://github.com/join.
 ```
 mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Cracking_2015-09-24 --single-branch https://_<Username>_@github.com/JonZeolla/Presentation_Materials && cd Presentation_Materials
 ```

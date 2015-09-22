@@ -2,7 +2,7 @@
 
 ## Step 0  
 1. Clone the Password Cracking branch by replacing the _<Username>_ with your GitHub username in the following command.  
-  * If you haven't created an account, go to [https://github.com/join].  
+  * If you haven't created an account, go to https://github.com/join.  
 ```
 mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Cracking_2015-09-24 --single-branch https://_<Username>_@github.com/JonZeolla/Presentation_Materials && cd Presentation_Materials
 ```
