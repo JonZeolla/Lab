@@ -10,7 +10,7 @@ mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Crackin
 * Install whichever files you think will help most from [Competition/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Competition/Downloads).  Because you cloned the repo in Step 0, you now have the appropriate installers locally under SCIS_Password_Lab/Presentation_Materials/.Storage, but the README under Competition/Downloads may help point you at the exact file.  
 
 ## Step 2  
-* Crack the [Competition Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Competition/Password_Dumps) located under SCIS_Password_Lab/Presentation_Materials/Competition/Password_Dumps as fast and thoroughly as possible.  
+* Crack the [Competition Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Competition/Password_Dumps) located locally under SCIS_Password_Lab/Presentation_Materials/Competition/Password_Dumps as fast and thoroughly as possible.  
 
 ## Step 3  
 * Crack 80%+ of the password dump provided as fast as possible.  

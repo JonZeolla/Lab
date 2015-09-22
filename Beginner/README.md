@@ -28,7 +28,7 @@ mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Crackin
   * Ruby  
 
 ## Step 2  
-Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Password_Dumps) located under SCIS_Password_Lab/Presentation_materials/Beginner/Password_Dumps.  
+Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Password_Dumps) located locally under SCIS_Password_Lab/Presentation_materials/Beginner/Password_Dumps.  
 
 ### Mac  
 1. 
