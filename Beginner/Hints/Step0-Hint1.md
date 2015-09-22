@@ -5,7 +5,7 @@
 2. Open the command line (Terminal for mac or Linux, [Git Shell](https://git-for-windows.github.io/) for Windows) and __change to a directory where you are comfortable downloading the lab files before cloning__ my git repo using the following steps.  This works natively on Mac and Linux, and you need to execute it in the [Git Shell](https://git-for-windows.github.io/) for Windows.  
   * Mac  
     1. `<⌘+space> Terminal <Enter>` to open the Terminal.  
-![Step0-Hint1_Mac_1.png][https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Mac_1.png]  
+![Step0-Hint1_Mac_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Mac_1.png)  
     2. Change to a directory where you are comfortable downloading the lab files before cloning.  e.g. `cd ~/Documents/`  
     3. Run the following command to clone the lab branch:  `mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials`  
   * Windows  
@@ -16,4 +16,4 @@
     1. 
     2. 
     3. Run the following command to clone the lab branch:  `mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials`  
-
+T
