@@ -1,12 +1,13 @@
-# Password cracking - Competition
+# Password cracking - Competition  
 
 ## Step 0  
-* Clone the Password Cracking branch by replacing the _<Username>_ with your GitHub username in the following command.  If you haven't created an account, go to https://github.com/join.  Competing requires that you have a GitHub account (see step 4).  
+1. Clone the Password Cracking branch by replacing \<Username\> with your GitHub username in the following command.  
+  * If you haven't created an account, go to https://github.com/join.  
 ```
-mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Cracking_2015-09-24 --single-branch https://_<Username>_@github.com/JonZeolla/Presentation_Materials && cd Presentation_Materials
+mkdir SCIS_Password_Lab && cd SCIS_Password_Lab && git clone -b Password-Cracking_2015-09-24 --single-branch https://<Username>@github.com/JonZeolla/Presentation_Materials && cd Presentation_Materials
 ```
 
-### Step 1  
+## Step 1  
 * Install whichever files you think will help most from [Competition/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Competition/Downloads).  Because you cloned the repo in Step 0, you now have the appropriate installers locally under SCIS_Password_Lab/Presentation_Materials/.Storage, but the README under Competition/Downloads may help point you at the exact file.  
 
 ## Step 2  
