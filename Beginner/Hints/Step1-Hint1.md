@@ -36,19 +36,21 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
   * `cd .Storage`  
   * `./winrar-x64-521.exe`  
     * Follow the instructions to install WinRAR, leaving the default settings.  
-  * `cd ./Lists`  
-  * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.zip .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.gz .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.bz2 .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.7z .\"`  
-    * If necessary, replace the location of unrar to where you selected to install it.  
-  * `cd ../..`  
-2. Hashcat  
   * Decompress the password lists.  
-    * `cd .Storage/Lists/`  
-TODO:  Add the correct Windows command(s)  
-  * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
-    * Requires a decompression app be installed, such as Keka.  
-  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
-3. Ruby  
-  * Install [Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe)  
+    *`cd ./Lists`  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.zip" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.gz" ;Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.bz2" ;Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.7z"`  
+      * If necessary, replace the location of unrar to where you selected to install it.  
+  * `cd ..`  
+2. Ruby
+  * Install Ruby  
+    * `.\rubyinstaller-2.2.3-x64.exe`  
+      * Accept the license agreement then be sure to check "Add Ruby executables to your PATH" and "Associate .rb and .rbw files with this Ruby installation" before clicking Install.  
+![Step1-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Windows_1.png)  
+3. Hashcat  
+  * If you have an NVIDIA card:  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ cudaHashcat-1.37.7z" ; cd cudaHashcat-1.37`  
+  * If you have an AMD card:  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ oclHashcat-1.37.7z"; cd oclHashcat-1.37`  
 
 ## Linux  
 ### Required  
