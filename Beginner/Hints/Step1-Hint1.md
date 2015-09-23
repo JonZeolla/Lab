@@ -6,7 +6,7 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 1. Hashcat  
   * Decompress the password lists.  
     * `cd .Storage/Lists/`  
-    * `open *.zip *.gz *.bz2 *.7z`  
+    * `open *.zip *.gz *.bz2`  
       * Requires a decompression app be installed, such as Keka.  
     * `open *tar`  
       * Requires a decompression app be installed, such as Keka.  
@@ -15,19 +15,20 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
     * Requires a decompression app be installed, such as Keka.
   * `cd hashcat-0.50`  
 2. Ruby  
-  * The correct version of Ruby is already installed on Mavericks (10.9) and Yosemite (10.10).  
+  * A functioning version of Ruby is installed by default on Mavericks (10.9) and Yosemite (10.10) which should work for the software in this lab.  
 
 ### Optional  
-1. Determine your type of graphics card if you intend to make use of it.  
+1. gfxCardStatus 
+  * Determine your type of graphics card if you intend to make use of it.  
 ![Step1-Hint1_Mac_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Mac_1.png)  
 ![Step1-Hint1_Mac_2.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Mac_2.png)  
-2. `cd ..`  
-3. `unzip gfxCardStatus-2.3.zip`  
-4. `open gfxCardStatus.app`  
-5. Set the card to Discrete only in order to make use of your GPU during Hashcat cracking.  
+  * `cd ..`  
+  * `unzip gfxCardStatus-2.3.zip`  
+  * `open gfxCardStatus.app`  
+  * Set the card to Discrete only in order to make use of your GPU during Hashcat cracking.  
 ![Step1-Hint1_Mac_3.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Mac_3.png)  
-6. Move back into the hashcat folder  
-  * `cd hashcat-0.50`  
+  * Move back into the hashcat folder  
+    * `cd hashcat-0.50`  
 
 
 ## Windows  
@@ -37,9 +38,10 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
   * `./winrar-x64-521.exe`  
     * Follow the instructions to install WinRAR, leaving the default settings.  
   * Decompress the password lists.  
-    *`cd ./Lists`  
-    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.zip" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.gz" ;Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.bz2" ;Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.7z"`  
+    * `cd ./Lists`  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.zip" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.gz" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.bz2"`  
       * If necessary, replace the location of unrar to where you selected to install it.  
+* TODO:  untar files
   * `cd ..`  
 2. Ruby
   * Install Ruby  
@@ -47,20 +49,29 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
       * Accept the license agreement then be sure to check "Add Ruby executables to your PATH" and "Associate .rb and .rbw files with this Ruby installation" before clicking Install.  
 ![Step1-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Windows_1.png)  
 3. Hashcat  
-  * If you have an NVIDIA card:  
+  * If you have a NVIDIA GPU:  
     * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ cudaHashcat-1.37.7z" ; cd cudaHashcat-1.37`  
-  * If you have an AMD card:  
+  * If you have an AMD GPU:  
     * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ oclHashcat-1.37.7z"; cd oclHashcat-1.37`  
+  * If you have no discrete GPU or only want to use your CPU:
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ hashcat-0.50.7z" ; cd hashcat-0.50`  
+
 
 ## Linux  
 ### Required  
 1. Hashcat  
   * Decompress the password lists.  
     * `cd .Storage/Lists/`  
-TODO:  Add the correct Linux command(s)  
-  * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
-    * Requires a decompression app be installed, such as Keka.  
-  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
+    * `unzip *.zip ; gunzip *.gz ; bunzip2 *.bz2`  
+    * `tar -xvf *.tar`  
+  * If you have a NVIDIA GPU:  
+    * `7z x cudaHashcat-1.37 ; cd cudaHashcat-1.37`  
+      * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
+  * If you have an AMD GPU:  
+    * `7z x oclHashcat-1.37 ; cd oclHashcat-1.37`  
+      * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
+  * If you have no discrete GPU or only want to use your CPU:
+    * `7z x hashcat-0.50.7z ; cd hashcat-0.50`  
 2. Ruby  
   * Debian or Ubuntu systems\*  
     * `sudo apt-get install ruby`  
@@ -69,5 +80,6 @@ TODO:  Add the correct Linux command(s)
   * Other options\*  
     * `sudo emerge dev-lang/ruby`  
     * `sudo pacman -S ruby`  
+
 \* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
