@@ -82,8 +82,9 @@ __Linux__ Ruby - Various\*\*\*
 \*\* This assumes you have a 64-bit operating system.  
 \*\*\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
-### PeaZip
-[__Windows__ PeaZip - v5.7.2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/peazip-5.7.2.WIN64.exe)\*, [Original location][28]  
+### WinRAR
+[__Windows__ WinRAR - v5.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/winrar-x64-521.exe)\*, [Original location][28]  
+\* This assumes you have a 64-bit operating system.  
 
 
 ## Password Cracking Input  
@@ -184,7 +185,7 @@ http://www.md5decrypter.co.uk/downloads.aspx
 [25]: https://digi.ninja/files/pipal_1.1.tar.bz2  
 [26]: http://gfx.io/downloads/gfxCardStatus-2.3.zip  
 [27]: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.3-x64.exe  
-[28]: http://software-files-a.cnet.com/s/software/14/45/80/58/peazip-5.7.2.WIN64.exe?token=1443051026_3c7cb0bbc9db8552595330f6f0b5aa20&fileName=peazip-5.7.2.WIN64.exe  
+[28]: http://www.rarlab.com/rar/winrar-x64-521.exe  
 [29]: https://digi.ninja/files/cewl_5.1.tar.bz2  
 [30]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
 [31]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  

@@ -34,8 +34,13 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 ### Required  
 1. peazip  
   * `cd .Storage`  
-  * 
-2. Hashcat  `
+  * `./winrar-x64-521.exe`  
+    * Follow the instructions to install WinRAR, leaving the default settings.  
+  * `cd ./Lists`  
+  * ``  
+    * If necessary, replace the location of unrar to where you selected to install it.  
+  * `cd ../..`  
+2. Hashcat  
   * Decompress the password lists.  
     * `cd .Storage/Lists/`  
 TODO:  Add the correct Windows command(s)  
