@@ -32,12 +32,12 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 
 ## Windows  
 ### Required  
-1. peazip  
+1. WinRAR  
   * `cd .Storage`  
   * `./winrar-x64-521.exe`  
     * Follow the instructions to install WinRAR, leaving the default settings.  
   * `cd ./Lists`  
-  * ``  
+  * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.zip .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.gz .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.bz2 .\" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -df -IBCK -y *.7z .\"`  
     * If necessary, replace the location of unrar to where you selected to install it.  
   * `cd ../..`  
 2. Hashcat  

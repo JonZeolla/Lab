@@ -22,7 +22,7 @@ Ensure the following software has been installed.
 ### Windows  
 * Hashcat  
 * Ruby  
-* peazip  
+* WinRAR  
 
 ### Linux  
 * Hashcat  
