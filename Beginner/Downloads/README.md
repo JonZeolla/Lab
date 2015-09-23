@@ -77,16 +77,20 @@ See the hint for this step if you're not sure what to use or install.
 [__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gfxCardStatus-2.3.zip), [Original location][26]  
 
 ### Ruby  
-__Mac, Windows, Linux__ Ruby\*  
-\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
+__Mac__ Ruby - Various\*  
+[__Windows__ Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe), [Original location][27]  
+__Linux__ Ruby - Various\*\*\*  
+\* Already installed and maintained by Apple.  
+\*\* This assumes you have a 64-bit operating system.  
+\*\*\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
 
 ## Password Cracking Input  
 ### Word List Generators  
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][27]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][28]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][29]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][30]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][28]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][29]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][30]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][31]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
@@ -178,8 +182,9 @@ http://www.md5decrypter.co.uk/downloads.aspx
 [24]: https://github.com/arex1337/Passpal/blob/0.1/passpal.rb  
 [25]: https://digi.ninja/files/pipal_1.1.tar.bz2  
 [26]: http://gfx.io/downloads/gfxCardStatus-2.3.zip  
-[27]: https://digi.ninja/files/cewl_5.1.tar.bz2  
-[28]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
-[29]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
-[30]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
+[27]: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.3-x64.exe
+[28]: https://digi.ninja/files/cewl_5.1.tar.bz2  
+[29]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
+[30]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
+[31]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
 

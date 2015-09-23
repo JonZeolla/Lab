@@ -15,24 +15,29 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 ### Required  
 1. Hashcat  
   * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
-  * If you have an NVIDIA card, `open cudaHashcat-1.37.7z` otherwise `open oclHashcat-1.37.7z`  
+  * `open *.zip *.gz *.bz2 *.7z`  
     * Requires a decompression app be installed, such as Keka.  
-  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
-  * 
-2. Ruby  
-  * 
+  * `open *tar`  
+    * Requires a decompression app be installed, such as Keka.  
 
 ## Windows  
 ### Required  
 1. Hashcat  
-  * 
+  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
+TODO:  Change open to the correct Windows command(s)  
+  * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
+    * Requires a decompression app be installed, such as Keka.  
+  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
 2. Ruby  
   * 
 
 ## Linux  
 ### Required  
 1. Hashcat  
-  * 
+  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
+  * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
+    * Requires a decompression app be installed, such as Keka.  
+  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
 2. Ruby  
-  * 
+  * `apt-get install ruby`  
 
