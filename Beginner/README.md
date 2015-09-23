@@ -17,12 +17,12 @@ Ensure the following software has been installed.
 
 ### Mac  
 * Hashcat  
-* gfxCardStatus  
 * Ruby  
 
 ### Windows  
 * Hashcat  
 * Ruby  
+* peazip  
 
 ### Linux  
 * Hashcat  

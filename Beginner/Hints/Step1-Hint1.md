@@ -32,14 +32,17 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 
 ## Windows  
 ### Required  
-1. Hashcat  
+1. peazip  
+  * `cd .Storage`  
+  * 
+2. Hashcat  `
   * Decompress the password lists.  
     * `cd .Storage/Lists/`  
 TODO:  Add the correct Windows command(s)  
   * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
     * Requires a decompression app be installed, such as Keka.  
   * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
-2. Ruby  
+3. Ruby  
   * Install [Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe)  
 
 ## Linux  
