@@ -7,7 +7,7 @@ Hints for each step are provided at [Beginner/Hints](https://github.com/JonZeoll
 1. Clone the Password Cracking branch by running the following command.  
   * If you haven't created an account, go to https://github.com/join.  
 ```
-mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials
+mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials ; cd Beginner
 ```
 
 
@@ -34,7 +34,6 @@ Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Ma
 
 ### Mac  
 1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  
-  * For best results, use the correct installer for your GPU and ensure that gfxCardStatus is forcing Discrete Only GPU usage.  
 
 ### Windows  
 1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  

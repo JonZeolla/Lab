@@ -14,6 +14,8 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
   * `open hashcat-0.50.7z`  
     * Requires a decompression app be installed, such as Keka.
   * `cd hashcat-0.50`  
+2. Ruby  
+  * The correct version of Ruby is already installed on Mavericks (10.9) and Yosemite (10.10).  
 
 ### Optional  
 1. Determine your type of graphics card if you intend to make use of it.  
@@ -50,6 +52,12 @@ TODO:  Add the correct Linux command(s)
     * Requires a decompression app be installed, such as Keka.  
   * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
 2. Ruby  
-  * `apt-get install ruby`  
-    * See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
+  * Debian or Ubuntu systems\*  
+    * `sudo apt-get install ruby`  
+  * CentOS, Fedora, or RHEL\*  
+    * `sudo yum install ruby`  
+  * Other options\*  
+    * `sudo emerge dev-lang/ruby`  
+    * `sudo pacman -S ruby`  
+\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
