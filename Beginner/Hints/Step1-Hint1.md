@@ -1,4 +1,5 @@
 # Step 1, Hint 1  
+You can find the appropriate installers under SCIS_Password_Lab/Presentation_Materials/.Storage, or use the links in the [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads) section of my GitHub.  The README under Beginner/Downloads may help point you at the exact file if you aren't clear (best viewed through a web browser).  
 
 ## Mac  
 ### Optional  
@@ -13,22 +14,25 @@
 
 ### Required  
 1. Hashcat  
-
+  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
+  * If you have an NVIDIA card, `open cudaHashcat-1.37.7z` otherwise `open oclHashcat-1.37.7z`  
+    * Requires a decompression app be installed, such as Keka.  
+  * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
+  * 
 2. Ruby  
+  * 
 
 ## Windows  
 ### Required  
 1. Hashcat  
-
+  * 
 2. Ruby  
+  * 
 
 ## Linux  
 ### Required  
 1. Hashcat  
-
+  * 
 2. Ruby  
-
-## Step 1
-1. Ensure the following software has been installed.
-  * You can find the appropriate installers under SCIS_Password_Lab/Presentation_Materials/.Storage, or use the links in the [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads) section of my GitHub.  The README under Beginner/Downloads may help point you at the exact file if you aren't clear (best viewed through a web browser).
+  * 
 
