@@ -53,7 +53,7 @@ See the hint for this step if you're not sure what to use or install.
 [__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][19]  
 [__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rainbowcrack-1.6.1-win64.zip)\*\*, [Original location][20]  
 \* This assumes you have a 64-bit operating system.  
-\*\* This assumes you have a 64-bit operating system AND is able to make use of OpenCL/CUDA GPUs (AMD and NVidia), and is therefore the preferred platform.  
+\*\* This assumes you have a 64-bit operating system AND is able to make use of OpenCL/CUDA GPUs (AMD and NVidia).  
 
 ### MDXfind
 [__Mac__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/MDXfind_Mac), [Original location][21]  
@@ -78,7 +78,7 @@ See the hint for this step if you're not sure what to use or install.
 
 ### Ruby  
 __Mac__ Ruby - Various\*  
-[__Windows__ Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe), [Original location][27]  
+[__Windows__ Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe)\*\*, [Original location][27]  
 __Linux__ Ruby - Various\*\*\*  
 \* Already installed and maintained by Apple.  
 \*\* This assumes you have a 64-bit operating system.  
@@ -95,51 +95,51 @@ __Linux__ Ruby - Various\*\*\*
 
 ### Static Word Lists
 [crackstation.txt.gz.torrent](https://crackstation.net/downloads/crackstation.txt.gz.torrent)\*  
-[BX698V7M.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/BX698V7M.dic)  
-[casos.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/casos.txt)  
-[cmde.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cmde.dic)  
-[distilled-users.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/distilled-users.txt)  
-[distilled.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/distilled.txt)  
-[gmail5m.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gmail5m.txt)  
-[ipmi.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/ipmi.dic)  
-[us_cities.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/us_cities.txt.bz2)  
-[english.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/english.txt.bz2)  
-[singles.org.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/singles.org.txt.bz2)  
-[carders.cc.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/carders.cc.txt.bz2)  
-[facebook-phished.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/facebook-phished.txt.bz2)  
-[tuscl.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/tuscl.txt.bz2)  
-[porn-unknown.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/porn-unknown.txt.bz2)  
-[facebook-pastebay.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/facebook-pastebay.txt.bz2)  
-[alypaa.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/alypaa.txt.bz2)  
-[hak5.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/hak5.txt.bz2)  
-[elitehacker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/elitehacker.txt.bz2)  
-[faithwriters.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/faithwriters.txt.bz2)  
-[hotmail.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/hotmail.txt.bz2)  
-[myspace.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/myspace.txt.bz2)  
-[phpbb.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/phpbb.txt.bz2)  
-[twitter-banned.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/twitter-banned.txt.bz2)  
-[500-worst-passwords.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/500-worst-passwords.txt.bz2)  
-[conficker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/nconficker.txt.bz2)  
-[cain.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cain.txt.bz2)  
-[john.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/john.txt.bz2)  
-[common-4.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/common-4.txt)  
-[common-3.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/common-3.txt)  
-[Unabr.dict.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Unabr.dict.zip)  
-[d8.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/d8.zip)  
-[dic-0294.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/dic-0294.zip)  
-[common-passwords.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/common-passwords.zip)  
-[alt12dicts-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/alt12dicts-4.zip)  
-[jargon-wl-4.2.0-1.tar.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/jargon-wl-4.2.0-1.tar.gz)  
-[ispell-enwl-3.1.20.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/ispell-enwl-3.1.20.zip)  
-[scowl-7.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/scowl-7.1.zip)  
-[agid-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/agid-4.zip)  
-[varcon-5.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/varcon-5.1.zip)  
-[pos-1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/pos-1.zip)  
-[passlist1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/passlist1.zip)  
-[koran.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/koran.gz)  
-[kj-bible.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/kj-bible.gz)  
-[viruses.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/viruses.gz)  
-[tech.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/tech.gz)  
+[BX698V7M.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/BX698V7M.dic)  
+[casos.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/casos.txt)  
+[cmde.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/cmde.dic)  
+[distilled-users.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/distilled-users.txt)  
+[distilled.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/distilled.txt)  
+[gmail5m.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/gmail5m.txt)  
+[ipmi.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/ipmi.dic)  
+[us_cities.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/us_cities.txt.bz2)  
+[english.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/english.txt.bz2)  
+[singles.org.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/singles.org.txt.bz2)  
+[carders.cc.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/carders.cc.txt.bz2)  
+[facebook-phished.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/facebook-phished.txt.bz2)  
+[tuscl.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/tuscl.txt.bz2)  
+[porn-unknown.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/porn-unknown.txt.bz2)  
+[facebook-pastebay.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/facebook-pastebay.txt.bz2)  
+[alypaa.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/alypaa.txt.bz2)  
+[hak5.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/hak5.txt.bz2)  
+[elitehacker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/elitehacker.txt.bz2)  
+[faithwriters.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/faithwriters.txt.bz2)  
+[hotmail.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/hotmail.txt.bz2)  
+[myspace.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/myspace.txt.bz2)  
+[phpbb.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/phpbb.txt.bz2)  
+[twitter-banned.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/twitter-banned.txt.bz2)  
+[500-worst-passwords.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/500-worst-passwords.txt.bz2)  
+[conficker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/nconficker.txt.bz2)  
+[cain.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/cain.txt.bz2)  
+[john.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/john.txt.bz2)  
+[common-4.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-4.txt)  
+[common-3.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-3.txt)  
+[Unabr.dict.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/Unabr.dict.zip)  
+[d8.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/d8.zip)  
+[dic-0294.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/dic-0294.zip)  
+[common-passwords.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-passwords.zip)  
+[alt12dicts-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/alt12dicts-4.zip)  
+[jargon-wl-4.2.0-1.tar.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/jargon-wl-4.2.0-1.tar.gz)  
+[ispell-enwl-3.1.20.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/ispell-enwl-3.1.20.zip)  
+[scowl-7.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/scowl-7.1.zip)  
+[agid-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/agid-4.zip)  
+[varcon-5.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/varcon-5.1.zip)  
+[pos-1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/pos-1.zip)  
+[passlist1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/passlist1.zip)  
+[koran.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/koran.gz)  
+[kj-bible.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/kj-bible.gz)  
+[viruses.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/viruses.gz)  
+[tech.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/tech.gz)  
 \* Not hosted on my GitHub due to its large size
 
 ### Word List and Rainbow Table Aggregators  

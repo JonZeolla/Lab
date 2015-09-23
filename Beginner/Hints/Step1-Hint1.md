@@ -14,17 +14,23 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 
 ### Required  
 1. Hashcat  
-  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
-  * `open *.zip *.gz *.bz2 *.7z`  
-    * Requires a decompression app be installed, such as Keka.  
-  * `open *tar`  
-    * Requires a decompression app be installed, such as Keka.  
+  * Decompress the password lists.  
+    * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/Lists/`  
+    * `open *.zip *.gz *.bz2 *.7z`  
+      * Requires a decompression app be installed, such as Keka.  
+    * `open *tar`  
+      * Requires a decompression app be installed, such as Keka.  
+    * `cd ..`  
+  * `open hashcat-0.50.7z`  
+    * Requires a decompression app be installed, such as Keka.
+  * `cd hashcat-0.50`  
 
 ## Windows  
 ### Required  
 1. Hashcat  
-  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
-TODO:  Change open to the correct Windows command(s)  
+  * Decompress the password lists.  
+    * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/Lists/`  
+TODO:  Add the correct Windows command(s)  
   * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
     * Requires a decompression app be installed, such as Keka.  
   * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
@@ -34,10 +40,13 @@ TODO:  Change open to the correct Windows command(s)
 ## Linux  
 ### Required  
 1. Hashcat  
-  * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
+  * Decompress the password lists.  
+    * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/Lists/`  
+TODO:  Add the correct Linux command(s)  
   * If you have an NVIDIA card, `open cudaHashcat-1.37` otherwise `open oclHashcat-1.37`  
     * Requires a decompression app be installed, such as Keka.  
   * If you have an NVIDIA card, `cd cudaHashcat-1.37` otherwise `cd oclHashcat-1.37`  
 2. Ruby  
   * `apt-get install ruby`  
+    * See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
