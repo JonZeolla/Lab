@@ -23,6 +23,7 @@ Ensure the following software has been installed.
 * Hashcat  
 * Ruby  
 * WinRAR  
+* iconv
 
 ### Linux  
 * Hashcat  
