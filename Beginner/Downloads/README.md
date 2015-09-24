@@ -88,13 +88,16 @@ __Linux__ Ruby - Various\*\*\*
 [__Windows__ WinRAR - v5.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/winrar-x64-521.exe)\*, [Original location][28]  
 \* This assumes you have a 64-bit operating system.  
 
+### iconv
+[__Windows__ iconv - v1.9.2-1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/libiconv-1.9.2-1-bin.zip), [Original location][29]  
+
 
 ## Password Cracking Input  
 ### Word List Generators  
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][29]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][30]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][31]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][32]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][30]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][31]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][32]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][33]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
@@ -188,8 +191,9 @@ http://www.md5decrypter.co.uk/downloads.aspx
 [26]: http://gfx.io/downloads/gfxCardStatus-2.3.zip  
 [27]: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.3-x64.exe  
 [28]: http://www.rarlab.com/rar/winrar-x64-521.exe  
-[29]: https://digi.ninja/files/cewl_5.1.tar.bz2  
-[30]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
-[31]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
-[32]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
+[29]: http://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-bin.zip?r=&ts=1443121316&use_mirror=iweb  
+[30]: https://digi.ninja/files/cewl_5.1.tar.bz2  
+[31]: http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz  
+[32]: https://github.com/Faster3ck/RandomWordlistGenerator/tree/v0.2.1  
+[33]: http://downloads.sourceforge.net/project/random-wordlist-generator/Random%20Wordlist%20Generator/0.2/RandomWordlistGenerator-0.2.1-8-downloader.exe  
 
