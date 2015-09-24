@@ -40,8 +40,9 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
   * Decompress the password lists.  
     * `cd ./Lists`  
     * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.zip" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.gz" ; Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ *.bz2"`  
-      * If necessary, replace the location of unrar to where you selected to install it.  
-* TODO:  untar files
+      * If necessary, replace the location of WinRAR to where you selected to install it.   
+  * Untar files  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ -y *.tar"`  
   * `cd ..`  
 2. Ruby
   * Install Ruby  
@@ -62,16 +63,18 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
 1. Hashcat  
   * Decompress the password lists.  
     * `cd .Storage/Lists/`  
-    * `unzip *.zip ; gunzip *.gz ; bunzip2 *.bz2`  
+    * `unzip -qq -n *.zip ; gunzip *.gz ; bunzip2 *.bz2`  
     * `tar -xvf *.tar`  
+    * `cd ..`  
   * If you have a NVIDIA GPU:  
     * `7z x cudaHashcat-1.37 ; cd cudaHashcat-1.37`  
       * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
   * If you have an AMD GPU:  
     * `7z x oclHashcat-1.37 ; cd oclHashcat-1.37`  
       * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
-  * If you have no discrete GPU or only want to use your CPU:
+  * If you have no discrete GPU or only want to use your CPU:  
     * `7z x hashcat-0.50.7z ; cd hashcat-0.50`  
+      * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
 2. Ruby  
   * Debian or Ubuntu systems\*  
     * `sudo apt-get install ruby`  

@@ -32,26 +32,14 @@ Ensure the following software has been installed.
 ## Step 2  
 Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Password_Dumps) located under locally under SCIS_Password_Lab/Presentation_Materials/Beginner/Password_Dumps.  
 
-### Mac  
-1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  
-
-### Windows  
-1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  
-
-### Linux  
-1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  
+### All OSs  
+1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)) in order to crack the password dump.  
 
 
 ## Step 3  
 Improve on your cracking speeds by auditing the results of Step 2.  
 
-### Mac  
-1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
-
-### Windows  
-1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
-
-### Linux  
+### All OSs  
 1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
 
 

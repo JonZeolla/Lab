@@ -7,6 +7,7 @@ Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Ma
 1. Combine Hashcat and the password files available under SCIS_Password_Lab/Presentation_Materials/.Storage (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)).  
   * `cd SCIS_Password_Lab/Presentation_Materials/.Storage/`  
   * `cd hashcat-0.50`  
-  * `./hashcat-cli64.app -m 100 ../../Beginner/Password_Dumps/Dump1-Beginner.txt ../*.txt`  
-    * This should recover 42894/51381 (83.5%) of the hashes  
+  * `./hashcat-cli64.app -m 100 ../../Beginner/Password_Dumps/Dump1-Beginner.txt ../Lists/*.txt`  
+    * This should recover 24203/47216 (51%) of the hashes  
+    * Attempt various uses of `hashcat-cli64.app` using different password files, etc.  
 
