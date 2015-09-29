@@ -6,9 +6,10 @@ Hints for each step are provided at [Beginner/Hints](https://github.com/JonZeoll
 ## Step 0  
 1. Clone the Password Cracking branch by running the following command.  
   * If you haven't created an account, go to https://github.com/join.  
-```
-mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials ; cd Beginner
-```
+  ```
+  mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials ; cd Beginner
+  ```
+2. Ensure that you have the Git Shell installed (comes coupled with [GitHub Desktop](https://desktop.github.com/), which is where you will run future commands.  
 
 
 ## Step 1  
