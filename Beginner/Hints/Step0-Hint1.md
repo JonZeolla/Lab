@@ -2,7 +2,7 @@
 
 1. Create an account in [GitHub](https://github.com).  
   * If you enable two-factor don't forget to create a [personal access token](https://github.com/settings/tokens) and use it as a substitute for your password when prompted by git at the command line.  
-2. Open the command line (Terminal for mac or Linux, [Git Shell](https://git-for-windows.github.io/) for Windows) and __change to a directory where you are comfortable downloading the lab files before cloning__ my git repo using the following steps.  This works natively on Mac and Linux, and you need to execute it in the [Git Shell](https://git-for-windows.github.io/) for Windows.  
+2. Open the command line (Terminal for mac or Linux, Git Shell (Which is coupled with [GitHub Desktop](https://desktop.github.com/) for Windows) and __change to a directory where you are comfortable downloading the lab files before cloning__ my git repo using the following steps.  This works natively on Mac and Linux, and __you need to execute it in the [Git Shell](https://desktop.github.com/)) for Windows__.  
 
 ## Mac  
   1. `<⌘+space> Terminal <Enter>` to open the Terminal.  
