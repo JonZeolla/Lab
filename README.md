@@ -1,4 +1,8 @@
-2015-01-22 Steel City Information Security Meeting
+# 2015-01-22 Steel City Information Security Meeting  
 
 http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/48676379  
 http://www.meetup.com/Steel-City-InfoSec/events/219474655/  
+
+## Laser Mic Improvement
+![Laser Mic Improvement](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Audio-Surveillance_2015-01-22/2015-01-22_LaserMicImprovement.JPG)  
+
