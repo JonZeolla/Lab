@@ -1,5 +1,3 @@
-# 2015-10-24 Steel City Information Security Lab  
-
-http://www.meetup.com/Steel-City-InfoSec/events/220722006/  
-http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/49279875  
+# Presentation Materials  
+This is where I store materials that I use in presentations, labs, etc.  
 
