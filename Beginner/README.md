@@ -9,7 +9,7 @@ Hints for each step are provided at [Beginner/Hints](https://github.com/JonZeoll
   ```
   mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_2015-09-24 --single-branch https://github.com/JonZeolla/Presentation_Materials ; cd Presentation_Materials ; cd Beginner
   ```
-2. Ensure that you have the Git Shell installed (comes coupled with [GitHub Desktop](https://desktop.github.com/), which is where you will run future commands.  
+2. If you plan to use Windows, ensure that you have the Git Shell installed (comes coupled with [GitHub Desktop](https://desktop.github.com/)), which is where you will run future commands.  
 
 
 ## Step 1  
