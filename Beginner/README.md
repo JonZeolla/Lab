@@ -32,7 +32,7 @@ Ensure the following software has been installed.
 
 
 ## Step 2  
-Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Password_Dumps) located under locally under SCIS_Password_Lab/Presentation_Materials/Beginner/Password_Dumps.  
+Crack the two [Beginner Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Password_Dumps), also located locally under SCIS_Password_Lab/Presentation_Materials/Beginner/Password_Dumps.  
 
 ### All OSs  
 1. Combine Hashcat and the password lists available under SCIS_Password_Lab/Presentation_Materials/.Storage/Lists (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads)) in order to crack the password dump.  
