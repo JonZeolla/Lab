@@ -15,5 +15,10 @@ mkdir SCIS_Password_Lab ; cd SCIS_Password_Lab ; git clone -b Password-Cracking_
 ## Step 2  
 * Crack the two [Intermediate Password Dumps](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Intermediate/Password_Dumps), also located locally under SCIS_Password_Lab/Presentation_Materials/Intermediate/Password_Dumps as fast and thoroughly as possible.  
 
-Good luck!  
+## Step 3  
+Improve on your cracking speeds by auditing the results of Step 2.  
 
+### All OSs  
+1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
+
+Good luck!  
