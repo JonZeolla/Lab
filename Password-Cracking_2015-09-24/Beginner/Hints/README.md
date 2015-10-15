@@ -1,3 +1,4 @@
-# Beginner Hints
+# Beginner Hints  
 
-For hints for step ${x}, look in the hint${x} file
+Look in the related hints file for help.  Each hint is a separate file to avoid spoilers.  
+
