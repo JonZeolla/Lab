@@ -3,7 +3,7 @@
 Improve on your cracking speeds by auditing the results of Step 2.  
 
 ## All OSs  
-1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
+1.  Run [PassPal.rb](https://github.com/JonZeolla/Presentation_Materials/blob/master/Password-Cracking_2015-09-24/.Storage/passpal.rb) which can be used to speed up the time it takes to crack the dump and better understand the data.  
   * Ensure that the password file is UTF-8 encoded.  
 
 ### Convert files to UTF-8 encoding  

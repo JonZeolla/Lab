@@ -6,7 +6,7 @@
 
 ## Mac  
   1. `<⌘+space> Terminal <Enter>` to open the Terminal.  
-![Step0-Hint1_Mac_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Mac_1.png)  
+![Step0-Hint1_Mac_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/master/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Mac_1.png)  
   2. Change to a directory where you are comfortable downloading the lab files before cloning.  e.g. `cd ~/Documents/`  
     * Use the `cd` command to change directories, the `ls` command to see the files in your current directory, and `pwd` to print your current directory.  
   3. Run the following command to clone the lab branch:  
@@ -15,7 +15,7 @@
 
 ## Windows  
   1. Double click the Git Shell icon.  
-![Step0-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Windows_1.png)  
+![Step0-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/master/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Windows_1.png)  
   2. Change to a directory where you are comfortable downloading the lab files.  
     * Use the `cd` command to change directories, the `ls` or `dir` commands to see the files in your current directory, and `pwd` to print your current directory.  
   3. Run the following command to clone the lab branch:  
@@ -24,7 +24,7 @@
 
 ## Linux  
   1. Use `<Ctrl+Alt+T>` or the GUI to open the Terminal.  
-![Step0-Hint1_Linux_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Linux_1.png)  
+![Step0-Hint1_Linux_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/master/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step0-Hint1_Linux_1.png)  
   2. Change to a directory where you are comfortable downloading the lab files.  
     * Use the `cd` command to change directories, the `ls` command to see the files in your current directory, and `pwd` to print your current directory.  
   3. Run the following command to clone the lab branch:  
