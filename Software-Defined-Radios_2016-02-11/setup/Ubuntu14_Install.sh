@@ -4,6 +4,7 @@
 sudo apt-get install git python-scipy swig libboost-all-dev
 
 git clone --recursive https://github.com/pybombs/pybombs.git
-pybombs/pybombs install gqrx-digital
-pybombs/pybombs install gqrx
-pybombs/pybombs env
+cd pybombs
+./pybombs install gqrx-digital
+./pybombs install gqrx
+./pybombs env
