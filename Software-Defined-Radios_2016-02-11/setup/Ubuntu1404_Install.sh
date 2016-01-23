@@ -9,7 +9,6 @@ sleep 2s
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
 echo -e "Installing some SDR lab package requirements"
 sleep 2s
-#sudo apt-get -y install git python-scipy swig libboost-all-dev qtdeclarative5-dev libqt5svg5-dev
 sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev
 echo -e "Installing pybombs"
 sleep 2s
