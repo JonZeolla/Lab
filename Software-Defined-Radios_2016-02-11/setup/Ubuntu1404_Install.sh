@@ -22,7 +22,7 @@ function update_terminal() {
   # Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && $1 == "step" ]]; then
     status+=('1')
-  elif [[ $1 == "step" ]]
+  elif [[ $1 == "step" ]]; then
     status+=('0')
   fi
   
@@ -31,6 +31,10 @@ function update_terminal() {
     if [[ ${x} == "Start" ]]; then
       # Prepare the user
       echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
+      if [[ $usrCurrent == "sdr" ]]; then
+        # Check for the SDR user (TODO: and a watermark)
+        echo -e "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time\n"
+      fi
       sleep 2s
     elif [[ ${x} == 1 ]]; then
       # Echo the correct success message
@@ -94,11 +98,6 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 # Set a counter variable
 i=0
 
-# Check for the SDR user (TODO: and a watermark)
-if [[ $usrCurrent == "sdr" ]]; then
-        echo "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time"
-fi
-
 # Display the initial warning
 update_terminal
 
@@ -142,9 +141,9 @@ exitstatus=$?
 update_terminal step
 
 # Add the pybombs-installed binaries to your path, if necessary
-if ! grep -q /home/${usrCurrent}/target/bin "~${usrCurrent}/.bashrc";
-  echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> ~${usrCurrent}/.bashrc
-  source ~${usrCurrent}/.bashrc
+if ! grep -q /home/${usrCurrent}/target/bin "/home/${usrCurrent}/.bashrc"; then
+  echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> /home/${usrCurrent}/.bashrc
+  source /home/${usrCurrent}/.bashrc
 fi
 update_terminal step
 
