@@ -5,8 +5,8 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-24
 # File Type:       Bash Script
-# Version:         0.3
-# Repository:      https://github.com/JonZeolla/Development
+# Version:         0.4
+# Repository:      https://github.com/JonZeolla/Presentation_Materials/Software-Defined-Radios_2016-02-11
 # Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
 #
 # Notes
