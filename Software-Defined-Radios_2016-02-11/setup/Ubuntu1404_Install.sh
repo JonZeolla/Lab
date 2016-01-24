@@ -28,30 +28,41 @@ function update_terminal() {
   
   # Provide the user with the status of all completed steps until this point
   for x in ${status[@]}; do
-    if [[ ${status[${x}]} == "Start" ]]; then
+    if [[ ${x} == "Start" ]]; then
       # Prepare the user
       echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
-    elif [[ ${status[${x}]} == 0 ]]; then
+      sleep 2s
+    elif [[ ${x} == 1 ]]; then
       # Echo the correct success message
-      echo ${success[${x}]}
-    else
+      echo ${success[${i}]}
+    elif [[ ${x} == 0 ]]; then
       # Echo the correct failure message
-      echo ${failure[${x}]}
+      echo ${failure[${i}]}
+    else
+      # Echo that there was an unknown error
+      echo -e "ERROR:    Unknown error evaluating ${x} in the status array"
     fi
+    
+    # Increment i
+    ((i++))
   done
   
   # Update the user with a quick description of the next step
   case ${#status[@]} in
     1)
-      echo -e "Updating apt and all currently installed packages..."
+      # Do nothing (bash equivalent of no-op)
+      :
       ;;
     2)
-      echo -e "Installing some SDR lab package requirements"
+      echo -e "Updating apt and all currently installed packages..."
       ;;
     3)
-      echo -e "Installing pybombs"
+      echo -e "Installing some SDR lab package requirements"
       ;;
     4)
+      echo -e "Installing pybombs"
+      ;;
+    5)
       echo -e "Installing the SDR lab packages"
       ;;
     *)
@@ -76,11 +87,16 @@ failure=("ERROR:    Issue updating apt and all currently installed packages","ER
 # Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 
+# Set a counter variable
+i=0
+
+# Check for the SDR user (TODO: and a watermark)
 if [[ $usrCurrent == "sdr" ]]; then
-        cecho "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time"
-else
-        isBrian=false
+        echo "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time"
 fi
+
+# Display the initial warning
+update_terminal
 
 # Re-synchronize the package index files, then install the newest versions of all packages currently installed
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
