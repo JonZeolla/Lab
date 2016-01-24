@@ -5,7 +5,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-24
 # File Type:       Bash Script
-# Version:         0.1
+# Version:         0.2
 # Repository:      https://github.com/JonZeolla/Development
 # Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
 #
@@ -16,6 +16,7 @@
 # =========================
 
 function update_terminal() {
+  # Clear the screen
   clear
   
   # Set the status for the current stage appropriately
@@ -27,9 +28,14 @@ function update_terminal() {
   
   # Provide the user with the status of all completed steps until this point
   for x in ${status[@]}; do
-    if [[ ${status[${x}]} == 0 ]]; then
+    if [[ ${status[${x}]} == "Start" ]]; then
+      # Prepare the user
+      echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
+    elif [[ ${status[${x}]} == 0 ]]; then
+      # Echo the correct success message
       echo ${success[${x}]}
     else
+      # Echo the correct failure message
       echo ${failure[${x}]}
     fi
   done
@@ -52,13 +58,18 @@ function update_terminal() {
       echo -e "ERROR:    Unknown error"
       ;;
 }
-# Prepare the user 
+
+# Check the OS version
+if [[ $(lsb_release -r | awk '{print $2}') != "14.04" ]]; then
+  echo -e "This script is intended only for Ubuntu 14.04"
+  exit 1
+fi
+
+# Clear the screen
 clear
-echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
-sleep 2s
 
 # Set up arrays
-declare -a status
+status=("Start")
 success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
 failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
 
