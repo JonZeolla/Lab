@@ -1,23 +1,83 @@
 #!/bin/bash
-# Tested on Ubuntu 14.04 as of 2016-01-23
+# To enable and disable tracing use:  set -x (On) set +x (Off)
 
+# =========================
+# Author:          Jon Zeolla (JZeolla, JonZeolla)
+# Last update:     2016-01-24
+# File Type:       Bash Script
+# Version:         0.1
+# Repository:      https://github.com/JonZeolla/Development
+# Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
+#
+# Notes
+# - This script has not been tested yet - focusing on Ubuntu 14.04 as of 2016-01-24
+# - Anything that has a placeholder value is tagged with TODO.
+#
+# =========================
+
+function update_terminal() {
+  clear
+  
+  # Set the status for the current stage appropriately
+  if [[ ${exitstatus} == 0 ]]; then
+    status+=('1')
+  else
+    status+=('0')
+  fi
+  
+  # Provide the user with the status of all completed steps until this point
+  for x in ${status[@]}; do
+    if [[ ${status[${x}]} == 0 ]]; then
+      echo ${success[${x}]}
+    else
+      echo ${failure[${x}]}
+    fi
+  done
+  
+  # Update the user with a quick description of the next step
+  case ${#status[@]} in
+    1)
+      echo -e "Updating apt and all currently installed packages..."
+      ;;
+    2)
+      echo -e "Installing some SDR lab package requirements"
+      ;;
+    3)
+      echo -e "Installing pybombs"
+      ;;
+    4)
+      echo -e "Installing the SDR lab packages"
+      ;;
+    *)
+      echo -e "ERROR:    Unknown error"
+      ;;
+}
+# Prepare the user 
 clear
-echo -e "Beware, this script takes a long time to run\n\n"
+echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
 sleep 2s
-echo -e "Updating apt and all currently installed packages..."
-sleep 2s
+
+# Set up arrays
+declare -a status
+success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
+failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
+
+# Re-synchronize the package index files, then install the newest versions of all packages currently installed
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
-if [[ $? == 0 ]]; then clear; echo -e "Successfully updated apt and all currently installed packages"; else echo -e "ERROR updating apt and all currently installed packages"; err=1; fi
-echo -e "\nInstalling some SDR lab package requirements"
-sleep 2s
+exitstatus=$?
+update_terminal
+
+# Install dependancies for pybombs packages
 sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev swig python-scipy
-if [[ $? == 0 ]]; then clear; echo -e "Successfully installed SDR lab package requirements"; else echo -e "ERROR installing SDR lab package requirements"; err=2; fi
-echo -e "\nInstalling pybombs"
-sleep 2s
+exitstatus=$?
+update_terminal
+
+# Pull down pybombs
 git clone -q --recursive https://github.com/pybombs/pybombs.git
-sleep 2s
-if [[ $? == 0 ]]; then clear; echo -e "Successfully installed pybombs"; else echo -e "ERROR installing pybombs"; err=3; fi
-echo -e "\nInstalling the SDR lab packages"
+exitstatus=$?
+update_terminal
+
+# Configure pybombs
 cd pybombs
 cat > /home/sdr/pybombs/config.dat <<EOL
 [config]
@@ -35,6 +95,16 @@ cc = gcc
 cxx = g++
 makewidth = 4
 EOL
+
+# Install gqrx and its dependancies
 ./pybombs install gqrx
-if [[ $? == 0 ]]; then clear; echo -e "Successfully installed gqrx"; else echo -e "ERROR installing gqrx"; err=4; fi
-if [[ $err != 1 ]]; then echo -e "Succesfully set up machine for the SDR lab"; else echo -e "ERROR while setting up the machine for the SDR lab"; fi
+exitstatus=$?
+update_terminal
+
+# Add the pybombs-installed binaries to your path
+echo -e "\nPATH=\$PATH:/home/sdr/target/bin" >> ~sdr/.bashrc
+source ~sdr/.bashrc
+update_terminal
+
+# End the script
+exit
