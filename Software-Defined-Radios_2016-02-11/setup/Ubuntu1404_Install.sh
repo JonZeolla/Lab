@@ -33,9 +33,8 @@ function update_terminal() {
       echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
       if [ $usrCurrent == "sdr" ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
         # Check for the SDR user and watermark
-        echo -e "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time\n"
+        echo -e "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it multiple times\n"
       fi
-      sleep 2s
     elif [[ ${x} == 1 ]]; then
       # Echo the correct success message
       echo ${success[${i}]}
@@ -95,9 +94,9 @@ fi
 clear
 
 # Set up arrays
-status=("Start")
-success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
-failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
+declare -a status=("Start")
+declare -a success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
+declare -a failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
 
 # Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
