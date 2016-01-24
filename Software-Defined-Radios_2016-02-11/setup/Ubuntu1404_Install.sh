@@ -5,7 +5,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-24
 # File Type:       Bash Script
-# Version:         0.2
+# Version:         0.3
 # Repository:      https://github.com/JonZeolla/Development
 # Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
 #
@@ -20,9 +20,9 @@ function update_terminal() {
   clear
   
   # Set the status for the current stage appropriately
-  if [[ ${exitstatus} == 0 ]]; then
+  if [[ ${exitstatus} == 0 && $1 == "step" ]]; then
     status+=('1')
-  else
+  elif [[ $1 == "step" ]]
     status+=('0')
   fi
   
@@ -68,6 +68,10 @@ function update_terminal() {
     *)
       echo -e "ERROR:    Unknown error"
       ;;
+  esac
+  
+  # Reset the exit status
+  exitstatus=0
 }
 
 # Check the OS version
@@ -101,17 +105,17 @@ update_terminal
 # Re-synchronize the package index files, then install the newest versions of all packages currently installed
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
 exitstatus=$?
-update_terminal
+update_terminal step
 
 # Install dependancies for pybombs packages
 sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev swig python-scipy
 exitstatus=$?
-update_terminal
+update_terminal step
 
 # Pull down pybombs
 git clone -q --recursive https://github.com/pybombs/pybombs.git
 exitstatus=$?
-update_terminal
+update_terminal step
 
 # Configure pybombs
 cd pybombs
@@ -135,14 +139,14 @@ EOL
 # Install gqrx and its dependancies
 ./pybombs install gqrx
 exitstatus=$?
-update_terminal
+update_terminal step
 
 # Add the pybombs-installed binaries to your path, if necessary
 if ! grep -q /home/${usrCurrent}/target/bin "~${usrCurrent}/.bashrc";
   echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> ~${usrCurrent}/.bashrc
   source ~${usrCurrent}/.bashrc
 fi
-update_terminal
+update_terminal step
 
 # End the script
 exit
