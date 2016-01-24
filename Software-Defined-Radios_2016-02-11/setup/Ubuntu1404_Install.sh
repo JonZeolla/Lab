@@ -62,6 +62,15 @@ declare -a status
 success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
 failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
 
+# Gather the current user
+declare -r usrCurrent="${SUDO_USER:-$USER}"
+
+if [[ $usrCurrent == "sdr" ]]; then
+        cecho "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time"
+else
+        isBrian=false
+fi
+
 # Re-synchronize the package index files, then install the newest versions of all packages currently installed
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
 exitstatus=$?
@@ -79,12 +88,12 @@ update_terminal
 
 # Configure pybombs
 cd pybombs
-cat > /home/sdr/pybombs/config.dat <<EOL
+cat > /home/${usrCurrent}/pybombs/config.dat <<EOL
 [config]
-gituser = sdr
+gituser = ${usrCurrent}
 gitcache = 
 gitoptions = 
-prefix = /home/sdr/target
+prefix = /home/${usrCurrent}/target
 satisfy_order = deb,src
 forcepkgs = 
 forcebuild = gnuradio,uhd,gr-air-modes,gr-osmosdr,gr-iqbal,gr-fcdproplus,uhd,rtl-sdr,osmo-sdr,hackrf,gqrx,bladeRF,airspy
@@ -101,9 +110,11 @@ EOL
 exitstatus=$?
 update_terminal
 
-# Add the pybombs-installed binaries to your path
-echo -e "\nPATH=\$PATH:/home/sdr/target/bin" >> ~sdr/.bashrc
-source ~sdr/.bashrc
+# Add the pybombs-installed binaries to your path, if necessary
+if ! grep -q /home/${usrCurrent}/target/bin "~${usrCurrent}/.bashrc";
+  echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> ~${usrCurrent}/.bashrc
+  source ~${usrCurrent}/.bashrc
+fi
 update_terminal
 
 # End the script
