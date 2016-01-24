@@ -31,8 +31,8 @@ function update_terminal() {
     if [[ ${x} == "Start" ]]; then
       # Prepare the user
       echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
-      if [[ $usrCurrent == "sdr" ]]; then
-        # Check for the SDR user (TODO: and a watermark)
+      if [[ $usrCurrent == "sdr" && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis ]]; then
+        # Check for the SDR user and watermark
         echo -e "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it a second time\n"
       fi
       sleep 2s
