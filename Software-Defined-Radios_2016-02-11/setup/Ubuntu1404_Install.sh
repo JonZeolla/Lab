@@ -10,7 +10,7 @@ sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
 if [[ $? == 0 ]]; then clear; echo -e "Successfully updated apt and all currently installed packages"; else echo -e "ERROR updating apt and all currently installed packages"; err=1; fi
 echo -e "\nInstalling some SDR lab package requirements"
 sleep 2s
-sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev
+sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev swig python-scipy
 if [[ $? == 0 ]]; then clear; echo -e "Successfully installed SDR lab package requirements"; else echo -e "ERROR installing SDR lab package requirements"; err=2; fi
 echo -e "\nInstalling pybombs"
 sleep 2s
