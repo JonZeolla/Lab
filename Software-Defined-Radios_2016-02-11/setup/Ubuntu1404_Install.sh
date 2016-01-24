@@ -80,7 +80,14 @@ function update_terminal() {
 
 # Check the OS version
 if [[ $(lsb_release -r | awk '{print $2}') != "14.04" ]]; then
-  echo -e "This script is intended only for Ubuntu 14.04"
+  echo -e "ERROR:    It appears your OS is not Ubuntu 14.04"
+  exit 1
+fi
+
+# Check Network Connection
+wget -q --spider "www.google.com"
+if [[ $? != 0 ]]; then
+  echo -e "ERROR:    No network connection"
   exit 1
 fi
 
