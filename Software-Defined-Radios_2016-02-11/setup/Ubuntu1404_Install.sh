@@ -3,14 +3,14 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-01-24
+# Last update:     2016-01-25
 # File Type:       Bash Script
-# Version:         0.4
-# Repository:      https://github.com/JonZeolla/Presentation_Materials/Software-Defined-Radios_2016-02-11
+# Version:         1.0
+# Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
 #
 # Notes
-# - This script has not been tested yet - focusing on Ubuntu 14.04 as of 2016-01-24
+# - This is meant to configure Ubuntu 14.04 machines for the SDR lab as of 2016-01-24.
 # - Anything that has a placeholder value is tagged with TODO.
 #
 # =========================
@@ -20,56 +20,75 @@ function update_terminal() {
   clear
   
   # Set the status for the current stage appropriately
-  if [[ ${exitstatus} == 0 && $1 == "step" ]]; then
+  if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
     status+=('1')
-  elif [[ $1 == "step" ]]; then
+  elif [[ $1 == 'step' ]]; then
     status+=('0')
+    somethingfailed=1
   fi
   
   # Provide the user with the status of all completed steps until this point
   for x in ${status[@]}; do
-    if [[ ${x} == "Start" ]]; then
+    if [[ ${x} == 'Start' ]]; then
       # Prepare the user
-      echo -e "\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n"
-      if [ $usrCurrent == "sdr" ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
-        # Check for the SDR user and watermark
-        echo -e "It appears that you're using the SDR lab machine.  This may already be setup, but there is no harm in running it multiple times\n"
+      echo -e '\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n'
+
+      # Check for the SDR user and watermark
+      if [ $usrCurrent == 'sdr' ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
+        echo -e 'It appears that you are using the SDR lab machine.  This may already be setup, but there is no harm in running it multiple times\n'
       fi
     elif [[ ${x} == 1 ]]; then
       # Echo the correct success message
-      echo ${success[${i}]}
+      echo -e ${success[${i}]}
+      # Increment i
+      ((i++))
     elif [[ ${x} == 0 ]]; then
       # Echo the correct failure message
-      echo ${failure[${i}]}
+      echo -e ${failure[${i}]}
+      # Increment i
+      ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "ERROR:    Unknown error evaluating ${x} in the status array"
+      echo -e "\nERROR:\tUnknown error evaluating ${x} in the status array"
+      exit 1
     fi
-    
-    # Increment i
-    ((i++))
   done
-  
+
+  # Reset i
+  i=0
+
   # Update the user with a quick description of the next step
   case ${#status[@]} in
     1)
-      # Do nothing (bash equivalent of no-op)
-      :
+      echo -e 'Updating apt and all currently installed packages...\n\n'
       ;;
     2)
-      echo -e "Updating apt and all currently installed packages..."
+      echo -e '\nInstalling some SDR lab package requirements...\n\n'
       ;;
     3)
-      echo -e "Installing some SDR lab package requirements"
+      echo -e '\nInstalling pybombs...\n\n'
       ;;
     4)
-      echo -e "Installing pybombs"
+      echo -e '\nInstalling the SDR lab packages...\n\n'
       ;;
     5)
-      echo -e "Installing the SDR lab packages"
+      echo -e '\nUpdating $PATH to include packages installed via pybombs...\n\n'
+      ;;
+    6)
+      echo -e '\nRetrieving the SCIS SDR Lab branch...\n\n'
+      ;;
+    7)
+      # Give a summary update
+      if [[ $somethingfailed != 0 ]]; then
+        echo -e '\nERROR:\tSomething went wrong during the installation process'
+        exit 1
+      else
+        echo -e '\nINFO:\tSuccessfully configured the SDR lab'
+        exit 0
+      fi
       ;;
     *)
-      echo -e "ERROR:    Unknown error"
+      echo -e 'ERROR:\tUnknown error'
       ;;
   esac
   
@@ -78,15 +97,15 @@ function update_terminal() {
 }
 
 # Check the OS version
-if [[ $(lsb_release -r | awk '{print $2}') != "14.04" ]]; then
-  echo -e "ERROR:    It appears your OS is not Ubuntu 14.04"
+if [[ $(lsb_release -r | awk '{print $2}') != '14.04' ]]; then
+  echo -e 'ERROR:\tIt appears your OS is not Ubuntu 14.04'
   exit 1
 fi
 
 # Check Network Connection
-wget -q --spider "www.google.com"
+wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
-  echo -e "ERROR:    No network connection"
+  echo -e 'ERROR:\tUnable to contact github.com'
   exit 1
 fi
 
@@ -94,22 +113,26 @@ fi
 clear
 
 # Set up arrays
-declare -a status=("Start")
-declare -a success=("INFO:     Successfully updated apt and all currently installed packages","INFO:     Successfully installed SDR lab package requirements","INFO:     Successfully installed pybombs","INFO:     Successfully installed gqrx","\nINFO:     Succesfully set up machine for the SDR lab")
-declare -a failure=("ERROR:    Issue updating apt and all currently installed packages","ERROR:    Issue installing SDR lab package requirements","ERROR:    Issue installing pybombs","ERROR:    Issue installing gqrx","\nERROR:    Issue while setting up the machine for the SDR lab")
+declare -a status=('Start')
+declare -a success=('INFO:\tSuccessfully updated apt and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully updated $PATH to include packages installed via pybombs' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
+declare -a failure=('ERROR:\tIssue updating apt and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue updating $PATH to include packages installed via pybombs' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
 
 # Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 
-# Set a counter variable
+# Set regular variable
 i=0
+somethingfailed=0
 
 # Display the initial warning
 update_terminal
 
 # Re-synchronize the package index files, then install the newest versions of all packages currently installed
-sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
+# TODO:  Need to figure out how to have this error if the update/upgrade fails
+sudo apt-get -y -qq update
 exitstatus=$?
+sudo apt-get -y -qq upgrade
+if [[ exitstatus == 0 ]]; then exitstatus=$?; fi
 update_terminal step
 
 # Install dependancies for pybombs packages
@@ -118,13 +141,19 @@ exitstatus=$?
 update_terminal step
 
 # Pull down pybombs
-git clone -q --recursive https://github.com/pybombs/pybombs.git
-exitstatus=$?
-update_terminal step
+if [[ ${status[2]} == 1 ]]; then
+  git clone -q --recursive https://github.com/pybombs/pybombs.git
+  exitstatus=$?
+  update_terminal step
+else
+  exitstatus=1
+  update_terminal step
+fi
 
-# Configure pybombs
-cd pybombs
-cat > /home/${usrCurrent}/pybombs/config.dat <<EOL
+# Configure pybombs if pybombs was pulled down successfully
+if [[ ${status[3]} == 1 ]]; then
+  cd pybombs
+  cat > /home/${usrCurrent}/pybombs/config.dat <<EOL
 [config]
 gituser = ${usrCurrent}
 gitcache = 
@@ -141,17 +170,32 @@ cxx = g++
 makewidth = 4
 EOL
 
-# Install gqrx and its dependancies
-./pybombs install gqrx
-exitstatus=$?
-update_terminal step
+  # Install gqrx and its dependancies if pybombs was pulled down successfully
+  ./pybombs install gqrx
+  exitstatus=$?
+  update_terminal step
+else
+  # If pybombs wasn't successfully pulled down, assume the pybombs config file and/or gqrx install via pybombs will be unsuccessful
+  exitstatus=1
+  update_terminal step
+fi
 
 # Add the pybombs-installed binaries to your path, if necessary
 if ! grep -q /home/${usrCurrent}/target/bin "/home/${usrCurrent}/.bashrc"; then
   echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> /home/${usrCurrent}/.bashrc
+  exitstatus=$?
   source /home/${usrCurrent}/.bashrc
 fi
 update_terminal step
 
-# End the script
-exit
+# Clone the SCIS SDR Lab github repo
+if [[ ${status[4]} == 1 ]]; then
+  cd ..
+  git clone -b Software-Defined-Radios_2016-02-11 --single-branch https://github.com/JonZeolla/Presentation_Materials
+  exitstatus=$?
+  cd Presentation_Materials
+  update_terminal step
+else
+  exitstatus=1
+  update_terminal step
+fi
