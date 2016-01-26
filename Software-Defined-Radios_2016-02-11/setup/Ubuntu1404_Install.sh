@@ -172,6 +172,7 @@ makewidth = 4
 EOL
 
   # Install gqrx and its dependancies if pybombs was pulled down successfully
+  pybombs recipes add gr-recipes https://github.com/gnuradio/gr-recipes.git
   pybombs install gqrx
   exitstatus=$?
   update_terminal step
