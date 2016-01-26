@@ -172,7 +172,7 @@ makewidth = 4
 EOL
 
   # Install gqrx and its dependancies if pybombs was pulled down successfully
-  ./pybombs install gqrx
+  pybombs install gqrx
   exitstatus=$?
   update_terminal step
 else
