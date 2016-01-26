@@ -143,6 +143,8 @@ update_terminal step
 # Pull down pybombs
 if [[ ${status[2]} == 1 ]]; then
   git clone -q --recursive https://github.com/pybombs/pybombs.git
+  cd pybombs
+  sudo python setup.py install
   exitstatus=$?
   update_terminal step
 else
@@ -152,7 +154,6 @@ fi
 
 # Configure pybombs if pybombs was pulled down successfully
 if [[ ${status[3]} == 1 ]]; then
-  cd pybombs
   cat > /home/${usrCurrent}/pybombs/config.dat <<EOL
 [config]
 gituser = ${usrCurrent}
