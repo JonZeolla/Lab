@@ -1,5 +1,4 @@
 # Presentation Materials  
-## Actually read this  
 This is the repo where I host **branches** which **have the materials** used in presentations, labs, etc.  
 The reason I do this is so that you do not need to download all of the labs just to get the one that you're interested in.  Some labs are rather large, or may be presented in locations where throughput is low.  
   
