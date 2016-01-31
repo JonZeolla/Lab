@@ -132,6 +132,13 @@ i=0
 somethingfailed=0
 declare -r version="2.0.0"
 
+## Check if the user running this is root
+if [[ ${usrCurrent} == "root" ]]; then
+  clear
+  echo -e "ERROR:\tIt's a bad idea to run this script when logged in as root - please login with a less privileged account that has sudo access"
+  exit 1
+fi
+
 ## Display the initial warning
 update_terminal
 

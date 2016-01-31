@@ -106,6 +106,13 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 ## Initialize variables
 somethingfailed=0
 
+## Check if the user running this is root
+if [[ ${usrCurrent} == "root" ]]; then
+  clear
+  echo -e "ERROR:\tIt's a bad idea to run this script when logged in as root - please login with a less privileged account that has sudo access"
+  exit 1
+fi
+
 ## Update the terminal
 update_terminal
 
