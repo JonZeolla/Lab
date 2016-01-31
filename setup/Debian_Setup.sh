@@ -5,7 +5,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-31
 # File Type:       Bash Script
-# Version:         1.3
+# Version:         1.4
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -61,7 +61,7 @@ function update_terminal() {
   ## Update the user with a quick description of the next step
   case ${#status[@]} in
     1)
-      echo -e 'Updating apt and all currently installed packages...\n\n'
+      echo -e 'Updating apt package index files and all currently installed packages...\n\n'
       ;;
     2)
       echo -e '\nInstalling some SDR lab package requirements...\n\n'
@@ -121,8 +121,8 @@ clear
 
 ## Set up arrays
 declare -a status=('Start')
-declare -a success=('INFO:\tSuccessfully updated apt and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully set up the environment' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
-declare -a failure=('ERROR:\tIssue updating apt and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue setting up the environment' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
+declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully set up the environment' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
+declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue setting up the environment' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
 
 ## Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
