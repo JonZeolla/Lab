@@ -147,7 +147,7 @@ update_terminal
 sudo apt-get -y -qq update
 exitstatus=$?
 sudo apt-get -y -qq upgrade
-if [[ exitstatus == 0 ]]; then exitstatus=$?; fi
+if [[ ${exitstatus} == 0 ]]; then exitstatus=$?; fi
 update_terminal step
 
 ## Install dependancies for pybombs packages
@@ -198,6 +198,6 @@ fi
 if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 0 ]]; then
   echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
   exitstatus=$?
+  if [[ $exitstatus == 0 ]]; then source /home/${usrCurrent}/.bashrc; fi
   update_terminal step
 fi
-
