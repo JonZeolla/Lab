@@ -150,6 +150,7 @@ update_terminal step
 
 ## Pull down pybombs
 if [[ ${status[2]} == 1 ]]; then
+  cd /home/${usrCurrent}
   git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
   cd pybombs
   sudo python setup.py install
