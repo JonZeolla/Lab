@@ -20,21 +20,21 @@ function update_terminal() {
 
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
-    status+=('1')
-  elif [[ $1 == 'step' ]]; then
     status+=('0')
+  elif [[ $1 == 'step' ]]; then
+    status+=('1')
     somethingfailed=1
   fi
 
   ## Provide the user with the status of all completed steps until this point
   # if ${status[@]} is empty, this will get skipped entirely, which is intended
   for x in ${status[@]}; do
-    if [[ ${x} == 1 ]]; then
+    if [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
       # Increment i
       ((i++))
-    elif [[ ${x} == 0 ]]; then
+    elif [[ ${x} == 1 ]]; then
       # Echo the correct failure message
       echo -e ${failure[${i}]}
       # Increment i
