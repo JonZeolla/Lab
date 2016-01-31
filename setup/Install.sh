@@ -3,14 +3,15 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-01-25
+# Last update:     2016-01-30
 # File Type:       Bash Script
-# Version:         1.0
+# Version:         1.1
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
-# Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab
+# Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
 # Notes
-# - This is meant to configure Ubuntu 14.04 machines for the SDR lab as of 2016-01-24.
+# - It is possible that this script will work with other Linux distros, or other versions of Ubuntu, but I have not tested them.  Please feel free to test on other OSs, and create a pull request modifying the OS version check to allow for OSs that this script works on.
+# - This is supposed to be configured to use pybombs v2.0.0, but isn't (pending https://github.com/gnuradio/pybombs/issues/243)
 # - Anything that has a placeholder value is tagged with TODO.
 #
 # =========================
@@ -72,12 +73,9 @@ function update_terminal() {
       echo -e '\nInstalling the SDR lab packages...\n\n'
       ;;
     5)
-      echo -e '\nUpdating $PATH to include packages installed via pybombs...\n\n'
-      ;;
-    6)
       echo -e '\nRetrieving the SCIS SDR Lab branch...\n\n'
       ;;
-    7)
+    6)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
         echo -e '\nERROR:\tSomething went wrong during the installation process'
@@ -94,6 +92,13 @@ function update_terminal() {
   
   # Reset the exit status
   exitstatus=0
+}
+
+function setup_pybombs() {
+  pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.git
+  pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
+  pybombs prefix init /home/${usrCurrent}/pybombs/prefix -a sdrprefix
+  pybombs config default_prefix sdrprefix
 }
 
 # Check the OS version
@@ -114,13 +119,13 @@ clear
 
 # Set up arrays
 declare -a status=('Start')
-declare -a success=('INFO:\tSuccessfully updated apt and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully updated $PATH to include packages installed via pybombs' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
-declare -a failure=('ERROR:\tIssue updating apt and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue updating $PATH to include packages installed via pybombs' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
+declare -a success=('INFO:\tSuccessfully updated apt and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
+declare -a failure=('ERROR:\tIssue updating apt and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
 
 # Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 
-# Set regular variable
+# Initialize variables
 i=0
 somethingfailed=0
 
@@ -128,7 +133,7 @@ somethingfailed=0
 update_terminal
 
 # Re-synchronize the package index files, then install the newest versions of all packages currently installed
-# TODO:  Need to figure out how to have this error if the update/upgrade fails
+# In cases where apt-get update does not succeed perfectly, it will often only create a warning, which means the exit status will still be 0
 sudo apt-get -y -qq update
 exitstatus=$?
 sudo apt-get -y -qq upgrade
@@ -136,13 +141,15 @@ if [[ exitstatus == 0 ]]; then exitstatus=$?; fi
 update_terminal step
 
 # Install dependancies for pybombs packages
-sudo apt-get -y -qq install git libboost-all-dev qtdeclarative5-dev libqt5svg5-dev swig python-scipy
+sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev
 exitstatus=$?
+exitstatus=0
 update_terminal step
 
 # Pull down pybombs
 if [[ ${status[2]} == 1 ]]; then
-  git clone -q --recursive https://github.com/pybombs/pybombs.git
+  git clone --recursive https://github.com/gnuradio/pybombs -q
+  #git clone --recursive --branch v2.0.0 https://github.com/gnuradio/pybombs -q # Disabled due to https://github.com/gnuradio/pybombs/issues/243
   cd pybombs
   sudo python setup.py install
   exitstatus=$?
@@ -152,43 +159,32 @@ else
   update_terminal step
 fi
 
-# Configure pybombs if pybombs was pulled down successfully
+# Configure pybombs if pybombs was pulled down successfully, then start installing things
 if [[ ${status[3]} == 1 ]]; then
-  cat > /home/${usrCurrent}/pybombs/config.dat <<EOL
-[config]
-gituser = ${usrCurrent}
-gitcache = 
-gitoptions = 
-prefix = /home/${usrCurrent}/target
-satisfy_order = deb,src
-forcepkgs = 
-forcebuild = gnuradio,uhd,gr-air-modes,gr-osmosdr,gr-iqbal,gr-fcdproplus,uhd,rtl-sdr,osmo-sdr,hackrf,gqrx,bladeRF,airspy
-timeout = 30
-cmakebuildtype = RelWithDebInfo
-builddocs = OFF
-cc = gcc
-cxx = g++
-makewidth = 4
-EOL
+  setup_pybombs
 
-  # Install gqrx and its dependancies if pybombs was pulled down successfully
-  pybombs recipes add gr-recipes https://github.com/gnuradio/gr-recipes.git
+  # Install gqrx and its dependancies
   pybombs install gqrx
   exitstatus=$?
   update_terminal step
 else
-  # If pybombs wasn't successfully pulled down, assume the pybombs config file and/or gqrx install via pybombs will be unsuccessful
-  exitstatus=1
-  update_terminal step
-fi
+  # If pybombs wasn't successfully pulled down, check to see if pybombs v2.0.0 is already installed
+  # Checking the pybombs version requires 2>1 because of https://github.com/gnuradio/pybombs/issues/242
+  # TODO: Test this
+  if [[ $(pybombs --version 2>&1) == "2.0.0" ]]; then
+    # pybombs v2.0.0 is installed - continue setting up the environment
+    setup_pybombs
 
-# Add the pybombs-installed binaries to your path, if necessary
-if ! grep -q /home/${usrCurrent}/target/bin "/home/${usrCurrent}/.bashrc"; then
-  echo -e "\nPATH=\$PATH:/home/${usrCurrent}/target/bin" >> /home/${usrCurrent}/.bashrc
-  exitstatus=$?
-  source /home/${usrCurrent}/.bashrc
+    # Install gqrx and its dependancies
+    pybombs install gqrx
+    exitstatus=$?
+    update_terminal step
+  else
+    # pybombs v2.0.0 isn't installed - fail
+    exitstatus=1
+    update_terminal step
+  fi
 fi
-update_terminal step
 
 # Clone the SCIS SDR Lab github repo
 if [[ ${status[4]} == 1 ]]; then
@@ -201,3 +197,4 @@ else
   exitstatus=1
   update_terminal step
 fi
+
