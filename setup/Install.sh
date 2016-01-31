@@ -3,9 +3,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-01-30
+# Last update:     2016-01-31
 # File Type:       Bash Script
-# Version:         1.1
+# Version:         1.2
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Ubuntu 14.04 for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -143,7 +143,6 @@ update_terminal step
 # Install dependancies for pybombs packages
 sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev
 exitstatus=$?
-exitstatus=0
 update_terminal step
 
 # Pull down pybombs
