@@ -195,7 +195,7 @@ else
 fi
 
 ## Configure your environment, if necessary
-if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc"; then
+if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 1 ]]; then
   echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
   exitstatus=$?
   update_terminal step
