@@ -5,7 +5,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-31
 # File Type:       Bash Script
-# Version:         1.4
+# Version:         1.5
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -22,9 +22,9 @@ function update_terminal() {
   
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
-    status+=('1')
-  elif [[ $1 == 'step' ]]; then
     status+=('0')
+  elif [[ $1 == 'step' ]]; then
+    status+=('1')
     somethingfailed=1
   fi
   
@@ -38,12 +38,12 @@ function update_terminal() {
       if [ $usrCurrent == 'sdr' ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
         echo -e 'It appears that you are using the SDR lab machine.  This may already be setup, but there is no harm in running it multiple times\n'
       fi
-    elif [[ ${x} == 1 ]]; then
+    elif [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
       # Increment i
       ((i++))
-    elif [[ ${x} == 0 ]]; then
+    elif [[ ${x} == 1 ]]; then
       # Echo the correct failure message
       echo -e ${failure[${i}]}
       # Increment i
@@ -156,7 +156,7 @@ exitstatus=$?
 update_terminal step
 
 ## Pull down pybombs
-if [[ ${status[2]} == 1 ]]; then
+if [[ ${status[2]} == 0 ]]; then
   cd /home/${usrCurrent}
   git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
   cd pybombs
@@ -169,7 +169,7 @@ else
 fi
 
 ## Configure pybombs if pybombs was pulled down successfully, then start installing things
-if [[ ${status[3]} == 1 ]]; then
+if [[ ${status[3]} == 0 ]]; then
   setup_pybombs
 
   # Install gqrx and its dependancies
@@ -195,7 +195,7 @@ else
 fi
 
 ## Configure your environment, if necessary
-if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 1 ]]; then
+if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 0 ]]; then
   echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
   exitstatus=$?
   update_terminal step
