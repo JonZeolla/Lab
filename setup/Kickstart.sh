@@ -61,12 +61,17 @@ function update_terminal() {
       echo -e '\nRetrieving the SCIS SDR lab branch...\n\n'
       ;;
     3)
-      echo -e '\nKicking off the lab setup script...\n\n'
+      if [[ $somethingfailed != 0 ]]; then
+        echo -e '\nERROR:\tSomething went wrong during the setup process'
+        exit 1
+      else
+        echo -e '\nKicking off the lab setup script...\n\n'
+      fi
       ;;
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        echo -e '\nERROR:\tSomething went wrong during the installation process'
+        echo -e '\nERROR:\tSomething went wrong during the SDR lab installation process'
         exit 1
       else
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
