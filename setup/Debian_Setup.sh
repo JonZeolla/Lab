@@ -5,7 +5,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-01-31
 # File Type:       Bash Script
-# Version:         1.5
+# Version:         1.6
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -198,6 +198,7 @@ fi
 if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 0 ]]; then
   echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
   exitstatus=$?
+  source /home/${usrCurrent}/.bashrc
   if [[ $exitstatus == 0 ]]; then source /home/${usrCurrent}/.bashrc; fi
   update_terminal step
 fi
