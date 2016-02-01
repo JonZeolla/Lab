@@ -3,9 +3,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-01-31
+# Last update:     2016-02-01
 # File Type:       Bash Script
-# Version:         1.6
+# Version:         1.7
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -76,12 +76,13 @@ function update_terminal() {
       echo -e '\nSetting up the environment...\n\n'
       ;;
     6)
-      # Give a summary update
+      # Give a summary update and cleanup messages
       if [[ $somethingfailed != 0 ]]; then
         echo -e '\nERROR:\tSomething went wrong during the installation process'
         exit 1
       else
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
+        echo -e '\n\nIn order for all changes from this script to take effect, you MUST reboot your system.  However, I will leave that up to you.'
         exit 0
       fi
       ;;
@@ -91,8 +92,9 @@ function update_terminal() {
       ;;
   esac
   
-  ## Reset the exit status
+  ## Reset the exit status variables
   exitstatus=0
+  tmpexitstatus=0
 }
 
 function setup_pybombs() {
@@ -130,6 +132,8 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 ## Initialize variables
 i=0
 somethingfailed=0
+exitstatus=0
+tmpexitstatus=0
 declare -r version="2.0.0"
 
 ## Check if the user running this is root
@@ -147,11 +151,12 @@ update_terminal
 sudo apt-get -y -qq update
 exitstatus=$?
 sudo apt-get -y -qq upgrade
-if [[ ${exitstatus} == 0 ]]; then exitstatus=$?; fi
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 update_terminal step
 
-## Install dependancies for pybombs packages
-sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev
+## Install dependancies
+sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev sox
 exitstatus=$?
 update_terminal step
 
@@ -162,11 +167,10 @@ if [[ ${status[2]} == 0 ]]; then
   cd pybombs
   sudo python setup.py install
   exitstatus=$?
-  update_terminal step
 else
   exitstatus=1
-  update_terminal step
 fi
+update_terminal step
 
 ## Configure pybombs if pybombs was pulled down successfully, then start installing things
 if [[ ${status[3]} == 0 ]]; then
@@ -175,7 +179,6 @@ if [[ ${status[3]} == 0 ]]; then
   # Install gqrx and its dependancies
   pybombs install gqrx
   exitstatus=$?
-  update_terminal step
 else
   # If pybombs wasn't successfully pulled down, check to see if the correct version of pybombs is already installed
   # Checking the pybombs version requires 2>&1 because of https://github.com/gnuradio/pybombs/issues/242
@@ -186,19 +189,24 @@ else
     # Install gqrx and its dependancies
     pybombs install gqrx
     exitstatus=$?
-    update_terminal step
   else
     # The right version of pybombs isn't installed - fail
     exitstatus=1
-    update_terminal step
   fi
 fi
+update_terminal step
 
 ## Configure your environment, if necessary
+# If setup_env.sh isn't already sourced in your .bashrc, add it and then source your .bashrc
 if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 0 ]]; then
   echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
   exitstatus=$?
-  source /home/${usrCurrent}/.bashrc
-  if [[ $exitstatus == 0 ]]; then source /home/${usrCurrent}/.bashrc; fi
-  update_terminal step
+  if [[ ${exitstatus} == 0 ]]; then source /home/${usrCurrent}/.bashrc; fi
 fi
+# If you aren't already stopping the RTL-SDR modules from getting autoloaded when the device is plugged in, add an appropriate blacklist
+if ! grep -q "blacklist dvb_usb_rtl28xxu" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist rtl2832" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist 2rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ; then
+  echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830\n" | sudo tee /etc/modprobe.d/blacklist-scis_sdr_lab.conf
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+fi
+update_terminal step
