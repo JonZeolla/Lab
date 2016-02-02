@@ -15,9 +15,6 @@
 # =========================
 
 function update_terminal() {
-  ## Clear the screen
-  clear
-
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
     status+=('0')
@@ -29,6 +26,11 @@ function update_terminal() {
   ## Provide the user with the status of all completed steps until this point
   # if ${status[@]} is empty, this will get skipped entirely, which is intended
   for x in ${status[@]}; do
+    # Clear the screen the first time it hits the loop, and if we didn't just finish the appropriate lab setup script
+    # TODO:  Test this
+    if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
+      clear
+    fi
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
@@ -52,6 +54,8 @@ function update_terminal() {
   ## Update the user with a quick description of the next step
   case ${#status[@]} in
     0)
+      # Clear the screen only if nothing has been done yet - otherwise it will clear via the above for loop
+      clear
       echo -e 'Re-synchronizing the package index files...\n\n'
       ;;
     1)
@@ -136,6 +140,7 @@ cd /home/${usrCurrent}/Desktop/Presentation_Materials/
 chmod -R 755 /home/${usrCurrent}/Desktop/Presentation_Materials/setup/*
 
 ## Kick off the appropriate lab setup script
+# TODO:  Test this
 if [[ $(lsb_release -r | awk '{print $2}') == '14.04' ]]; then
   setup/Debian_Setup.sh
   exitstatus=$?
