@@ -179,6 +179,9 @@ if [[ ${status[3]} == 0 ]]; then
   # Install gqrx and its dependancies
   pybombs install gqrx
   exitstatus=$?
+  pybombs install gr-air-modes
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 else
   # If pybombs wasn't successfully pulled down, check to see if the correct version of pybombs is already installed
   # Checking the pybombs version requires 2>&1 because of https://github.com/gnuradio/pybombs/issues/242
@@ -189,6 +192,9 @@ else
     # Install gqrx and its dependancies
     pybombs install gqrx
     exitstatus=$?
+    pybombs install gr-air-modes
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   else
     # The right version of pybombs isn't installed - fail
     exitstatus=1
