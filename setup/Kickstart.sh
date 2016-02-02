@@ -3,9 +3,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-01-31
+# Last update:     2016-02-02
 # File Type:       Bash Script
-# Version:         1.1
+# Version:         1.2
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
