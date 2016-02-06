@@ -6,7 +6,7 @@
 # Last update:     2016-02-02
 # File Type:       Bash Script
 # Version:         1.2
-# Repository:      https://github.com/JonZeolla/Presentation_Materials
+# Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
 # Notes
@@ -133,11 +133,11 @@ update_terminal step
 
 ## Clone the SCIS SDR Lab github repo
 cd /home/${usrCurrent}/Desktop
-git clone -b Software-Defined-Radios_2016-02-11 --single-branch https://github.com/JonZeolla/Presentation_Materials
+git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab
 exitstatus=$?
 update_terminal step
-cd /home/${usrCurrent}/Desktop/Presentation_Materials/
-chmod -R 755 /home/${usrCurrent}/Desktop/Presentation_Materials/setup/*
+cd /home/${usrCurrent}/Desktop/Lab/
+chmod -R 755 /home/${usrCurrent}/Desktop/Lab/setup/*
 
 ## Kick off the appropriate lab setup script
 # TODO:  Test this

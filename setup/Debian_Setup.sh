@@ -6,7 +6,7 @@
 # Last update:     2016-02-05
 # File Type:       Bash Script
 # Version:         1.8
-# Repository:      https://github.com/JonZeolla/Presentation_Materials
+# Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
 # Notes
