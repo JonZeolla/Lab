@@ -9,4 +9,4 @@ Examples:
 * `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the SoftwareDefinedRadio branch.  
 * `git clone -b 2015-09-24_SCIS_PasswordCracking --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the revision of the PasswordCracking branch used during the 2015-09-24 Steel City InfoSec lab.  
+  * Clone the revision of the PasswordCracking branch used during the 2015-09-24 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
