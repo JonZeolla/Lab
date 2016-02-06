@@ -3,9 +3,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-01
+# Last update:     2016-02-05
 # File Type:       Bash Script
-# Version:         1.7
+# Version:         1.8
 # Repository:      https://github.com/JonZeolla/Presentation_Materials
 # Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -106,7 +106,8 @@ function setup_pybombs() {
 }
 
 ## Check the OS version
-if [[ $(lsb_release -r | awk '{print $2}') != '14.04' ]]; then
+# Testing {Ubuntu,Lubuntu,Xubuntu} {14.04,15.10}
+if [[ ($(lsb_release -r | awk '{print $2}') != '14.04') || ($(lsb_release -r | awk '{print $2}') != '15.10') ]]; then
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
