@@ -5,5 +5,5 @@ The reason I do this is so that you do not need to download all of the labs just
 **In order to use this repo as intended, you MUST switch to the appropriate branch**, via the web UI or CLI.  See `git branch -r` to list these via the command line, or the dropdown directly to the left of the `New pull request` button.  
   
 Example:  
-* `git clone -b Software-Defined-Radios_2016-02-11 --single-branch https://github.com/JonZeolla/Presentation_Materials`  
+* `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
 
