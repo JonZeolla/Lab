@@ -5,146 +5,146 @@ Also, this is meant to be a list of useful materials, and not all of it is neces
 
 ## Password Retrieval/Cracking Software  
 ### Hashcat  
-[__Mac, Windows, Linux__ NVidia - v1.37](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
-[__Mac, Windows, Linux__ AMD - v1.37](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/oclHashcat-1.37.7z), [Original location][2]  
-[__Mac, Windows, Linux__ CPU - v0.50](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/hashcat-0.50.7z), [Original location][3]  
+[__Mac, Windows, Linux__ NVidia - v1.37](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
+[__Mac, Windows, Linux__ AMD - v1.37](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
+[__Mac, Windows, Linux__ CPU - v0.50](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/hashcat-0.50.7z), [Original location][3]  
 
 ### Cryptohaze Multiforcer  
-[__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][4]  
-[__Windows__ Multiforcer - v1.31a](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Cryptohaze-Windows_x64_1_31a.zip)\*, [Original location][5]  
+[__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][4]  
+[__Windows__ Multiforcer - v1.31a](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Cryptohaze-Windows_x64_1_31a.zip)\*, [Original location][5]  
 \* This assumes you have a 64-bit operating system.  
 
 ### L0phtcrack  
-[__Windows__ L0phtcrack - v6.0.20](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/lc6setup_v6.0.20.exe), [Original location][6]  
+[__Windows__ L0phtcrack - v6.0.20](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/lc6setup_v6.0.20.exe), [Original location][6]  
 
 ### John the Ripper  
-[__Mac__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/john-1.7.9-jumbo-7-macosx-Intel-2.zip)\*, [Original location][7]  
-[__Windows__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/john179w2.zip), [Original location][8]  
-[__Linux__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/john-1.7.9-jumbo-7-Linux-x86-64.tar.gz)\*, [Original location][9]  
+[__Mac__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/john-1.7.9-jumbo-7-macosx-Intel-2.zip)\*, [Original location][7]  
+[__Windows__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/john179w2.zip), [Original location][8]  
+[__Linux__ John the Ripper - v1.7.9](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/john-1.7.9-jumbo-7-Linux-x86-64.tar.gz)\*, [Original location][9]  
 \* Unofficial binary build written by the JTR user community members.  This also assumes you have a 64-bit operating system.  
 
 ### Ophcrack  
-[__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][10]  
-[__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][11]  
+[__Mac, Linux__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/ophcrack-3.6.0.tar.bz2), [Original location][10]  
+[__Windows__ Ophcrack - v3.6.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/ophcrack-win64-installer-3.6.0.exe)\*, [Original location][11]  
 \* This assumes you have a 64-bit operating system.  
 
 ### fgdump  
-[__Windows__ fgdump - v2.1.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/fgdump.exe), [Original location][12]  
+[__Windows__ fgdump - v2.1.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/fgdump.exe), [Original location][12]  
 
 ### Cain & Abel  
-[__Windows__ Cain & Abel - v4.9.56](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/ca_setup.exe), [Original location][13]  
+[__Windows__ Cain & Abel - v4.9.56](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/ca_setup.exe), [Original location][13]  
 
 ### Hash Suite  
-[__Windows__ Hash Suite - v3.2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Hash_Suite_Free_3_2.zip), [Original location][14]  
+[__Windows__ Hash Suite - v3.2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Hash_Suite_Free_3_2.zip), [Original location][14]  
 
 ### Hash Manager  
-[__Windows__ Hash Manager - v1.2.2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/HM.zip), [Original location][15]  
+[__Windows__ Hash Manager - v1.2.2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/HM.zip), [Original location][15]  
 
 ### Extreme GPU Bruteforcer  
-[__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/EGB.zip), [Original location][16]  
+[__Windows__ Extreme GPU Bruteforcer - v3.2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/EGB.zip), [Original location][16]  
 
 ### Wisecracker  
-[__Mac, Linux__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/wisecracker_v1.0.tar.gz), [Original location][17]  
-[__Windows__ Wisecracker - v1.0](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/wisecracker_v1.0.zip), [Original location][18]  
+[__Mac, Linux__ Wisecracker - v1.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/wisecracker_v1.0.tar.gz), [Original location][17]  
+[__Windows__ Wisecracker - v1.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/wisecracker_v1.0.zip), [Original location][18]  
 
 ### RainbowCrack  
-[__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][19]  
-[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rainbowcrack-1.6.1-win64.zip)\*\*, [Original location][20]  
+[__Mac, Linux__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/rainbowcrack-1.6.1-linux64.zip)\*, [Original location][19]  
+[__Windows__ RainbowCrack - v1.6.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/rainbowcrack-1.6.1-win64.zip)\*\*, [Original location][20]  
 \* This assumes you have a 64-bit operating system.  
 \*\* This assumes you have a 64-bit operating system AND is able to make use of OpenCL/CUDA GPUs (AMD and NVidia).  
 
 ### MDXfind
-[__Mac__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/MDXfind_Mac), [Original location][21]  
-[__Windows__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/MDXfind.exe)\*, [Original location][22]  
-[__Linux__ MDXfind - v1.42](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/MDXfind_Linux)\*, [Original location][23]  
+[__Mac__ MDXfind - v1.42](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/MDXfind_Mac), [Original location][21]  
+[__Windows__ MDXfind - v1.42](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/MDXfind.exe)\*, [Original location][22]  
+[__Linux__ MDXfind - v1.42](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/MDXfind_Linux)\*, [Original location][23]  
 \* This assumes you have a 64-bit operating system.  
 
 
 ## Password Auditing Software  
 ### PassPal  
-[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/passpal.rb)\*, [Original location][24]  
+[__Mac, Windows, Linux__ PassPal - v0.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/passpal.rb)\*, [Original location][24]  
 \* Requires Ruby 1.9  
 
 ### PiPal  
-[__Mac, Linux__ PiPal - v1.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/pipal_1.1.tar.bz2)\*, [Original location][25]  
+[__Mac, Linux__ PiPal - v1.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/pipal_1.1.tar.bz2)\*, [Original location][25]  
 \* Requires Ruby 1.9  
 
 
 ## Supplementary Software  
 ### gfxCardStatus  
-[__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/gfxCardStatus-2.3.zip), [Original location][26]  
+[__Mac__ gfxCardStatus - v2.3](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/gfxCardStatus-2.3.zip), [Original location][26]  
 
 ### Ruby  
 __Mac__ Ruby - Various\*  
-[__Windows__ Ruby - v2.2.3](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/rubyinstaller-2.2.3-x64.exe)\*\*, [Original location][27]  
+[__Windows__ Ruby - v2.2.3](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/rubyinstaller-2.2.3-x64.exe)\*\*, [Original location][27]  
 __Linux__ Ruby - Various\*\*\*  
 \* Already installed and maintained by Apple.  
 \*\* This assumes you have a 64-bit operating system.  
 \*\*\* See the [installation page](https://www.ruby-lang.org/en/documentation/installation/) for more details.  
 
 ### WinRAR
-[__Windows__ WinRAR - v5.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/winrar-x64-521.exe)\*, [Original location][28]  
+[__Windows__ WinRAR - v5.2.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/winrar-x64-521.exe)\*, [Original location][28]  
 \* This assumes you have a 64-bit operating system.  
 
 ### iconv
-[__Windows__ iconv - v1.9.2-1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/libiconv-1.9.2-1-bin.zip), [Original location][29]  
+[__Windows__ iconv - v1.9.2-1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/libiconv-1.9.2-1-bin.zip), [Original location][29]  
 
 
 ## Password Cracking Input  
 ### Word List Generators  
-[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/cewl_5.1.tar.bz2)\*, [Original location][30]  
-[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/crunch-3.6.tgz), [Original location][31]  
-[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][32]  
-[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][33]  
+[__Mac, Windows, Linux__ CeWL - v5.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/cewl_5.1.tar.bz2)\*, [Original location][30]  
+[__Mac, Linux__ Crunch - v3.6](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/crunch-3.6.tgz), [Original location][31]  
+[__Mac, Linux__ Random Wordlist Generator - v0.2.1](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/RandomWordlistGenerator-0.2.1.tar.bz2), [Original location][32]  
+[__Windows__ Random Wordlist Generator - v0.2.1-8](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/RandomWordlistGenerator-0.2.1-8-downloader.exe), [Original location][33]  
 \* Requires Ruby 1.9 and various gems (nokogiri,mime-types,mini_exiftool,rubyzip,spider).  See the [installation page](https://digi.ninja/projects/cewl.php#installation) for more details.  
 
 ### Static Word Lists
 [crackstation.txt.gz.torrent](https://crackstation.net/downloads/crackstation.txt.gz.torrent)\*  
-[BX698V7M.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/BX698V7M.dic)  
-[casos.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/casos.txt)  
-[cmde.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/cmde.dic)  
-[distilled-users.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/distilled-users.txt)  
-[distilled.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/distilled.txt)  
-[gmail5m.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/gmail5m.txt)  
-[ipmi.dic](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/ipmi.dic)  
-[us_cities.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/us_cities.txt.bz2)  
-[english.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/english.txt.bz2)  
-[singles.org.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/singles.org.txt.bz2)  
-[carders.cc.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/carders.cc.txt.bz2)  
-[facebook-phished.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/facebook-phished.txt.bz2)  
-[tuscl.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/tuscl.txt.bz2)  
-[porn-unknown.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/porn-unknown.txt.bz2)  
-[facebook-pastebay.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/facebook-pastebay.txt.bz2)  
-[alypaa.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/alypaa.txt.bz2)  
-[hak5.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/hak5.txt.bz2)  
-[elitehacker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/elitehacker.txt.bz2)  
-[faithwriters.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/faithwriters.txt.bz2)  
-[hotmail.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/hotmail.txt.bz2)  
-[myspace.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/myspace.txt.bz2)  
-[phpbb.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/phpbb.txt.bz2)  
-[twitter-banned.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/twitter-banned.txt.bz2)  
-[500-worst-passwords.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/500-worst-passwords.txt.bz2)  
-[conficker.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/nconficker.txt.bz2)  
-[cain.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/cain.txt.bz2)  
-[john.txt.bz2](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/john.txt.bz2)  
-[common-4.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-4.txt)  
-[common-3.txt](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-3.txt)  
-[Unabr.dict.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/Unabr.dict.zip)  
-[d8.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/d8.zip)  
-[dic-0294.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/dic-0294.zip)  
-[common-passwords.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/common-passwords.zip)  
-[alt12dicts-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/alt12dicts-4.zip)  
-[jargon-wl-4.2.0-1.tar.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/jargon-wl-4.2.0-1.tar.gz)  
-[ispell-enwl-3.1.20.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/ispell-enwl-3.1.20.zip)  
-[scowl-7.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/scowl-7.1.zip)  
-[agid-4.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/agid-4.zip)  
-[varcon-5.1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/varcon-5.1.zip)  
-[pos-1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/pos-1.zip)  
-[passlist1.zip](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/passlist1.zip)  
-[koran.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/koran.gz)  
-[kj-bible.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/kj-bible.gz)  
-[viruses.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/viruses.gz)  
-[tech.gz](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/.Storage/Lists/tech.gz)  
+[BX698V7M.dic](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/BX698V7M.dic)  
+[casos.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/casos.txt)  
+[cmde.dic](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/cmde.dic)  
+[distilled-users.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/distilled-users.txt)  
+[distilled.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/distilled.txt)  
+[gmail5m.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/gmail5m.txt)  
+[ipmi.dic](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/ipmi.dic)  
+[us_cities.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/us_cities.txt.bz2)  
+[english.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/english.txt.bz2)  
+[singles.org.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/singles.org.txt.bz2)  
+[carders.cc.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/carders.cc.txt.bz2)  
+[facebook-phished.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/facebook-phished.txt.bz2)  
+[tuscl.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/tuscl.txt.bz2)  
+[porn-unknown.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/porn-unknown.txt.bz2)  
+[facebook-pastebay.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/facebook-pastebay.txt.bz2)  
+[alypaa.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/alypaa.txt.bz2)  
+[hak5.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/hak5.txt.bz2)  
+[elitehacker.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/elitehacker.txt.bz2)  
+[faithwriters.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/faithwriters.txt.bz2)  
+[hotmail.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/hotmail.txt.bz2)  
+[myspace.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/myspace.txt.bz2)  
+[phpbb.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/phpbb.txt.bz2)  
+[twitter-banned.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/twitter-banned.txt.bz2)  
+[500-worst-passwords.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/500-worst-passwords.txt.bz2)  
+[conficker.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/nconficker.txt.bz2)  
+[cain.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/cain.txt.bz2)  
+[john.txt.bz2](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/john.txt.bz2)  
+[common-4.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/common-4.txt)  
+[common-3.txt](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/common-3.txt)  
+[Unabr.dict.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/Unabr.dict.zip)  
+[d8.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/d8.zip)  
+[dic-0294.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/dic-0294.zip)  
+[common-passwords.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/common-passwords.zip)  
+[alt12dicts-4.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/alt12dicts-4.zip)  
+[jargon-wl-4.2.0-1.tar.gz](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/jargon-wl-4.2.0-1.tar.gz)  
+[ispell-enwl-3.1.20.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/ispell-enwl-3.1.20.zip)  
+[scowl-7.1.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/scowl-7.1.zip)  
+[agid-4.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/agid-4.zip)  
+[varcon-5.1.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/varcon-5.1.zip)  
+[pos-1.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/pos-1.zip)  
+[passlist1.zip](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/passlist1.zip)  
+[koran.gz](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/koran.gz)  
+[kj-bible.gz](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/kj-bible.gz)  
+[viruses.gz](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/viruses.gz)  
+[tech.gz](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Lists/tech.gz)  
 \* Not hosted on my GitHub due to its large size
 
 ### Word List and Rainbow Table Aggregators  

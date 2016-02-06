@@ -1,5 +1,5 @@
 # Step 1, Hint 1  
-You can find the appropriate installers under SCIS_Password_Lab/Presentation_Materials/.Storage, or use the links in the [Beginner/Downloads](https://github.com/JonZeolla/Presentation_Materials/tree/Password-Cracking_2015-09-24/Beginner/Downloads) section of my GitHub.  The README under Beginner/Downloads may help point you at the exact file if you aren't clear (best viewed through a web browser).  
+You can find the appropriate installers under SCIS_Password_Lab/Lab/.Storage, or use the links in the [Beginner/Downloads](https://github.com/JonZeolla/Lab/tree/PasswordCracking/Beginner/Downloads) section of my GitHub.  The README under Beginner/Downloads may help point you at the exact file if you aren't clear (best viewed through a web browser).  
 
 ## Mac  
 ### Required  
@@ -35,7 +35,7 @@ You can find the appropriate installers under SCIS_Password_Lab/Presentation_Mat
   * Install Ruby  
     * `.\rubyinstaller-2.2.3-x64.exe`  
       * Accept the license agreement then be sure to check "Add Ruby executables to your PATH" and "Associate .rb and .rbw files with this Ruby installation" before clicking Install.  
-![Step1-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Presentation_Materials/Password-Cracking_2015-09-24/Beginner/.Screenshots/Step1-Hint1_Windows_1.png)  
+![Step1-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Lab/PasswordCracking/Beginner/.Screenshots/Step1-Hint1_Windows_1.png)  
 3. Hashcat  
   * If you have a NVIDIA GPU:  
     * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ cudaHashcat-1.37.7z" ; cd cudaHashcat-1.37`  
