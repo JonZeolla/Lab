@@ -141,7 +141,7 @@ chmod -R 755 /home/${usrCurrent}/Desktop/Lab/setup/*
 
 ## Kick off the appropriate lab setup script
 # TODO:  Test this
-if [[ $(lsb_release -r | awk '{print $2}') == '14.04' ]]; then
+if [[ $(lsb_release -r | awk '{print $2}') == '14.04' || $(lsb_release -r | awk '{print $2}') == '15.10' ]]; then
   setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
