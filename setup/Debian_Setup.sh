@@ -79,11 +79,11 @@ function update_terminal() {
     6)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
-        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0"; fi
+        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0'; fi
         echo -e '\nERROR:\tSomething went wrong during the installation process'
         exit 1
       else
-        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0"; fi
+        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0'; fi
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
         echo -e '\n\nIn order for all changes from this script to take effect, you MUST reboot your system.  However, I will leave that up to you.'
         exit 0
@@ -167,12 +167,11 @@ update_terminal step
 
 ## Pull down pybombs
 if [[ ${status[2]} == 0 ]]; then
-  cd ${HOME}
   if [[ ! -d ${HOME}/pybombs ]]; then
+    cd ${HOME}
     git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
     exitstatus=$?
-    cd ${HOME}/pybombs
-    sudo python setup.py install
+    sudo python ${HOME}/pybombs/setup.py install
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   elif [[ -d ${HOME}/pybombs ]]; then
