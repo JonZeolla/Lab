@@ -76,9 +76,11 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
+        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to be the most current version of the SoftwareDefinedRadio branch'; fi
         echo -e '\nERROR:\tSomething went wrong during the SDR lab installation process'
         exit 1
       else
+        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to be the most current version of the SoftwareDefinedRadio branch'; fi
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
         exit 0
       fi
@@ -110,6 +112,7 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 
 ## Initialize variables
 somethingfailed=0
+resetlab=0
 
 ## Check if the user running this is root
 if [[ ${usrCurrent} == "root" ]]; then
@@ -133,11 +136,31 @@ exitstatus=$?
 update_terminal step
 
 ## Clone the SCIS SDR Lab github repo
-cd ${HOME}/Desktop
-git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab
-exitstatus=$?
-update_terminal step
+if [[ ! -d ${HOME}/Desktop/Lab ]]; then
+  cd ${HOME}/Desktop
+  git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab -q
+  exitstatus=$?
+elif [[ -d ${HOME}/Desktop/Lab ]]; then
+  cd ${HOME}/Desktop/Lab
+  isgit=$(git rev-parse --is-inside-work-tree || echo false)
+  curBranch=$(git branch | grep \* | awk '{print $2}')
+  if [[ ${isgit} == "true" && ${curBranch} == "SoftwareDefinedRadio" ]]; then
+    git reset --hard
+    exitstatus=$?
+    if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
+  elif [[ ${isgit} == "false" || ${curBranch} != "SoftwareDefinedRadio" ]]; then
+    echo -e 'ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.'
+    exitstatus=1
+  else
+    echo -e "ERROR:\tUnknown error"
+    exitstatus=1
+  fi
+else
+  echo -e "ERROR:\tUnknown error"
+  exitstatus=1
+fi
 chmod -R 755 ${HOME}/Desktop/Lab/setup/*
+update_terminal step
 
 ## Kick off the appropriate lab setup script
 if [[ $(lsb_release -r | awk '{print $2}') == '14.04' || $(lsb_release -r | awk '{print $2}') == '15.10' ]]; then
