@@ -1,11 +1,12 @@
 #!/bin/bash
 # To enable and disable tracing use:  set -x (On) set +x (Off)
+# To terminate the script immediately after any non-zero exit status use:  set -e
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-02
+# Last update:     2016-02-06
 # File Type:       Bash Script
-# Version:         1.2
+# Version:         1.3
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -113,7 +114,7 @@ somethingfailed=0
 ## Check if the user running this is root
 if [[ ${usrCurrent} == "root" ]]; then
   clear
-  echo -e "ERROR:\tIt's a bad idea to run this script when logged in as root - please login with a less privileged account that has sudo access"
+  echo -e "ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access"
   exit 1
 fi
 
@@ -132,21 +133,18 @@ exitstatus=$?
 update_terminal step
 
 ## Clone the SCIS SDR Lab github repo
-cd /home/${usrCurrent}/Desktop
+cd ${HOME}/Desktop
 git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab
 exitstatus=$?
 update_terminal step
-cd /home/${usrCurrent}/Desktop/Lab/
-chmod -R 755 /home/${usrCurrent}/Desktop/Lab/setup/*
+chmod -R 755 ${HOME}/Desktop/Lab/setup/*
 
 ## Kick off the appropriate lab setup script
-# TODO:  Test this
 if [[ $(lsb_release -r | awk '{print $2}') == '14.04' || $(lsb_release -r | awk '{print $2}') == '15.10' ]]; then
-  setup/Debian_Setup.sh
+  ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
 else
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
-
