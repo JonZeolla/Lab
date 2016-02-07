@@ -234,13 +234,13 @@ update_terminal step
 
 ## Configure your environment, if necessary
 # If setup_env.sh isn't already sourced in your .bashrc, add it and then source your .bashrc
-if ! grep -q "source ${HOME}/pybombs/prefix/setup_env.sh" "${HOME}/.bashrc" && [[ ${status[4]} == 0 ]]; then
+if [ ! grep -q "source ${HOME}/pybombs/prefix/setup_env.sh" "${HOME}/.bashrc" ] && [[ ${status[4]} == 0 ]]; then
   echo "source ${HOME}/pybombs/prefix/setup_env.sh" >> ${HOME}/.bashrc
   exitstatus=$?
   if [[ ${exitstatus} == 0 ]]; then source ${HOME}/.bashrc; fi
 fi
 # If you aren't already stopping the RTL-SDR modules from getting autoloaded when the device is plugged in, add an appropriate blacklist
-if ! grep -q "blacklist dvb_usb_rtl28xxu" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist rtl2832" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist 2rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ; then
+if [ ! grep -q "blacklist dvb_usb_rtl28xxu" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ] || [ ! grep -q "blacklist rtl2832" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ] || [ ! grep -q "blacklist rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ]; then
   echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830\n" | sudo tee /etc/modprobe.d/blacklist-scis_sdr_lab.conf
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
