@@ -145,11 +145,11 @@ elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
-  if [[ ${isgit} == "true" && ${curBranch} == "SoftwareDefinedRadio" ]]; then
+  if [[ ${isgit} == "true" && (${curBranch} == "SoftwareDefinedRadio" || ${curBranch} == "(no branch)") ]]; then
     git reset --hard
     exitstatus=$?
     if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
-  elif [[ ${isgit} == "false" || ${curBranch} != "SoftwareDefinedRadio" ]]; then
+  elif [[ ${isgit} == "false" || (${curBranch} != "SoftwareDefinedRadio" && ${curBranch} != "(no branch)") ]]; then
     echo -e 'ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.'
     exitstatus=1
   else
