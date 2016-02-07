@@ -183,6 +183,9 @@ if [[ ${status[2]} == 0 ]]; then
       git reset --hard v${version}
       exitstatus=$?
       if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
+      sudo python ${HOME}/pybombs/setup.py install
+      tmpexitstatus=$?
+      if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
     elif [[ ${isgit} == "false" || ${curBranch} != "master" ]]; then
       echo -e 'ERROR:\t${HOME}/pybombs exists, but is not a functional git working tree or is pointing to the wrong branch.'
       exitstatus=1
