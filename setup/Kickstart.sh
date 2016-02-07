@@ -109,6 +109,7 @@ declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIs
 
 ## Gather the current user
 declare -r usrCurrent="${SUDO_USER:-$USER}"
+declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
 
 ## Initialize variables
 somethingfailed=0
@@ -163,7 +164,7 @@ chmod -R 755 ${HOME}/Desktop/Lab/setup/*.sh
 update_terminal step
 
 ## Kick off the appropriate lab setup script
-if [[ $(lsb_release -r | awk '{print $2}') == '14.04' || $(lsb_release -r | awk '{print $2}') == '15.10' ]]; then
+if [[ ${osVersion} == '14.04' || ${osVersion} == '15.10' ]]; then
   ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
