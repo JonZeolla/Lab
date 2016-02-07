@@ -173,6 +173,8 @@ if [[ ${status[2]} == 0 ]]; then
     git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
     exitstatus=$?
     sudo python ${HOME}/pybombs/setup.py install
+    # TODO:  Due to https://github.com/gnuradio/pybombs/issues/251 this needs to be run twice.  Once the issue get resolved, point to the patched version of pybombs.
+    sudo python ${HOME}/pybombs/setup.py install
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   elif [[ -d ${HOME}/pybombs ]]; then
@@ -183,6 +185,8 @@ if [[ ${status[2]} == 0 ]]; then
       git reset --hard v${version}
       exitstatus=$?
       if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
+      sudo python ${HOME}/pybombs/setup.py install
+      # TODO:  Due to https://github.com/gnuradio/pybombs/issues/251 this needs to be run twice.  Once the issue get resolved, point to the patched version of pybombs.
       sudo python ${HOME}/pybombs/setup.py install
       tmpexitstatus=$?
       if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
