@@ -241,7 +241,7 @@ if [ ! grep -q "source ${HOME}/pybombs/prefix/setup_env.sh" "${HOME}/.bashrc" ] 
 fi
 # If you aren't already stopping the RTL-SDR modules from getting autoloaded when the device is plugged in, add an appropriate blacklist
 if [ ! grep -q "blacklist dvb_usb_rtl28xxu" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ] || [ ! grep -q "blacklist rtl2832" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ] || [ ! grep -q "blacklist rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ]; then
-  echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830\n" | sudo tee /etc/modprobe.d/blacklist-scis_sdr_lab.conf
+  echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830\n" | sudo tee /etc/modprobe.d/blacklist-scis_sdr_lab.conf 1>/dev/null
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 fi
