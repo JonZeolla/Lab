@@ -177,12 +177,13 @@ if [[ ${status[2]} == 0 ]]; then
   elif [[ -d ${HOME}/pybombs ]]; then
     cd ${HOME}/pybombs
     isgit=$(git rev-parse --is-inside-work-tree || echo false)
-    if [[ ${isgit} == "true" ]]; then
+    curBranch=$(git branch | grep \* | awk '{print $2}')
+    if [[ ${isgit} == "true" && ${curBranch} == "master" ]]; then
       git reset --hard v${version}
       exitstatus=$?
       if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
-    elif [[ ${isgit} == "false" ]]; then
-      echo -e 'ERROR:\t${HOME}/pybombs exists, but is not a functional git working tree.'
+    elif [[ ${isgit} == "false" || ${curBranch} != "master" ]]; then
+      echo -e 'ERROR:\t${HOME}/pybombs exists, but is not a functional git working tree or is pointing to the wrong branch.'
       exitstatus=1
     else
       echo -e "ERROR:\tUnknown error"
