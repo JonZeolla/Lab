@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-06
 # File Type:       Bash Script
-# Version:         1.9
+# Version:         1.10
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -178,8 +178,8 @@ if [[ ${status[2]} == 0 ]]; then
   elif [[ -d ${HOME}/pybombs ]]; then
     cd ${HOME}/pybombs
     isgit=$(git rev-parse --is-inside-work-tree || echo false)
-    curBranch=$(git branch | grep \* | awk '{print $2}')
-    if [[ ${isgit} == "true" && ${curBranch} == "master" ]]; then
+    curBranch=$(git branch | grep \* | awk '{print $2,$3}')
+    if [[ ${isgit} == "true" && (${curBranch} == "master" || ${curBranch} == "(no branch)") ]]; then
       git reset --hard v${version}
       exitstatus=$?
       if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
