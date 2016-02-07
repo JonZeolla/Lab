@@ -159,7 +159,7 @@ else
   echo -e "ERROR:\tUnknown error"
   exitstatus=1
 fi
-chmod -R 755 ${HOME}/Desktop/Lab/setup/*
+chmod -R 755 ${HOME}/Desktop/Lab/setup/*.sh
 update_terminal step
 
 ## Kick off the appropriate lab setup script
