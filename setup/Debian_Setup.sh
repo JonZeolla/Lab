@@ -1,13 +1,14 @@
 #!/bin/bash
 # To enable and disable tracing use:  set -x (On) set +x (Off)
+# To terminate the script immediately after any non-zero exit status use:  set -e
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-05
+# Last update:     2016-02-06
 # File Type:       Bash Script
-# Version:         1.8
+# Version:         1.9
 # Repository:      https://github.com/JonZeolla/Lab
-# Description:     This is a bash script to set up Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
+# Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
 # Notes
 # - Please feel free to test on other OSs, and create a pull request modifying the OS version check to allow for OSs that this script works on.
@@ -21,9 +22,9 @@ function update_terminal() {
   clear
   
   ## Set the status for the current stage appropriately
-  if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
+  if [[ ${exitstatus} == 0 && ${1} == 'step' ]]; then
     status+=('0')
-  elif [[ $1 == 'step' ]]; then
+  elif [[ ${1} == 'step' ]]; then
     status+=('1')
     somethingfailed=1
   fi
@@ -35,7 +36,7 @@ function update_terminal() {
       echo -e '\nBeware, this script takes a long time to run\nPlease do not start this unless you have sufficient time to finish it\nIt could take anywhere from 30 minutes to multiple hours, depending on your machine\n\n'
 
       # Check for the SDR user and watermark
-      if [ $usrCurrent == 'sdr' ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
+      if [ ${usrCurrent} == 'sdr' ] && [ -f /tmp/scis ] && grep -q AUbL1QqtNdKKuwr8mqdCPITq20tqsyeSRf19A7o6MHijlD1rXPcXwoAVWV9wHeaNgNr9pTVhFXiHcBuUOXlsXAU8wNAzx9X8LDd9 /tmp/scis; then
         echo -e 'It appears that you are using the SDR lab machine.  This may already be setup, but there is no harm in running it multiple times\n'
       fi
     elif [[ ${x} == 0 ]]; then
@@ -77,10 +78,12 @@ function update_terminal() {
       ;;
     6)
       # Give a summary update and cleanup messages
-      if [[ $somethingfailed != 0 ]]; then
+      if [[ ${somethingfailed} != 0 ]]; then
+        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0"; fi
         echo -e '\nERROR:\tSomething went wrong during the installation process'
         exit 1
       else
+        if [[ ${resetpybombs} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing install of pybombs to v2.0.0"; fi
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
         echo -e '\n\nIn order for all changes from this script to take effect, you MUST reboot your system.  However, I will leave that up to you.'
         exit 0
@@ -101,7 +104,7 @@ function setup_pybombs() {
   ## Setup pybombs
   pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.git
   pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
-  pybombs prefix init /home/${usrCurrent}/pybombs/prefix -a sdrprefix
+  pybombs prefix init ${HOME}/pybombs/prefix -a sdrprefix
   pybombs config default_prefix sdrprefix
 }
 
@@ -135,6 +138,7 @@ i=0
 somethingfailed=0
 exitstatus=0
 tmpexitstatus=0
+resetpybombs=0
 declare -r version="2.0.0"
 
 ## Check if the user running this is root
@@ -163,11 +167,32 @@ update_terminal step
 
 ## Pull down pybombs
 if [[ ${status[2]} == 0 ]]; then
-  cd /home/${usrCurrent}
-  git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
-  cd pybombs
-  sudo python setup.py install
-  exitstatus=$?
+  cd ${HOME}
+  if [[ ! -d ${HOME}/pybombs ]]; then
+    git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
+    exitstatus=$?
+    cd ${HOME}/pybombs
+    sudo python setup.py install
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  elif [[ -d ${HOME}/pybombs ]]; then
+    cd ${HOME}/pybombs
+    isgit=$(git rev-parse --is-inside-work-tree || echo false)
+    if [[ ${isgit} == "true" ]]; then
+      git reset --hard v${version}
+      exitstatus=$?
+      if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
+    elif [[ ${isgit} == "false" ]]; then
+      echo -e 'ERROR:\t${HOME}/pybombs exists, but is not a functional git working tree.'
+      exitstatus=1
+    else
+      echo -e "ERROR:\tUnknown error"
+      exitstatus=1
+    fi
+  else
+    echo -e "ERROR:\tUnknown error"
+    exitstatus=1
+  fi
 else
   exitstatus=1
 fi
@@ -205,10 +230,10 @@ update_terminal step
 
 ## Configure your environment, if necessary
 # If setup_env.sh isn't already sourced in your .bashrc, add it and then source your .bashrc
-if ! grep -q "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" "/home/${usrCurrent}/.bashrc" && [[ ${status[4]} == 0 ]]; then
-  echo "source /home/${usrCurrent}/pybombs/prefix/setup_env.sh" >> /home/${usrCurrent}/.bashrc
+if ! grep -q "source ${HOME}/pybombs/prefix/setup_env.sh" "${HOME}/.bashrc" && [[ ${status[4]} == 0 ]]; then
+  echo "source ${HOME}/pybombs/prefix/setup_env.sh" >> ${HOME}/.bashrc
   exitstatus=$?
-  if [[ ${exitstatus} == 0 ]]; then source /home/${usrCurrent}/.bashrc; fi
+  if [[ ${exitstatus} == 0 ]]; then source ${HOME}/.bashrc; fi
 fi
 # If you aren't already stopping the RTL-SDR modules from getting autoloaded when the device is plugged in, add an appropriate blacklist
 if ! grep -q "blacklist dvb_usb_rtl28xxu" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist rtl2832" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null || ! grep -q "blacklist 2rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ; then
