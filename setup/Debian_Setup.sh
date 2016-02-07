@@ -108,9 +108,26 @@ function setup_pybombs() {
   pybombs config default_prefix sdrprefix
 }
 
+## Set up arrays
+declare -a status=('Start')
+declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully set up the environment' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
+declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue setting up the environment' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
+
+## Gather the current user
+declare -r usrCurrent="${SUDO_USER:-$USER}"
+declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
+
+## Initialize variables
+i=0
+somethingfailed=0
+exitstatus=0
+tmpexitstatus=0
+resetpybombs=0
+declare -r version="2.0.0"
+
 ## Check the OS version
 # Testing {Ubuntu,Lubuntu,Xubuntu} {14.04,15.10}
-if [[ ($(lsb_release -r | awk '{print $2}') != '14.04') || ($(lsb_release -r | awk '{print $2}') != '15.10') ]]; then
+if [[ (${osVersion} != '14.04') || (${osVersion} != '15.10') ]]; then
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
@@ -124,22 +141,6 @@ fi
 
 ## Clear the screen
 clear
-
-## Set up arrays
-declare -a status=('Start')
-declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully set up the environment' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
-declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue setting up the environment' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
-
-## Gather the current user
-declare -r usrCurrent="${SUDO_USER:-$USER}"
-
-## Initialize variables
-i=0
-somethingfailed=0
-exitstatus=0
-tmpexitstatus=0
-resetpybombs=0
-declare -r version="2.0.0"
 
 ## Check if the user running this is root
 if [[ ${usrCurrent} == "root" ]]; then
