@@ -127,7 +127,7 @@ declare -r version="2.0.0"
 
 ## Check the OS version
 # Testing {Ubuntu,Lubuntu,Xubuntu} {14.04,15.10}
-if [[ (${osVersion} != '14.04') || (${osVersion} != '15.10') ]]; then
+if [[ (${osVersion} != '14.04') && (${osVersion} != '15.10') ]]; then
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
