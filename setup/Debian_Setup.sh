@@ -29,6 +29,8 @@ function update_terminal() {
     somethingfailed=1
   fi
   
+  echo -e "\n\n${scriptName}\n"
+  
   ## Provide the user with the status of all completed steps until this point
   for x in ${status[@]}; do
     if [[ ${x} == 'Start' ]]; then
@@ -113,9 +115,10 @@ declare -a status=('Start')
 declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed SDR lab package requirements' 'INFO:\tSuccessfully installed pybombs' 'INFO:\tSuccessfully installed the SDR lab packages' 'INFO:\tSuccessfully set up the environment' 'INFO:\tSuccessfully retrieved the SCIS SDR Lab branch')
 declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing SDR lab package requirements' 'ERROR:\tIssue installing pybombs' 'ERROR:\tIssue installing the SDR lab packages' 'ERROR:\tIssue setting up the environment' 'ERROR:\tIssue retrieving the SCIS SDR Lab branch')
 
-## Gather the current user
+## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
+declare -r scriptName="$(basename $0)"
 
 ## Initialize variables
 i=0
