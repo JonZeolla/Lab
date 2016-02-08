@@ -32,6 +32,7 @@ function update_terminal() {
     if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
       clear
     fi
+    echo -e "$scriptName\n"
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
@@ -107,9 +108,10 @@ declare -a status=()
 declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed SCIS SDR lab package requirements' 'INFO:\tSuccessfully retrieved the SCIS SDR lab branch' 'INFO:\tSuccessfully ran the lab setup script')
 declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIssue installing SCIS SDR lab package requirements' 'ERROR:\tIssue retrieving the SCIS SDR lab branch' 'ERROR:\tIssue running the lab setup script')
 
-## Gather the current user
+## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
+declare -r scriptName="$(basename $0)"
 
 ## Initialize variables
 somethingfailed=0
