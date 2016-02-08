@@ -32,7 +32,7 @@ function update_terminal() {
     if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
       clear
     fi
-    echo -e "$scriptName\n"
+    echo -e "${scriptName}\n"
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
@@ -58,6 +58,7 @@ function update_terminal() {
     0)
       # Clear the screen only if nothing has been done yet - otherwise it will clear via the above for loop
       clear
+      echo -e "${scriptName}\n"
       echo -e 'Re-synchronizing the package index files...\n\n'
       ;;
     1)
