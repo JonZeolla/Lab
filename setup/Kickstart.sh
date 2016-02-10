@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-09
 # File Type:       Bash Script
-# Version:         1.4
+# Version:         1.5
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -31,8 +31,8 @@ function update_terminal() {
     # TODO:  Test this
     if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
       clear
+      echo -e "${scriptName}\n"
     fi
-    echo -e "${scriptName}\n"
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
       echo -e ${success[${i}]}
