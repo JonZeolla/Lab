@@ -4,15 +4,16 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-06
+# Last update:     2016-02-09
 # File Type:       Bash Script
-# Version:         1.10
+# Version:         1.11
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
 # Notes
 # - Please feel free to test on other OSs, and create a pull request modifying the OS version check to allow for OSs that this script works on.
 # - This script is configured to use pybombs v2.0.0.
+# - Due to https://github.com/gnuradio/pybombs/issues/251 this needs to be run twice.  Once the issue get resolved, point to the patched version of pybombs.
 # - Anything that has a placeholder value is tagged with TODO.
 #
 # =========================
@@ -165,7 +166,7 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 update_terminal step
 
 ## Install dependancies
-sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev sox
+sudo apt-get -y -qq install git cmake libboost-all-dev gnuradio-dev
 exitstatus=$?
 update_terminal step
 
@@ -175,8 +176,6 @@ if [[ ${status[2]} == 0 ]]; then
     cd ${HOME}
     git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
     exitstatus=$?
-    sudo python ${HOME}/pybombs/setup.py install
-    # TODO:  Due to https://github.com/gnuradio/pybombs/issues/251 this needs to be run twice.  Once the issue get resolved, point to the patched version of pybombs.
     sudo python ${HOME}/pybombs/setup.py install
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
@@ -188,8 +187,6 @@ if [[ ${status[2]} == 0 ]]; then
       git reset --hard v${version}
       exitstatus=$?
       if [[ ${exitstatus} == 0 ]]; then resetpybombs=1; fi
-      sudo python ${HOME}/pybombs/setup.py install
-      # TODO:  Due to https://github.com/gnuradio/pybombs/issues/251 this needs to be run twice.  Once the issue get resolved, point to the patched version of pybombs.
       sudo python ${HOME}/pybombs/setup.py install
       tmpexitstatus=$?
       if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
