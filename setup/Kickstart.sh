@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-09
 # File Type:       Bash Script
-# Version:         1.5
+# Version:         1.6
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -77,6 +77,7 @@ function update_terminal() {
       ;;
     4)
       # Give a summary update
+      echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
         if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to be the most current version of the SoftwareDefinedRadio branch'; fi
         echo -e '\nERROR:\tSomething went wrong during the SDR lab installation process'
@@ -168,8 +169,7 @@ update_terminal step
 
 ## Kick off the appropriate lab setup script
 if [[ ${osVersion} == '14.04' || ${osVersion} == '15.10' ]]; then
-  ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
-  # This literally needs to be run a second time because of https://github.com/gnuradio/pybombs/issues/251
+  # TODO Known issue: https://github.com/gnuradio/pybombs/issues/251
   ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
