@@ -169,6 +169,8 @@ update_terminal step
 ## Kick off the appropriate lab setup script
 if [[ ${osVersion} == '14.04' || ${osVersion} == '15.10' ]]; then
   ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
+  # This literally needs to be run a second time because of https://github.com/gnuradio/pybombs/issues/251
+  ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
 else
