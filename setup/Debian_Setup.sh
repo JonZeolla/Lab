@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-09
 # File Type:       Bash Script
-# Version:         1.11
+# Version:         1.12
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -243,10 +243,15 @@ if ! grep -q "source ${HOME}/pybombs/prefix/setup_env.sh" "${HOME}/.bashrc" && [
   exitstatus=$?
   if [[ ${exitstatus} == 0 ]]; then source ${HOME}/.bashrc; fi
 fi
+
 # If you aren't already stopping the RTL-SDR modules from getting autoloaded when the device is plugged in, add an appropriate blacklist
 if ! grep -q "blacklist dvb_usb_rtl28xxu\|blacklist rtl2832\|blacklist rtl2830" /etc/modprobe.d/blacklist-scis_sdr_lab.conf 2>/dev/null ; then
   echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830\n" | sudo tee /etc/modprobe.d/blacklist-scis_sdr_lab.conf 1>/dev/null
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 fi
+
+# Be nice and make the scripts executable
+chmod -R 755 ${HOME}/Desktop/Lab/Labs/*/*.sh
+
 update_terminal step
