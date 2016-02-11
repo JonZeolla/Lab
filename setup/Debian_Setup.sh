@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-09
+# Last update:     2016-02-11
 # File Type:       Bash Script
-# Version:         1.12
+# Version:         1.13
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -177,6 +177,11 @@ if [[ ${status[2]} == 0 ]]; then
     git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
     exitstatus=$?
     sudo python ${HOME}/pybombs/setup.py install
+    if[[ $? != 0 ]]; then
+      echo -e "Retrying..."
+      sleep 20s
+      sudo python ${HOME}/pybombs/setup.py install
+    fi
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   elif [[ -d ${HOME}/pybombs ]]; then
