@@ -126,7 +126,7 @@ declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIs
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
 declare -r scriptName="$(basename $0)"
-declare -r githubTag="SoftwareDefinedRadio"
+declare -r githubTag="2016-02-11_SCIS_SoftwareDefinedRadio"
 
 ## Initialize variables
 somethingfailed=0
