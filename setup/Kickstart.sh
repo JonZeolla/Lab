@@ -65,7 +65,7 @@ function update_terminal() {
       echo -e '\nInstalling some SCIS SDR lab package requirements...\n\n'
       ;;
     2)
-      echo -e '\nRetrieving the SCIS SDR lab branch...\n\n'
+      echo -e '\nRetrieving the SCIS ${githubTag} branch...\n\n'
       ;;
     3)
       if [[ $somethingfailed != 0 ]]; then
