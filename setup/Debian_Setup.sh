@@ -251,7 +251,9 @@ if ! grep -q "blacklist dvb_usb_rtl28xxu\|blacklist rtl2832\|blacklist rtl2830" 
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 fi
 
-# Be nice and make the scripts executable
+# Make the scripts executable and reassemble the chopped up files
 chmod -R 755 ${HOME}/Desktop/Lab/Labs/*/*.sh
+cat ${HOME}/Desktop/Lab/Labs/GQRX/xa? >> ${HOME}/Desktop/Lab/Labs/GQRX/FM_889_2M.raw
+cat ${HOME}/Desktop/Lab/Labs/Multicode/xa? >> ${HOME}/Desktop/Lab/Labs/Multicode/multi_code_300MHz_2Mss.raw
 
 update_terminal step
