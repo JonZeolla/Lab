@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-11
 # File Type:       Bash Script
-# Version:         1.7
+# Version:         2.0
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -28,7 +28,6 @@ function update_terminal() {
   # if ${status[@]} is empty, this will get skipped entirely, which is intended
   for x in ${status[@]}; do
     # Clear the screen the first time it hits the loop, and if we didn't just finish the appropriate lab setup script
-    # TODO:  Test this
     if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
       clear
       echo -e "${scriptName}\n"
@@ -127,7 +126,7 @@ declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIs
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
 declare -r scriptName="$(basename $0)"
-declare -r githubTag="SoftwareDefinedRadio"
+declare -r githubTag="2016-02-11_SCIS_SoftwareDefinedRadio"
 
 ## Initialize variables
 somethingfailed=0
