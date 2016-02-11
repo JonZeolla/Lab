@@ -253,7 +253,7 @@ fi
 
 # Make the scripts executable and reassemble the chopped up files
 chmod -R 755 ${HOME}/Desktop/Lab/Labs/*/*.sh
-cat ${HOME}/Desktop/Lab/Labs/GQRX/xa? >> ${HOME}/Desktop/Lab/Labs/GQRX/FM_889_2M.raw
-cat ${HOME}/Desktop/Lab/Labs/Multicode/xa? >> ${HOME}/Desktop/Lab/Labs/Multicode/multi_code_300MHz_2Mss.raw
+cat ${HOME}/Desktop/Lab/Labs/GQRX/xa? >> ${HOME}/Desktop/Lab/Labs/GQRX/FM_889_2M.raw && rm ${HOME}/Desktop/Lab/Labs/GQRX/xa?
+cat ${HOME}/Desktop/Lab/Labs/Multicode/xa? >> ${HOME}/Desktop/Lab/Labs/Multicode/multi_code_300MHz_2Mss.raw && rm ${HOME}/Desktop/Lab/Labs/Multicode/xa?
 
 update_terminal step
