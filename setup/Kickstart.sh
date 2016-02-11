@@ -98,6 +98,19 @@ function update_terminal() {
   exitstatus=0
 }
 
+confirmNoOVA () {
+  read -r -p "Are you sure that you want to configure this system instead of downloading the VM? " response
+  case $response in
+    [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
+      true
+      ;;
+    *)
+      echo -e "Did not receive an affirmative response, exiting..."
+      exit 1
+      ;;
+  esac
+}
+
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
@@ -125,6 +138,9 @@ if [[ ${usrCurrent} == "root" ]]; then
   echo -e "ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access"
   exit 1
 fi
+
+echo -e "Did you know that there is an OVA which already has all of this configured?\nSee the README.md in this folder for the link."
+confirmNoOVA
 
 ## Update the terminal
 update_terminal
