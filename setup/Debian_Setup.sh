@@ -178,8 +178,8 @@ if [[ ${status[2]} == 0 ]]; then
     exitstatus=$?
     sudo python ${HOME}/pybombs/setup.py install
     if [[ $? != 0 ]]; then
-      echo -e "Retrying..."
-      sleep 20s
+      echo -e "\nRetrying the pybombs install..."
+      sleep 1m
       sudo python ${HOME}/pybombs/setup.py install
     fi
     tmpexitstatus=$?
