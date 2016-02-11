@@ -10,9 +10,9 @@ if [[ $(shopt | grep nocasematch | awk '{print $2}') == off ]]; then
 fi
 
 if [[ (${1} == "TuneIn") || (${1} == "Tune" && ${2} == "In") ]]; then
-  echo -e "INFO:\tIf you need to unplug your RTL-SDR, be sure to safely disconnect it.\nINFO:\tIf you are having issues only hearing static but you are seeing the correct signal pattern in gqrx, please safely disconnect the RTL-SDR from VMWare, remove it from your computer, then re-attach and re-associate it."
+  echo -e "INFO:\tIf you need to unplug your RTL-SDR, be sure to safely disconnect it.\n\nINFO:\tIf you are having issues only hearing static but you are seeing the correct signal pattern in gqrx, please safely disconnect the RTL-SDR from VMWare, remove it from your computer, then re-attach and re-associate it.\n"
   echo -e "INFO:\tOpening gqrx..."
-  sleep 2s
+  sleep 5s
   gqrx &
 elif [[ ${1} == "Recording" ]]; then
   echo -e "INFO:\tOpening the recording..."
