@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-02-09
+# Last update:     2016-02-11
 # File Type:       Bash Script
-# Version:         1.6
+# Version:         1.7
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -99,7 +99,7 @@ function update_terminal() {
 }
 
 confirmNoOVA () {
-  read -r -p "Are you sure that you want to configure this system instead of downloading the VM? " response
+  read -r -p "Are you sure that you want to configure this system instead of downloading the VM? (y/n)" response
   case $response in
     [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
       true
