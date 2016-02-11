@@ -16,7 +16,7 @@ if [[ (${1} == "TuneIn") || (${1} == "Tune" && ${2} == "In") ]]; then
   gqrx &
 elif [[ ${1} == "Recording" ]]; then
   echo -e "INFO:\tOpening the recording..."
-  aplay -r 48k -f S16_LE -t raw -c 1 ${HOME}/Desktop/Lab/Labs/FM-Radio/gqrx_20160210_140606_94500000.wav &
+  aplay -r 48k -f S16_LE -t raw -c 1 ${HOME}/Desktop/Lab/Labs/GQRX/gqrx_20160210_140606_94500000.wav
 else
   echo -e "Usage: $0 (TuneIn|Recording)"
 fi
