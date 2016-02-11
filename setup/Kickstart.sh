@@ -78,11 +78,11 @@ function update_terminal() {
       # Give a summary update
       echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch'; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch"; fi
         echo -e '\nERROR:\tSomething went wrong during the SDR lab installation process'
         exit 1
       else
-        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch'; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch"; fi
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
         exit 0
       fi
