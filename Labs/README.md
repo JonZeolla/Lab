@@ -3,8 +3,6 @@
 See the GQRX folder.  
 ## ADS-B  
 See the ADS-B folder.  
-## GRC  
-See the GRC folder.  
-## Multicode  
+## Multicode Garage Door Opener  
 See the Multicode folder.  
 
