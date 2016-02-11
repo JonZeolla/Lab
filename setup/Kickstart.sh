@@ -164,7 +164,7 @@ if [[ ! -d ${HOME}/Desktop/Lab ]]; then
 elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
-  curBranch=$(git branch | grep \* | awk '{print $2}')
+  curBranch=$(git branch | grep \* | awk '{print $2,$3}')
   if [[ ${isgit} == "true" && (${curBranch} == "SoftwareDefinedRadio" || ${curBranch} == "(no branch)") ]]; then
     git reset --hard ${githubTag}
     exitstatus=$?
