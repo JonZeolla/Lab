@@ -1,3 +1,3 @@
 # SDR Labs  
 ## GQRX  
-See the GQRX folder and run `TuneIn.sh`  
+Run `gqrx`, or use the `TuneIn.sh` script under the GQRX folder  
