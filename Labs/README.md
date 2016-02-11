@@ -1,10 +1,10 @@
 # SDR Labs  
 ## GQRX  
-See the gqrx folder and run `TuneIn.sh`  
+See the GQRX folder.  
 ## ADS-B  
-See the ADS-B folder and run ``.  
+See the ADS-B folder.  
 ## GRC  
-See the GRC folder and run ``.  
+See the GRC folder.  
 ## Multicode  
-See the Multicode folder and run ``.  
+See the Multicode folder.  
 
