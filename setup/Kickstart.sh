@@ -79,11 +79,11 @@ function update_terminal() {
       # Give a summary update
       echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to be the most current version of the SoftwareDefinedRadio branch'; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch'; fi
         echo -e '\nERROR:\tSomething went wrong during the SDR lab installation process'
         exit 1
       else
-        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to be the most current version of the SoftwareDefinedRadio branch'; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e '\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the SoftwareDefinedRadio branch'; fi
         echo -e '\nINFO:\tSuccessfully configured the SDR lab'
         exit 0
       fi
@@ -127,6 +127,7 @@ declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIs
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
 declare -r scriptName="$(basename $0)"
+declare -r githubTag="SoftwareDefinedRadio"
 
 ## Initialize variables
 somethingfailed=0
@@ -159,14 +160,14 @@ update_terminal step
 ## Clone the SCIS SDR Lab github repo
 if [[ ! -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop
-  git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab -q
+  git clone -b ${githubTag} --single-branch https://github.com/JonZeolla/Lab -q
   exitstatus=$?
 elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
   if [[ ${isgit} == "true" && (${curBranch} == "SoftwareDefinedRadio" || ${curBranch} == "(no branch)") ]]; then
-    git reset --hard
+    git reset --hard ${githubTag}
     exitstatus=$?
     if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
   elif [[ ${isgit} == "false" || (${curBranch} != "SoftwareDefinedRadio" && ${curBranch} != "(no branch)") ]]; then
