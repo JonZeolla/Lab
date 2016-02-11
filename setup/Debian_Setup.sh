@@ -177,7 +177,7 @@ if [[ ${status[2]} == 0 ]]; then
     git clone --recursive --branch v${version} https://github.com/gnuradio/pybombs -q
     exitstatus=$?
     sudo python ${HOME}/pybombs/setup.py install
-    if[[ $? != 0 ]]; then
+    if [[ $? != 0 ]]; then
       echo -e "Retrying..."
       sleep 20s
       sudo python ${HOME}/pybombs/setup.py install
