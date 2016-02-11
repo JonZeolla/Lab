@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-02-11
 # File Type:       Bash Script
-# Version:         2.0
+# Version:         2.1
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec SDR Lab on 2016-02-11.
 #
@@ -64,7 +64,7 @@ function update_terminal() {
       echo -e '\nInstalling some SCIS SDR lab package requirements...\n\n'
       ;;
     2)
-      echo -e "\nRetrieving the SCIS ${githubTag} branch...\n\n"
+      echo -e "\nRetrieving the ${githubTag} branch...\n\n"
       ;;
     3)
       if [[ $somethingfailed != 0 ]]; then
