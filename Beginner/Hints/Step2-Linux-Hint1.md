@@ -6,7 +6,7 @@ Crack the [Beginner Password Dumps](https://github.com/JonZeolla/Lab/tree/Passwo
 ### Linux
 1. Combine Hashcat and the password files available under SCIS_Password_Lab/Lab/.Storage to crack Dump1 (Don't forget to use your web brower and check out [Beginner/Downloads](https://github.com/JonZeolla/Lab/tree/PasswordCracking/Beginner/Downloads)).
   * `cd SCIS_Password_Lab/Lab/.Storage/`
-  * `cd hashcat-0.50`
+  * `cd hashcat-2.00`
   * `./hashcat-cli64.bin -m 100 ../../Beginner/Password_Dumps/Dump1-Beginner.txt ../Lists/*.txt`
     * This should recover 45990/47216 (97%) of the hashes
     * Attempt various uses of `hashcat-cli64.bin` using different password files, etc.

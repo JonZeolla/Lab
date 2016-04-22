@@ -7,9 +7,9 @@ See the hint for this step if you're not sure what to use or install.
 
 ## Password Retrieval/Cracking Software  
 ### Hashcat  
-[__Mac, Windows, Linux__ NVidia - v1.37](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/cudaHashcat-1.37.7z), [Original location][1]  
-[__Mac, Windows, Linux__ AMD - v1.37](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/oclHashcat-1.37.7z), [Original location][2]  
-[__Mac, Windows, Linux__ CPU - v0.50](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/hashcat-0.50.7z), [Original location][3]  
+[__Mac, Windows, Linux__ NVidia - v2.01](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/cudaHashcat-2.01.7z), [Original location][1]  
+[__Mac, Windows, Linux__ AMD - v2.01](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/oclHashcat-2.01.7z), [Original location][2]  
+[__Mac, Windows, Linux__ CPU - v2.0](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/hashcat-2.00.7z), [Original location][3]  
 
 ### Cryptohaze Multiforcer  
 [__Mac, Linux__ Multiforcer - v1.31a](https://github.com/JonZeolla/Lab/tree/PasswordCracking/.Storage/Cryptohaze-Linux_x64_1_31a.tar.bz2)\*, [Original location][4]  
@@ -163,9 +163,9 @@ http://www.md5this.com/tools/wordlists.html
 http://www.md5decrypter.co.uk/downloads.aspx  
 
 
-[1]: http://hashcat.net/files/oclHashcat-1.37.7z  
-[2]: http://hashcat.net/files/cudaHashcat-1.37.7z  
-[3]: https://hashcat.net/files/hashcat-0.50.7z  
+[1]: http://hashcat.net/files/cudaHashcat-2.01.7z  
+[2]: http://hashcat.net/files/oclHashcat-2.01.7z
+[3]: http://hashcat.net/files/hashcat-2.00.7z  
 [4]: http://downloads.sourceforge.net/project/cryptohaze/Cryptohaze-Linux_x64_1_31a.tar.bz2  
 [5]: http://downloads.sourceforge.net/project/cryptohaze/Cryptohaze-Windows_x64_1_31a.zip  
 [6]: http://www.l0phtcrack.com/lc6setup_v6.0.20.exe  

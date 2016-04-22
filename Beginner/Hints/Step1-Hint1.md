@@ -11,9 +11,9 @@ You can find the appropriate installers under SCIS_Password_Lab/Lab/.Storage, or
     * `open *tar`  
       * Requires a decompression app be installed, such as Keka.  
     * `cd ..`  
-  * `open hashcat-0.50.7z`  
+  * `open hashcat-2.00.7z`  
     * Requires a decompression app be installed, such as Keka.
-  * `cd hashcat-0.50`  
+  * `cd hashcat-2.00`  
 2. Ruby  
   * A functioning version of Ruby is installed by default on Mavericks (10.9) and Yosemite (10.10) which should work for the software in this lab.  
 
@@ -38,11 +38,11 @@ You can find the appropriate installers under SCIS_Password_Lab/Lab/.Storage, or
 ![Step1-Hint1_Windows_1.png](https://raw.githubusercontent.com/JonZeolla/Lab/PasswordCracking/Beginner/.Screenshots/Step1-Hint1_Windows_1.png)  
 3. Hashcat  
   * If you have a NVIDIA GPU:  
-    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ cudaHashcat-1.37.7z" ; cd cudaHashcat-1.37`  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ cudaHashcat-2.01.7z" ; cd cudaHashcat-2.01`  
   * If you have an AMD GPU:  
-    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ oclHashcat-1.37.7z"; cd oclHashcat-1.37`  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ oclHashcat-2.01.7z"; cd oclHashcat-2.01`  
   * If you have no discrete GPU or only want to use your CPU:
-    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ hashcat-0.50.7z" ; cd hashcat-0.50`  
+    * `Start-Process -FilePath "C:\Program Files\WinRAR\WinRAR.exe" -ArgumentList "x -IBCK -o+ hashcat-2.00.7z" ; cd hashcat-2.00`  
 
 
 ## Linux  
@@ -54,13 +54,13 @@ You can find the appropriate installers under SCIS_Password_Lab/Lab/.Storage, or
     * `tar -xvf *.tar`  
     * `cd ..`  
   * If you have a NVIDIA GPU:  
-    * `7z x cudaHashcat-1.37 ; cd cudaHashcat-1.37`  
+    * `7z x cudaHashcat-2.01 ; cd cudaHashcat-2.01`  
       * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
   * If you have an AMD GPU:  
-    * `7z x oclHashcat-1.37 ; cd oclHashcat-1.37`  
+    * `7z x oclHashcat-2.01 ; cd oclHashcat-2.01`  
       * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
   * If you have no discrete GPU or only want to use your CPU:  
-    * `7z x hashcat-0.50.7z ; cd hashcat-0.50`  
+    * `7z x hashcat-2.00.7z ; cd hashcat-2.00`  
       * This assumes that p7zip is installed.  If it isn't run `sudo apt-get install p7zip`, `sudo yum install p7zip`, or another method to install p7zip as appropriate.  
 2. Ruby  
   * Debian or Ubuntu systems\*  
