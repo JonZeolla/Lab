@@ -12,6 +12,7 @@ Examples:
   * Clone the revision of the PasswordCracking branch used during the 2015-09-24 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
 * `Branch=newbranch;git clone https://github.com/JonZeolla/Lab;cd Lab;git checkout --orphan $Branch;git rm --cached -r .;echo "Initial creation of $Branch" > README.md;git add README.md;git commit -m "Initial creation of $Branch";git push origin $Branch;unset Branch`  
   * Clone the Lab repository, create an orphan branch called newbranch, clear the working directory, create a standard initial README.md, and then push it back up to the remote under the branch newbranch.  
-  * This is so that I don't need to refigure out how to make a clean new branch every time I want to do a lab.  
+* `git push origin PasswordCracking`  
+  * Push updates to the PasswordCracking branch.  
 * `git push origin --delete newbranch`  
   * Delete the remote branch newbranch.  
