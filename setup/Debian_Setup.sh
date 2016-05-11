@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.1
+# Version:         1.2
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec AutomotiveSecurity Lab on 2016-05-12.
 #
@@ -114,7 +114,7 @@ if [[ ${osDistro} != 'Kali' && ${osVersion} != 'Rolling' ]]; then
 fi
 
 ## Check Network Connection
-wget -q --spider 'www.github.com'
+/usr/bin/wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
   echo -e 'ERROR:\tUnable to contact github.com'
   exit 1
@@ -135,16 +135,16 @@ update_terminal
 
 ## Re-synchronize the package index files, then install the newest versions of all packages currently installed
 # In cases where apt-get update does not succeed perfectly, it will often only create a warning, which means the exit status will still be 0
-#sudo apt-get -y -qq update
+/usr/bin/sudo /usr/bin/apt-get -y -qq update
 exitstatus=$?
-#sudo apt-get -y -qq upgrade
+/usr/bin/sudo /usr/bin/apt-get -y -qq upgrade
 tmpexitstatus=$?
 if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 update_terminal step
 
 ## Install dependancies
 # For details regarding can-utils, see https://github.com/linux-can
-sudo apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark
+/usr/bin/sudo /usr/bin/apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark
 exitstatus=$?
 update_terminal step
 
@@ -169,9 +169,9 @@ done
 if [ ${hw} = true ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
     # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
-    sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+    /usr/bin/sudo /usr/bin/slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
     exitstatus=$?
-    sudo ip link set up can0
+    /usr/bin/sudo ip link set up can0
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   else
@@ -190,9 +190,14 @@ if [ ${hw} = false ]; then
   exitstatus=$?
   if [[ ${exitstatus} == 0 ]]; then
     echo "Well, you just did.  =)"
-    modprobe vcan
-    sudo ip link add dev vcan0 type vcan
-    sudo ip link set up vcan0
+    /usr/bin/sudo /sbin/modprobe vcan
+    exitstatus=$?
+    /usr/bin/sudo ip link add dev vcan0 type vcan
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+    /usr/bin/sudo ip link set up vcan0
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   fi
 fi
 

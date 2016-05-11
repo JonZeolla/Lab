@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.1
+# Version:         1.2
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec Automotive Security Lab on 2016-05-12.
 #
@@ -111,7 +111,7 @@ confirmNoOVA () {
 }
 
 ## Check Network Connection
-wget -q --spider 'www.github.com'
+/usr/bin/wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
   echo -e 'ERROR:\tUnable to contact github.com'
   exit 1
@@ -119,7 +119,7 @@ fi
 
 ## Set up arrays
 declare -a status=()
-declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed SCIS AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully retrieved the SCIS AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
+declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed SCIS AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully retrieved the SCIS AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script\n\nYou can now go to ${HOME}/Desktop/Lab/Tutorials and work on the tutorials')
 declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIssue installing SCIS AutomotiveSecurity lab package requirements' 'ERROR:\tIssue retrieving the SCIS AutomotiveSecurity lab branch' 'ERROR:\tIssue running the lab setup script')
 
 ## Set static variables
@@ -148,26 +148,26 @@ update_terminal
 
 ## Re-synchronize the package index files
 # In cases where apt-get update does not succeed perfectly, it will often only create a warning, which means the exit status will still be 0
-sudo apt-get -y -qq update
+/usr/bin/sudo /usr/bin/apt-get -y -qq update
 exitstatus=$?
 update_terminal step
 
 ## Install the SCIS AutomotiveSecurity lab package requirements
-sudo apt-get -y -qq install git
+/usr/bin/sudo /usr/bin/apt-get -y -qq install git
 exitstatus=$?
 update_terminal step
 
 ## Clone the SCIS AutomotiveSecurity Lab github repo
 if [[ ! -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop
-  git clone -b ${githubTag} --single-branch https://github.com/JonZeolla/Lab -q
+  /usr/bin/git clone -b ${githubTag} --single-branch https://github.com/JonZeolla/Lab -q
   exitstatus=$?
 elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
-  isgit=$(git rev-parse --is-inside-work-tree || echo false)
-  curBranch=$(git branch | grep \* | awk '{print $2}')
+  isgit=$(/usr/bin/git rev-parse --is-inside-work-tree || echo false)
+  curBranch=$(/usr/bin/git branch | grep \* | awk '{print $2}')
   if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") ]]; then
-    git reset --hard ${githubTag}
+    /usr/bin/git reset --hard ${githubTag}
     exitstatus=$?
     if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
@@ -193,3 +193,4 @@ else
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
+
