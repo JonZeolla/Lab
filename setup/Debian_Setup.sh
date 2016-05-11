@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-09
+# Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.0
+# Version:         1.1
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to set up various Debian-based systems for the Steel City InfoSec AutomotiveSecurity Lab on 2016-05-12.
 #
@@ -66,12 +66,9 @@ function update_terminal() {
       echo -e '\nInstalling some Automotive Security lab package requirements...\n\n'
       ;;
     3)
-      echo -e '\nSetting up the Automotive Security lab...\n\n'
+      echo -e '\nSetting up the lab environment...\n\n'
       ;;
     4)
-      echo -e '\nSetting up the environment...\n\n'
-      ;;
-    5)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
         echo -e '\nERROR:\tSomething went wrong during the installation process'
@@ -94,12 +91,13 @@ function update_terminal() {
 
 ## Set up arrays
 declare -a status=('Start')
-declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the AutomotiveSecurity lab' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
-declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing AutomotiveSecurity lab requirements' 'ERROR:\tIssue setting up the AutomotiveSecurity lab' 'ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab')
+declare -a success=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
+declare -a failure=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing AutomotiveSecurity lab requirements' 'ERROR:\tIssue setting up the lab environment' 'ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab')
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
-declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
+declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
+declare -r osVersion="$(lsb_release -r | awk '{print $3}')"
 declare -r scriptName="$(basename $0)"
 
 ## Initialize variables
@@ -109,8 +107,8 @@ exitstatus=0
 tmpexitstatus=0
 
 ## Check the OS version
-# Testing {Ubuntu,Lubuntu,Xubuntu} {14.04,15.10}
-if [[ (${osVersion} != '14.04') && (${osVersion} != '15.10') ]]; then
+# Testing Kali Rolling
+if [[ ${osDistro} != 'Kali' && ${osVersion} != 'Rolling' ]]; then
   echo -e 'ERROR:\tYour OS has not been tested with this script'
   exit 1
 fi
@@ -145,6 +143,7 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 update_terminal step
 
 ## Install dependancies
+# For details regarding can-utils, see https://github.com/linux-can
 sudo apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark
 exitstatus=$?
 update_terminal step
@@ -169,19 +168,32 @@ done
 # Attempt to setup the hardware lab
 if [ ${hw} = true ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
-    # Setup the CANtact as a can0 interface at 500k baud
+    # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
     sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+    exitstatus=$?
     sudo ip link set up can0
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   else
-    echo -e "The only currently supported hardware device is the CANtact.  Reverting to the virtual lab..."
+    echo -e "The only currently supported hardware device is the CANtact.  "
+    echo -e "Either you don't have a CANtact, it isn't plugged in, or there was an issue with it.  Reverting to the virtual lab..."
     hw=false
   fi
 fi
 
 # Attempt to setup the virtual lab
 if [ ${hw} = false ]; then
-  # TODO
-  :
+  echo "You wouldn't download a car, would you?!"
+  cd ${HOME}/Desktop/Lab
+  # There is a good writeup for how to use this code at http://dn5.ljuska.org/cyber-attacks-on-vehicles-2.html
+  git clone https://github.com/dn5/vircar
+  exitstatus=$?
+  if [[ ${exitstatus} == 0 ]]; then
+    echo "Well, you just did.  =)"
+    modprobe vcan
+    sudo ip link add dev vcan0 type vcan
+    sudo ip link set up vcan0
+  fi
 fi
 
 ## Setup is complete!

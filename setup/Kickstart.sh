@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-09
+# Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.0
+# Version:         1.1
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to kickstart the setup of the Steel City InfoSec Automotive Security Lab on 2016-05-12.
 #
@@ -124,7 +124,8 @@ declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIs
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
-declare -r osVersion="$(lsb_release -r | awk '{print $2}')"
+declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
+declare -r osVersion="$(cat /etc/issue | awk '{print $3}')"
 declare -r scriptName="$(basename $0)"
 declare -r githubTag="AutomotiveSecurity"
 
@@ -164,7 +165,7 @@ if [[ ! -d ${HOME}/Desktop/Lab ]]; then
 elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
-  curBranch=$(git branch | grep \* | awk '{print $2,$3}')
+  curBranch=$(git branch | grep \* | awk '{print $2}')
   if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") ]]; then
     git reset --hard ${githubTag}
     exitstatus=$?
@@ -184,7 +185,7 @@ chmod -R 755 ${HOME}/Desktop/Lab/setup/*.sh
 update_terminal step
 
 ## Kick off the appropriate lab setup script
-if [[ ${osVersion} == '14.04' || ${osVersion} == '15.10' ]]; then
+if [[ ${osDistro} == 'Kali' && ${osVersion} == 'Rolling' ]]; then
   ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
   exitstatus=$?
   update_terminal step
