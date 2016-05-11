@@ -1,11 +1,11 @@
 # Writing to the CAN bus via CLI  
 ## Preparations  
-Make sure you are in the vircar directory, which should be located in ${HOME}/Desktop/Lab/external/vircar/  
+Make sure you are in the vircar directory, which should be located in `${HOME}/Desktop/Lab/external/vircar/`  
 
-## `vircar`
+## `vircar`  
 Run the following command to start up the virtual car  
-`/usr/bin/sudo ./vircar`
-If you get the error message `RTNETLINK answers: File exists`, you've already run vircar once and the interface still exists.  Although it should not cause an issue, you can delete the interface and get a clean start by either deleting the interface using 
+`/usr/bin/sudo ./vircar`  
+If you get the error message `RTNETLINK answers: File exists`, you've already run vircar once and the interface still exists.  Although it should not cause an issue, you can delete the interface and get a clean start by either deleting the interface using  
 `/usr/bin/sudo ip link delete vircar`  
 or you can "blow the car up", which is a bit funner.  Do that by running  
 `sudo ./vircar k`  
