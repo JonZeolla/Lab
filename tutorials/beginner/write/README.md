@@ -1,0 +1,28 @@
+# Writing to the CAN bus via CLI  
+## Preparations  
+In one terminal window, setup a listener and let it run so that you can examine all of your CAN bus writes.  
+`candump -tA vcan0,0:0`
+
+## `cansend`  
+Open a second terminal window, and send something a custom CAN frame to your virtual CAN interface  
+`cansend vcan0 111#534349534C6162`  
+  
+If you go back to the CAN listener, you should have seen your message go across.  
+  
+You can then send another message with a slightly longer data field  
+`cansend vcan0 111#546869736973776179746f6f6c6f6e67`  
+now, you may have noticed that the message got truncated on the listening side.  This is because CAN can only send 8 bytes per frame, per the spec.  
+  
+## `cangen`  
+Now, let's send a bit more traffic.  Run the below command to generate random frames and put them on the CAN bus.  
+`cangen vcan0`  
+  
+You can also refine cangen to send only what you want, or to view what is being sent without having to refer to `candump`.  
+You can run `cangen` to see all of your options.  Specifically, pay attention to `-D`, `-L`, and `-v`.  
+
+## `socketcand`
+The socketcand tool connects a network interface to a CAN interface on a host.  This means that you are able to connect to one or multiple CAN busses that are connected to a host running this software, over an ethernet network connection.  
+You could then send/receive messages to/from that CAN bus remotely.  
+`cd ${HOME}/Desktop/Lab/external/socketcand
+./socketcand -i vcan0 -v`
+

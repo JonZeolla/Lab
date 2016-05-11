@@ -71,9 +71,12 @@ function update_terminal() {
     4)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
+        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARNING:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
         echo -e '\nERROR:\tSomething went wrong during the installation process'
         exit 1
       else
+        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARNING:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e 'WARNING:\tThere are some known issues with the Kayak setup.\nWARNING:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success'; fi
         echo -e '\nINFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
@@ -105,6 +108,7 @@ i=0
 somethingfailed=0
 exitstatus=0
 tmpexitstatus=0
+wrongruby=0
 
 ## Check the OS version
 # Testing Kali Rolling
@@ -114,10 +118,16 @@ if [[ ${osDistro} != 'Kali' && ${osVersion} != 'Rolling' ]]; then
 fi
 
 ## Check Network Connection
-/usr/bin/wget -q --spider 'www.github.com'
+wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
   echo -e 'ERROR:\tUnable to contact github.com'
   exit 1
+fi
+
+## Check the version of ruby
+ruby -v | awk '{print $2}' | grep 2\.2\.3
+if [[ $? != 0 ]]; then
+  wrongruby=1
 fi
 
 ## Clear the screen
@@ -130,21 +140,21 @@ if [[ ${usrCurrent} == "root" ]]; then
   exit 1
 fi
 
-## Display the initial warning
+## Start up the main part of the script
 update_terminal
 
 ## Re-synchronize the package index files, then install the newest versions of all packages currently installed
 # In cases where apt-get update does not succeed perfectly, it will often only create a warning, which means the exit status will still be 0
-/usr/bin/sudo /usr/bin/apt-get -y -qq update
+sudo apt-get -y -qq update
 exitstatus=$?
-/usr/bin/sudo /usr/bin/apt-get -y -qq upgrade
+sudo apt-get -y -qq upgrade
 tmpexitstatus=$?
 if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 update_terminal step
 
 ## Install dependancies
 # For details regarding can-utils, see https://github.com/linux-can
-/usr/bin/sudo /usr/bin/apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark
+sudo apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark libsdl2-dev libsdl2-image-dev maven libconfig-dev gcc autoconf
 exitstatus=$?
 update_terminal step
 
@@ -165,13 +175,40 @@ while [ -z "${prompt}" ]; do
   esac
 done
 
+# Pre-requisites to the labs
+sudo /sbin/modprobe can
+exitstatus=$?
+sudo /sbin/modprobe vcan
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+sudo /sbin/modprobe can_raw
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+cd ${HOME}/Desktop/Lab/external/Kayak
+mvn clean install
+kayakmvn=$?
+cd ${HOME}/Desktop/Lab/external/socketcand
+autoconf
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+./configure
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+make
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+sudo make install
+tmpexitstatus=$?
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+
 # Attempt to setup the hardware lab
 if [ ${hw} = true ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
     # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
-    /usr/bin/sudo /usr/bin/slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
-    exitstatus=$?
-    /usr/bin/sudo ip link set up can0
+    sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+    tmpexitstatus=$?
+    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+    sudo ip link set up can0
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   else
@@ -183,22 +220,20 @@ fi
 
 # Attempt to setup the virtual lab
 if [ ${hw} = false ]; then
-  echo "You wouldn't download a car, would you?!"
-  cd ${HOME}/Desktop/Lab
   # There is a good writeup for how to use this code at http://dn5.ljuska.org/cyber-attacks-on-vehicles-2.html
-  git clone https://github.com/dn5/vircar
-  exitstatus=$?
-  if [[ ${exitstatus} == 0 ]]; then
-    echo "Well, you just did.  =)"
-    /usr/bin/sudo /sbin/modprobe vcan
-    exitstatus=$?
-    /usr/bin/sudo ip link add dev vcan0 type vcan
-    tmpexitstatus=$?
-    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
-    /usr/bin/sudo ip link set up vcan0
-    tmpexitstatus=$?
-    if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
-  fi
+  cd ${HOME}/Desktop/Lab/external/vircar
+  sudo make
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  sudo chmod 777 vircar
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  sudo ip link add dev vcan0 type vcan
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  sudo ip link set up vcan0
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 fi
 
 ## Setup is complete!

@@ -1,2 +1,0 @@
-# Write CAN
-TODO
