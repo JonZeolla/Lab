@@ -6,9 +6,9 @@ The reason I do this is so that you do not need to download all of the labs just
 **In order to use this repo as intended, you MUST switch to the appropriate branch**, via the web UI or CLI.  See `git branch -r` and `git checkout -b <remote>` to list and then checkout the appropriate branch via the command line.  In the web UI, use the dropdown directly to the left of the "New pull request" button to select a specific branch or tag.  
   
 Examples:  
-* `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
+* `git clone -b SoftwareDefinedRadio --single-branch --recursive https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the SoftwareDefinedRadio branch.  
-* `git clone -b 2015-09-24_SCIS_PasswordCracking --single-branch https://github.com/JonZeolla/Lab`  
+* `git clone -b 2015-09-24_SCIS_PasswordCracking --single-branch --recursive https://github.com/JonZeolla/Lab`  
   * Clone the revision of the PasswordCracking branch used during the 2015-09-24 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
 * `Branch=newbranch;git clone https://github.com/JonZeolla/Lab;cd Lab;git checkout --orphan $Branch;git rm --cached -r .;echo "Initial creation of $Branch" > README.md;git add README.md;git commit -m "Initial creation of $Branch";git push origin $Branch;unset Branch`  
   * Clone the Lab repository, create an orphan branch called newbranch, clear the working directory, create a standard initial README.md, and then push it back up to the remote under the branch newbranch.  
