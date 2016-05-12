@@ -19,7 +19,16 @@ Now, let's send a bit more traffic.  Run the below command to generate random fr
   
 You can also refine cangen to send only what you want, or to view what is being sent without having to refer to `candump`.  
 You can run `cangen` to see all of your options.  Specifically, pay attention to `-D`, `-L`, and `-v`.  
-
+  
+## `canplayer`  
+Okay, so say you wanted to record a session and then replay it back.  Assuming you have frames on your can interface that you want to record, you can use `candump` to log them to a file, and then use `canplayer` to play them back in the future.  That would look something like this:  
+`cangen vcan0 # To get something on the CAN bus  
+candump vcan0,0:0 -l vcan0 # Start recording the traffic`  
+Once that's run for a few seconds, you'll need to cancel the cangen and candump (`Ctrl+C`, `kill`, etc.).  Then, you can replay the CAN messages using:  
+`canplayer vcan0=vcan0 -I candump*log`  
+That will replay the contents of your candump log file, mapping the receive interface from candump (vcan0) to the interface you want it to output on (vcan0).  
+There are also some handy switches such as `-t` which will send the CAN messages as quickly as possible, `-li` which will loop the candump file infinitely, or `-v` to print the sent CAN frames to stdout.  
+  
 ## `socketcand`
 The socketcand tool connects a network interface to a CAN interface on a host.  This means that you are able to connect to one or multiple CAN busses that are connected to a host running this software, over an ethernet network connection.  
 You could then send/receive messages to/from that CAN bus remotely.  

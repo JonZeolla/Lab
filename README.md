@@ -28,4 +28,5 @@ http://www.meetup.com/Steel-City-InfoSec/events/226195653/
 * https://www.youtube.com/watch?v=Ym8xFGO0llY  
 * http://www.carhackingvillage.com/  
 * http://www.boschdiagnostics.com/pro/j2534-faqs  
+* http://www.canbushack.com/blog/index.php  
 
