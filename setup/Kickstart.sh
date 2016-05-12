@@ -127,7 +127,7 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(cat /etc/issue | awk '{print $3}')"
 declare -r scriptName="$(basename $0)"
-declare -r githubTag="2016-05-12_SCIS_AutomotiveSecurity"
+declare -r githubTag="AutomotiveSecurity"
 
 ## Initialize variables
 somethingfailed=0
