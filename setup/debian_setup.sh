@@ -23,7 +23,7 @@ function update_terminal() {
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && ${1} == 'fullstep' ]]; then
     status+=('0')
-  if [[ ${exitstatus} == 0 && ${1} == 'minstep' ]]; then
+  elif [[ ${exitstatus} == 0 && ${1} == 'minstep' ]]; then
     status+=('0')
   elif [[ ${1} == 'fullstep' || ${1} == 'minstep' ]]; then
     status+=('1')
@@ -90,7 +90,7 @@ function update_terminal() {
         exit 1
       else
         if [[ ${wrongruby} != 0 ]]; then echo -e 'WARNING:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e 'WARNING:\tThere are some known issues with the Kayak setup.\nWARNING:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success'; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "WARNING:\tThere are some known issues with the Kayak setup.\nWARNING:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success"; fi
         if [[ ${revert} != 0 ]]; then echo -e 'WARNING:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab'; fi
         echo -e '\nINFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
