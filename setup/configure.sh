@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.3
+# Version:         1.4
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -130,15 +130,16 @@ fi
 ## Check input
 if [ $# -eq 0 ]; then
   while [ -z "${prompt}" ]; do
-    read -r -p "Do you want to do the full or minimum configuration?  The minimum install will _not_ automatically build or configure the external materials." prompt
+    read -r -p "Do you want to do the full or minimum configuration?  The minimum install will _not_ automatically build or configure the external materials.  " prompt
     case ${prompt} in
-      [fF]|[uU][lL][lL])
+      [fF][uU][lL][lL])
         option=full
         ;;
       [mM][iI][nN][iI][mM][uU][mM])
         option=minimum
         ;;
       *)
+        prompt=""
         echo -e "Please enter either full or minimum"
         ;;
     esac
