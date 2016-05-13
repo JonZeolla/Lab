@@ -14,6 +14,8 @@ http://www.meetup.com/Steel-City-InfoSec/events/226195653/
   * All of the materials exist here, categorized into skill level (beginner, intermediate, etc.), and then type of lab (read vs write).  
 * `external`  
   * All external projects used by this lab exist here as submodules.  
+* `store`  
+  * This is where large(ish) files go for storage, especially if they're referenced in multiple labs.  
 
 ## Some other good materials  
 * http://www.ni.com/white-paper/2732/en/  
