@@ -8,7 +8,7 @@
 # File Type:       Bash Script
 # Version:         1.3
 # Repository:      https://github.com/JonZeolla/Lab
-# Description:     This is a bash script to kickstart the setup of the Steel City InfoSec Automotive Security Lab on 2016-05-12.
+# Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
 # Notes
 # - Anything that has a placeholder value is tagged with TODO.
@@ -79,11 +79,11 @@ function update_terminal() {
       echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
         if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
-        echo -e '\nERROR:\tSomething went wrong during the AutomotiveSecurity lab installation process'
+        echo -e "\nERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation"
         exit 1
       else
         if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
-        echo -e "\nINFO:\tSuccessfully configured the AutomotiveSecurity lab\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
+        echo -e "\nINFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
         exit 0
       fi
       ;;
@@ -95,19 +95,6 @@ function update_terminal() {
   
   ## Reset the exit status
   exitstatus=0
-}
-
-confirmNoOVA () {
-  read -r -p "Are you sure that you want to configure this system instead of downloading the VM? (y/n)" response
-  case $response in
-    [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
-      true
-      ;;
-    *)
-      echo -e "Did not receive an affirmative response, exiting..."
-      exit 1
-      ;;
-  esac
 }
 
 ## Check Network Connection
@@ -134,14 +121,38 @@ somethingfailed=0
 resetlab=0
 
 ## Check if the user running this is root
-if [[ ${usrCurrent} == "root" ]]; then
+if [[ "${usrCurrent}" == "root" ]]; then
   clear
   echo -e "ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access"
   exit 1
 fi
 
-echo -e "Did you know that there is an OVA which already has all of this configured?\nSee the README.md in this folder for the link."
-confirmNoOVA
+## Check input
+if [ $# -eq 0 ]; then
+  while [ -z "${prompt}" ]; do
+    read -r -p "Do you want to do the full or minimum configuration?  The minimum install will _not_ automatically build or configure the external materials." prompt
+    case ${prompt} in
+      [fF]|[uU][lL][lL])
+        option=full
+        ;;
+      [mM][iI][nN][iI][mM][uU][mM])
+        option=minimum
+        ;;
+      *)
+        echo -e "Please enter either full or minimum"
+        ;;
+    esac
+  done
+elif [[ "${1,,}" == 'full' ]]; then
+  # Check if the input, converted to lowercase, is equal to full.  If so, do the full install
+  option=full
+elif [[ "${1,,}" == 'minimum' ]]; then
+  # Check if the option, converted to lowercase, is equal to minimum.  If so, do the minimum install
+  option=minimum
+else
+  option=full
+  read -rsp $'Input was neither full nor minimum.  Assuming full, please press any key to continue or ctrl+c to stop the script...\n' -n1 key
+fi
 
 ## Update the terminal
 update_terminal
@@ -181,12 +192,11 @@ else
   echo -e "ERROR:\tUnknown error"
   exitstatus=1
 fi
-chmod -R 755 ${HOME}/Desktop/Lab/setup/*.sh
 update_terminal step
 
 ## Kick off the appropriate lab setup script
-if [[ ${osDistro} == 'Kali' && ${osVersion} == 'Rolling' ]]; then
-  ${HOME}/Desktop/Lab/setup/Debian_Setup.sh
+if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
+  ${HOME}/Desktop/Lab/setup/debian_setup.sh ${option}
   exitstatus=$?
   update_terminal step
 else

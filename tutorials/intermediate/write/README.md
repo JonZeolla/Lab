@@ -19,3 +19,6 @@ In order to run `vircar-fuzzer`, ensure you are in `${HOME}/Desktop/Lab/external
 `ruby vircar-fuzzer.rb`  
 This script essentially is a wrapper for `cangen` and allows for slightly more directed fuzzing using `vircar-fuzzer/src/frames` as an input.  Feel free to take a look around in the script.  
 
+## `canbus_send.py`  
+Play around with `${HOME}/Desktop/Lab/external/Python_Can/canbus_send.py`  
+
