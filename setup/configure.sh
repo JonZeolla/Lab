@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-11
 # File Type:       Bash Script
-# Version:         1.5
+# Version:         1.6
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -44,7 +44,7 @@ function update_terminal() {
       ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "\nERROR:\tUnknown error evaluating ${x} in the status array"
+      echo -e "\n${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
       exit 1
     fi
   done
@@ -68,7 +68,7 @@ function update_terminal() {
       ;;
     3)
       if [[ $somethingfailed != 0 ]]; then
-        echo -e '\nERROR:\tSomething went wrong during the setup process'
+        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the setup process${txtDEFAULT}"
         exit 1
       else
         echo -e '\nKicking off the lab setup script...\n\n'
@@ -79,7 +79,7 @@ function update_terminal() {
       echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
         if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
-        echo -e "\nERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation"
+        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
         if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
@@ -88,7 +88,7 @@ function update_terminal() {
       fi
       ;;
     *)
-      echo -e 'ERROR:\tUnknown error'
+      echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
       exit 1
       ;;
   esac
@@ -100,14 +100,14 @@ function update_terminal() {
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
-  echo -e 'ERROR:\tUnable to contact github.com'
+  echo -e "${txtRED}ERROR:\tUnable to contact github.com${txtDEFAULT}"
   exit 1
 fi
 
 ## Set up arrays
 declare -a status=()
 declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed SCIS AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully retrieved the SCIS AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
-declare -a failure=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIssue installing SCIS AutomotiveSecurity lab package requirements' 'ERROR:\tIssue retrieving the SCIS AutomotiveSecurity lab branch' 'ERROR:\tIssue running the lab setup script')
+declare -a failure=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing SCIS AutomotiveSecurity lab package requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue retrieving the SCIS AutomotiveSecurity lab branch${txtDEFAULT}' '${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}')
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
@@ -115,6 +115,9 @@ declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(cat /etc/issue | awk '{print $3}')"
 declare -r scriptName="$(basename $0)"
 declare -r githubTag="AutomotiveSecurity"
+declare -r txtRED='\033[0;31m'
+declare -r txtORANGE='\033[0;33m'
+declare -r txtDEFAULT='\033[0m'
 
 ## Initialize variables
 somethingfailed=0
@@ -123,7 +126,7 @@ resetlab=0
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
   clear
-  echo -e "ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access"
+  echo -e "${txtRED}ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access${txtDEFAULT}"
   exit 1
 fi
 
@@ -182,14 +185,14 @@ elif [[ -d ${HOME}/Desktop/Lab ]]; then
     exitstatus=$?
     if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
-    echo -e 'ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.'
+    echo -e "${txtRED}ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
     exitstatus=1
   else
-    echo -e "ERROR:\tUnknown error"
+    echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
     exitstatus=1
   fi
 else
-  echo -e "ERROR:\tUnknown error"
+  echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
   exitstatus=1
 fi
 update_terminal step
@@ -200,7 +203,7 @@ if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
   exitstatus=$?
   update_terminal step
 else
-  echo -e 'ERROR:\tYour OS has not been tested with this script'
+  echo -e "${txtRED}ERROR:\tYour OS has not been tested with this script${txtDEFAULT}"
   exit 1
 fi
 

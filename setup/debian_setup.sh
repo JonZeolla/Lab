@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-13
 # File Type:       Bash Script
-# Version:         1.6
+# Version:         1.7
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -59,7 +59,7 @@ function update_terminal() {
       ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "\nERROR:\tUnknown error evaluating ${x} in the status array"
+      echo -e "\n${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
       exit 1
     fi
   done
@@ -85,19 +85,19 @@ function update_terminal() {
     4)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
-        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
-        echo -e '\nERROR:\tSomething went wrong during the installation process'
+        if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
+        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
         exit 1
       else
-        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success"; fi
-        if [[ ${revert} != 0 ]]; then echo -e 'WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab'; fi
+        if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
         echo -e '\nINFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
       ;;
     *)
-      echo -e 'ERROR:\tUnknown error'
+      echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
       exit 1
       ;;
   esac
@@ -111,14 +111,17 @@ function update_terminal() {
 declare -a status=('Start')
 declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
 declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
-declare -a failurefull=('ERROR:\tIssue updating apt package index files and all currently installed packages' 'ERROR:\tIssue installing AutomotiveSecurity lab requirements' 'ERROR:\tIssue setting up the lab environment' 'ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab')
-declare -a failuremin=('ERROR:\tIssue updating apt package index files' 'ERROR:\tIssue installing AutomotiveSecurity lab requirements' 'ERROR:\tIssue setting up the lab environment' 'ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab')
+declare -a failurefull=('${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab${txtDEFAULT}')
+declare -a failuremin=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab${txtDEFAULT}')
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(lsb_release -r | awk '{print $3}')"
 declare -r scriptName="$(basename $0)"
+declare -r txtRED='\033[0;31m'
+declare -r txtORANGE='\033[0;33m'
+declare -r txtDEFAULT='\033[0m'
 
 ## Initialize variables
 i=0
@@ -132,14 +135,14 @@ revert=0
 ## Check the OS version
 # Testing Kali Rolling
 if [[ "${osDistro}" != 'Kali' && "${osVersion}" != 'Rolling' ]]; then
-  echo -e 'ERROR:\tYour OS has not been tested with this script'
+  echo -e "${txtRED}ERROR:\tYour OS has not been tested with this script${txtDEFAULT}"
   exit 1
 fi
 
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
-  echo -e 'ERROR:\tUnable to contact github.com'
+  echo -e "${txtRED}ERROR:\tUnable to contact github.com${txtDEFAULT}"
   exit 1
 fi
 
@@ -155,7 +158,7 @@ clear
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
   clear
-  echo -e "ERROR:\tIt's a bad idea to run scripts when logged in as root - please login with a less privileged account that has sudo access"
+  echo -e "${txtRED}ERROR:\tIt's a bad idea to run scripts when logged in as root - please login with a less privileged account that has sudo access${txtDEFAULT}"
   exit 1
 fi
 
@@ -217,7 +220,7 @@ while [ -z "${prompt}" ]; do
 
       # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
       [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
-      if [[ $? != 1 ]]; then baudrate=500000; echo -e "WARN:\tIssue with the input baud rate, defaulting to 500000"; fi
+      if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
 
       read -rsp $'Please plug in your hardware device now, and then press any key to continue...\n' -n1 key
       ;;
@@ -275,12 +278,16 @@ if [ "${hw}" == '1' ]; then
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
     cat > ${HOME}/Desktop/start_can.sh << ENDSTARTCAN
 #!/bin/bash
+
+declare -r txtRED='\033[0;31m'
+declare -r txtDEFAULT='\033[0m'
+
 sudo /sbin/modprobe can
 sudo /sbin/modprobe can_raw
 createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
 tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
-#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the can0 interface"; fi; fi
+#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "${txtRED}ERROR:\tIssue bringing up the can0 interface${txtDEFAULT}"; fi; fi
 if [[ \${tmpexitstatus} != 0 ]]; then exitstatus="\${tmpexitstatus}"; fi
 sudo ip link set up can0
 
@@ -317,10 +324,14 @@ if [ "${hw}" == '0' ]; then
 
   cat > ${HOME}/Desktop/start_vcan.sh << ENDSTARTVCAN
 #!/bin/bash
+
+declare -r txtRED='\033[0;31m'
+declare -r txtDEFAULT='\033[0m'
+
 sudo /sbin/modprobe vcan
 createinterface=\$(sudo ip link add dev vcan0 type vcan 2>&1)
 tmpexitstatus=\$?
-if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the vcan0 interface"; fi; fi
+if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "${txtRED}ERROR:\tIssue bringing up the vcan0 interface${txtDEFAULT}"; fi; fi
 sudo ip link set up vcan0
 
 ENDSTARTVCAN
