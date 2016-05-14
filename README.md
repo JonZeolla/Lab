@@ -1,6 +1,7 @@
 # 2016-02-11 Steel City Information Security Lab  
   
 http://www.meetup.com/Steel-City-InfoSec/events/224383512/  
+http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/49592594  
 
 ## How to clone this repo
 * `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
