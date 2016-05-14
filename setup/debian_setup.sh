@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.8
+# Version:         1.9
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -241,6 +241,10 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 sudo /sbin/modprobe can_raw
 tmpexitstatus=$?
 if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+if ! grep -q "^can$" /etc/modules 2>/dev/null; then echo -e "can" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
+if ! grep -q "^vcan$" /etc/modules 2>/dev/null; then echo -e "vcan" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
+if ! grep -q "^can_raw$" /etc/modules 2>/dev/null; then echo -e "can_raw" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
+
 
 if [[ "${option}" == 'full' ]]; then
   cd ${HOME}/Desktop/Lab/external/Kayak
@@ -279,8 +283,6 @@ if [ "${hw}" == '1' ]; then
 declare -r txtRED='\033[0;31m'
 declare -r txtDEFAULT='\033[0m'
 
-sudo /sbin/modprobe can
-sudo /sbin/modprobe can_raw
 createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
 tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
@@ -325,7 +327,6 @@ if [ "${hw}" == '0' ]; then
 declare -r txtRED='\033[0;31m'
 declare -r txtDEFAULT='\033[0m'
 
-sudo /sbin/modprobe vcan
 createinterface=\$(sudo ip link add dev vcan0 type vcan 2>&1)
 tmpexitstatus=\$?
 if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "${txtRED}ERROR:\tIssue bringing up the vcan0 interface${txtDEFAULT}"; fi; fi
