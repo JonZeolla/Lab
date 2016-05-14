@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.7
+# Version:         1.8
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -75,11 +75,11 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${resetlab} != 0 ]]; then echo -e "INFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
-        if [[ ${resetlab} != 0 ]]; then echo -e "INFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
+        if [[ ${resetlab} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch${txtDEFAULT}"; fi
         echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
         exit 0
       fi
