@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.9
+# Version:         1.10
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -35,7 +35,7 @@ function update_terminal() {
     if [[ ${x} == 'Start' ]]; then
       # Check for the carhax user and watermark
       if [ ${usrCurrent} == 'carhax' ] && [ -f /etc/scis.conf ] && grep -q W8wnTFMhhU7RHHAnLIPJdWPKdbySMgIpnh3qwf4uEKnSlytbbB1EWKAEvkTHLAX7uE51T2BDkQqMmttziyErC0kmQLiUeScEmYWo /etc/scis.conf; then
-        echo -e 'It appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times'
+        echo -e 'INFO:\tIt appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times'
       fi
     elif [[ ${x} == 0 ]]; then
       # Echo the correct success message
@@ -84,12 +84,16 @@ function update_terminal() {
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
+        echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"
         echo -e "${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
         exit 1
       else
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
         if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
+        echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"
         echo -e 'INFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
@@ -189,6 +193,8 @@ else
   read -rsp $'Input was neither full nor minimum.  Assuming full, please press any key to continue or ctrl+c to stop the script...\n' -n1 key
 fi
 
+read -rsp $'${txtORANGE}WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...${txtDEFAULT}\n' -n1 key
+
 ## Start up the main part of the script
 update_terminal
 
@@ -244,7 +250,27 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 if ! grep -q "^can$" /etc/modules 2>/dev/null; then echo -e "can" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^vcan$" /etc/modules 2>/dev/null; then echo -e "vcan" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^can_raw$" /etc/modules 2>/dev/null; then echo -e "can_raw" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
+  cat > /etc/rc.local << ENDSTARTUPSCRIPTS
+#!/bin/bash
+#
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
+  sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+  sudo ip link set up can0
+else
+  sudo ip link add dev vcan0 type vcan
+  sudo ip link set up vcan0
+fi
 
+ENDSTARTUPSCRIPTS
 
 if [[ "${option}" == 'full' ]]; then
   cd ${HOME}/Desktop/Lab/external/Kayak
@@ -281,8 +307,13 @@ if [ "${hw}" == '1' ]; then
 #!/bin/bash
 
 declare -r txtRED='\033[0;31m'
+declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
 
+read -r -p "What baud rate would you like to use?  " baudrate
+# Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
+[ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
+if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
 createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
 tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
