@@ -1,5 +1,6 @@
 # 2016-05-12 Steel City Information Security Lab  
 http://www.meetup.com/Steel-City-InfoSec/events/226195653/  
+http://www.meetup.com/Steel-City-InfoSec/boards/thread/49839423  
 
 ## How to clone this repo  
 * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
