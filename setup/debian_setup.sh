@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.10
+# Version:         1.11
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -193,7 +193,9 @@ else
   read -rsp $'Input was neither full nor minimum.  Assuming full, please press any key to continue or ctrl+c to stop the script...\n' -n1 key
 fi
 
-read -rsp $'${txtORANGE}WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...${txtDEFAULT}\n' -n1 key
+echo -e "${txtORANGE}"
+read -rsp $'WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...\n' -n1 key
+echo -e "${txtDEFAULT}"
 
 ## Start up the main part of the script
 update_terminal
@@ -250,7 +252,7 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 if ! grep -q "^can$" /etc/modules 2>/dev/null; then echo -e "can" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^vcan$" /etc/modules 2>/dev/null; then echo -e "vcan" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^can_raw$" /etc/modules 2>/dev/null; then echo -e "can_raw" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
-  cat > /etc/rc.local << ENDSTARTUPSCRIPTS
+  sudo tee /etc/rc.local << ENDSTARTUPSCRIPTS
 #!/bin/bash
 #
 #
