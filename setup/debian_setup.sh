@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-13
 # File Type:       Bash Script
-# Version:         1.5
+# Version:         1.6
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -213,6 +213,12 @@ while [ -z "${prompt}" ]; do
   case ${prompt} in
     [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
       hw=1
+      read -r -p "What baud rate would you like to use?  " baudrate
+
+      # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
+      [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
+      if [[ $? != 1 ]]; then baudrate=500000; echo -e "WARN:\tIssue with the input baud rate, defaulting to 500000"; fi
+
       read -rsp $'Please plug in your hardware device now, and then press any key to continue...\n' -n1 key
       ;;
     [nN]|[nN][oO]|[nN][oO][pP][e}|[nN][aA][wW]|[nN][eE][gG][aA][tT][iI][vV][eE])
@@ -259,7 +265,7 @@ fi
 if [ "${hw}" == '1' ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
     # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
-    createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
+    createinterface=$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
     tmpexitstatus=$?
     # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
     #if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
@@ -271,11 +277,11 @@ if [ "${hw}" == '1' ]; then
 #!/bin/bash
 sudo /sbin/modprobe can
 sudo /sbin/modprobe can_raw
-createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
-tmpexitstatus=$?
+createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
+tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
-#if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the can0 interface"; fi; fi
-if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the can0 interface"; fi; fi
+if [[ \${tmpexitstatus} != 0 ]]; then exitstatus="\${tmpexitstatus}"; fi
 sudo ip link set up can0
 
 ENDSTARTCAN
@@ -312,9 +318,9 @@ if [ "${hw}" == '0' ]; then
   cat > ${HOME}/Desktop/start_vcan.sh << ENDSTARTVCAN
 #!/bin/bash
 sudo /sbin/modprobe vcan
-createinterface=$(sudo ip link add dev vcan0 type vcan 2>&1)
-tmpexitstatus=$?
-if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the vcan0 interface"; fi; fi
+createinterface=\$(sudo ip link add dev vcan0 type vcan 2>&1)
+tmpexitstatus=\$?
+if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the vcan0 interface"; fi; fi
 sudo ip link set up vcan0
 
 ENDSTARTVCAN
