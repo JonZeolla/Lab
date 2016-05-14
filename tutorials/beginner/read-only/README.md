@@ -1,6 +1,9 @@
 # Reading from the CAN bus via CLI
 ## Preparations  
-First, you need to have something to prove that your reads are working.  Run the below command.  
+First, you need to make sure that you have a can interface up (either vcan0 or can0).  You can verify this by running `ip addr | grep can0`.  
+* If you ran `setup/configure.sh` successfully since you started up your machine last, the correct interface should already be available, but if not, you can run `${HOME}/Desktop/setup_can.sh` or `${HOME}/Desktop/setup_vcan.sh`, whichever is appropriate.  You should only have the `setup_can.sh` script available if you've successfully configured a can0 interface in the past using the `setup` scripts.  
+
+Also, you need to have something to prove that your reads are working.  Run the below command to send some CAN frames onto the can bus.  
 `cangen vcan0`  
   
 ## `candump`

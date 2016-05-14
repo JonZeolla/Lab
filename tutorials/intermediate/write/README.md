@@ -1,6 +1,6 @@
 # Writing to the CAN bus via CLI  
 ## Preparations  
-Make sure you are in the vircar directory, which should be located in `${HOME}/Desktop/Lab/external/vircar/`  
+You need to make sure you are in the vircar directory, which should be located in `${HOME}/Desktop/Lab/external/vircar/`  
 
 See the related blog post [here](http://dn5.ljuska.org/cyber-attacks-on-vehicles-2.html).  
 
