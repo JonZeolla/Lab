@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-13
 # File Type:       Bash Script
-# Version:         1.4
+# Version:         1.5
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -162,7 +162,7 @@ fi
 ## Check input
 if [ $# -eq 0 ]; then
   while [ -z "${prompt}" ]; do
-    read -r -p "Do you want to do the full or minimum configuration?  The minimum install will _not_ automatically build or configure the external materials." prompt
+    read -r -p "Do you want to do the full or minimum configuration?  " prompt
     case ${prompt} in
       [fF][uU][lL][lL])
         option=full
@@ -172,7 +172,6 @@ if [ $# -eq 0 ]; then
         ;;
       *)
         prompt=""
-        echo -e "Please enter either full or minimum"
         ;;
     esac
   done
@@ -210,7 +209,7 @@ update_terminal fullstep
 
 ## Setup the lab
 while [ -z "${prompt}" ]; do
-  read -r -p "Do you plan to use hardware? (y/N)" prompt
+  read -r -p "Do you plan to use hardware? (y/N)  " prompt
   case ${prompt} in
     [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
       hw=1
@@ -220,6 +219,7 @@ while [ -z "${prompt}" ]; do
       hw=0
       ;;
     *)
+      prompt="N"
       hw=0
       echo -e "INFO:\tUnable to parse your response.  Assuming that you do not plan to use hardware..."
       ;;
@@ -259,6 +259,10 @@ fi
 if [ "${hw}" == '1' ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
     # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
+    # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
+    #createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
+    #tmpexitstatus=$?
+    #if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
     sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
@@ -271,7 +275,7 @@ sudo /sbin/modprobe can
 sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
 sudo ip link set up can0
 
-ENDSTARTCAN 
+ENDSTARTCAN
     sudo chmod 755 ${HOME}/Desktop/start_can.sh
   else
     echo -e "The only currently supported hardware device is the CANtact.  "
@@ -294,9 +298,10 @@ if [ "${hw}" == '0' ]; then
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
   fi
 
-  sudo ip link add dev vcan0 type vcan
+  createinterface=$(sudo ip link add dev vcan0 type vcan 2>&1)
   tmpexitstatus=$?
-  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  # Don't count it as an error if the interface already exists
+  if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
   sudo ip link set up vcan0
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
@@ -307,7 +312,7 @@ sudo /sbin/modprobe vcan
 sudo ip link add dev vcan0 type vcan
 sudo ip link set up vcan0
 
-ENDSTARTVCAN 
+ENDSTARTVCAN
   sudo chmod 755 ${HOME}/Desktop/start_vcan.sh
 fi
 
