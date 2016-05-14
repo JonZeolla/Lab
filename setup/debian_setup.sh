@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-13
+# Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.7
+# Version:         1.8
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -30,14 +30,12 @@ function update_terminal() {
     somethingfailed=1
   fi
   
-  echo -e "\n\n${scriptName}\n"
-  
   ## Provide the user with the status of all completed steps until this point
   for x in ${status[@]}; do
     if [[ ${x} == 'Start' ]]; then
       # Check for the carhax user and watermark
       if [ ${usrCurrent} == 'carhax' ] && [ -f /etc/scis.conf ] && grep -q W8wnTFMhhU7RHHAnLIPJdWPKdbySMgIpnh3qwf4uEKnSlytbbB1EWKAEvkTHLAX7uE51T2BDkQqMmttziyErC0kmQLiUeScEmYWo /etc/scis.conf; then
-        echo -e 'It appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times\n'
+        echo -e 'It appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times'
       fi
     elif [[ ${x} == 0 ]]; then
       # Echo the correct success message
@@ -59,7 +57,7 @@ function update_terminal() {
       ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "\n${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
+      echo -e "${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
       exit 1
     fi
   done
@@ -86,13 +84,13 @@ function update_terminal() {
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
-        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
+        echo -e "${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
         exit 1
       else
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
         if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
-        echo -e '\nINFO:\tSuccessfully configured the AutomotiveSecurity lab'
+        echo -e 'INFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
       ;;
@@ -118,7 +116,6 @@ declare -a failuremin=('${txtRED}ERROR:\tIssue updating apt package index files$
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(lsb_release -r | awk '{print $3}')"
-declare -r scriptName="$(basename $0)"
 declare -r txtRED='\033[0;31m'
 declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'

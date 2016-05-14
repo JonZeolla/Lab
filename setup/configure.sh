@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-11
+# Last update:     2016-05-14
 # File Type:       Bash Script
-# Version:         1.6
+# Version:         1.7
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -30,7 +30,6 @@ function update_terminal() {
     # Clear the screen the first time it hits the loop, and if we didn't just finish the appropriate lab setup script
     if [[ ${i} == 0 && ${#status[@]} != 4 ]]; then
       clear
-      echo -e "${scriptName}\n"
     fi
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
@@ -57,7 +56,6 @@ function update_terminal() {
     0)
       # Clear the screen only if nothing has been done yet - otherwise it will clear via the above for loop
       clear
-      echo -e "${scriptName}\n"
       echo -e 'Re-synchronizing the package index files...\n\n'
       ;;
     1)
@@ -76,14 +74,13 @@ function update_terminal() {
       ;;
     4)
       # Give a summary update
-      echo -e "${scriptName}\n"
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
-        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
+        if [[ ${resetlab} != 0 ]]; then echo -e "INFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
+        echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
-        if [[ ${resetlab} != 0 ]]; then echo -e "\nINFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
-        echo -e "\nINFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
+        if [[ ${resetlab} != 0 ]]; then echo -e "INFO:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch"; fi
+        echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
         exit 0
       fi
       ;;
@@ -113,7 +110,6 @@ declare -a failure=('${txtRED}ERROR:\tIssue updating apt package index files${tx
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(cat /etc/issue | awk '{print $3}')"
-declare -r scriptName="$(basename $0)"
 declare -r githubTag="AutomotiveSecurity"
 declare -r txtRED='\033[0;31m'
 declare -r txtORANGE='\033[0;33m'
