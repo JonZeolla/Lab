@@ -85,13 +85,13 @@ function update_terminal() {
     4)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
-        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARNING:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
+        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
         echo -e '\nERROR:\tSomething went wrong during the installation process'
         exit 1
       else
-        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARNING:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "WARNING:\tThere are some known issues with the Kayak setup.\nWARNING:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success"; fi
-        if [[ ${revert} != 0 ]]; then echo -e 'WARNING:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab'; fi
+        if [[ ${wrongruby} != 0 ]]; then echo -e 'WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly'; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success"; fi
+        if [[ ${revert} != 0 ]]; then echo -e 'WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab'; fi
         echo -e '\nINFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
@@ -259,12 +259,10 @@ fi
 if [ "${hw}" == '1' ]; then
   if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
     # Setup the CANtact as a can0 interface at 500k baud.  You may need to tweak your baud rate, depending on the vehicle.
-    # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
-    #createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
-    #tmpexitstatus=$?
-    #if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
-    sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+    createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
     tmpexitstatus=$?
+    # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
+    #if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
     sudo ip link set up can0
     tmpexitstatus=$?
@@ -272,7 +270,12 @@ if [ "${hw}" == '1' ]; then
     cat > ${HOME}/Desktop/start_can.sh << ENDSTARTCAN
 #!/bin/bash
 sudo /sbin/modprobe can
-sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
+sudo /sbin/modprobe can_raw
+createinterface=$(sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
+tmpexitstatus=$?
+# TODO:  Catch when can0 already exists and don't count it as a failure - something like:
+#if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the can0 interface"; fi; fi
+if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 sudo ip link set up can0
 
 ENDSTARTCAN
@@ -309,7 +312,9 @@ if [ "${hw}" == '0' ]; then
   cat > ${HOME}/Desktop/start_vcan.sh << ENDSTARTVCAN
 #!/bin/bash
 sudo /sbin/modprobe vcan
-sudo ip link add dev vcan0 type vcan
+createinterface=$(sudo ip link add dev vcan0 type vcan 2>&1)
+tmpexitstatus=$?
+if [[ "${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ ${tmpexitstatus} != 0 ]]; then echo -e "ERROR:\tIssue bringing up the vcan0 interface"; fi; fi
 sudo ip link set up vcan0
 
 ENDSTARTVCAN
