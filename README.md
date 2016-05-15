@@ -5,7 +5,7 @@ http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/48872874/0/#1279
 
 As of 2015-09-14, this moved from github.com/BrianWGray/keysweeper
 
-## How to clone this repo
+## How to clone this branch
 * `git clone -b DropBoxes --single-branch https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the DropBoxes branch.  
 * `git clone -b 2015-04-09_SCIS_DropBoxes --single-branch https://github.com/JonZeolla/Lab`  
