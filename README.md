@@ -3,7 +3,7 @@
 http://www.meetup.com/Steel-City-InfoSec/events/224383512/  
 http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/49592594  
 
-## How to clone this repo
+## How to clone this branch
 * `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the SoftwareDefinedRadio branch.  
 * `git clone -b 2016-02-11_SCIS_SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
