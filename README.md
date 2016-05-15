@@ -2,7 +2,7 @@
 ## Breaking Wireless:  The Dos and Donts of Wi-FI  
 http://www.meetup.com/Pittsburgh-Code-Supply/events/222346335/
 
-## How to clone this repo
+## How to clone this branch
 * `git clone -b WLANSecurity --single-branch https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the WLANSecurity branch.  
 * `git clone -b 2015-07-07_JZ_WLANSecurity --single-branch https://github.com/JonZeolla/Lab`  
