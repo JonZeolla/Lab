@@ -2,15 +2,16 @@
 http://www.meetup.com/Steel-City-InfoSec/events/226195653/  
 http://www.meetup.com/Steel-City-InfoSec/boards/thread/49839423  
 
-## How to clone this repo  
+## How to clone this branch  
 * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the AutomotiveSecurity branch, and automatically bring in the related submodules.  
 * `git clone -b 2016-05-12_SCIS_AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
   * Clone the revision of the AutomotiveSecurity branch used during the 2016-05-12 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
 
-## How to use this repo
+## How to use this branch  
 * `setup`  
-  * Here are some scripts to setup the requirements to do the lab tutorials.  There is a VM which was distributed with the lab, but the scripts in here allow the lab to be setup on additional machines.  
+  * Here are some scripts to setup the requirements to do the lab tutorials.  There is a [VM](https://drive.google.com/open?id=0B2NDLONqoOuTRFJvY0g0dU5RZWc) which was distributed the first time I did this lab, but the scripts in here allow the lab to be setup on additional machines.  
+    * If you plan to use the VM, the username is `carhax` and the password is `P@ssword`.  
 * `tutorials`  
   * All of the materials exist here, categorized into skill level (beginner, intermediate, etc.), and then type of lab (read vs write).  
 * `external`  
