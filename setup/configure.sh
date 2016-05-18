@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-17
+# Last update:     2016-05-18
 # File Type:       Bash Script
-# Version:         1.9
+# Version:         1.10
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -59,7 +59,7 @@ function update_terminal() {
       echo -e 'Re-synchronizing the package index files...\n\n'
       ;;
     1)
-      echo -e '\nInstalling some SCIS AutomotiveSecurity lab package requirements...\n\n'
+      echo -e '\nInstalling some AutomotiveSecurity lab package requirements...\n\n'
       ;;
     2)
       echo -e "\nRetrieving the ${githubTag} branch...\n\n"
@@ -75,11 +75,11 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${resetlab} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
-        if [[ ${resetlab} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThis script reset your existing clone of lab to the ${githubTag} tag of the AutomotiveSecurity branch${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
         echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
         exit 0
       fi
@@ -103,8 +103,8 @@ fi
 
 ## Set up arrays
 declare -a status=()
-declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed SCIS AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully retrieved the SCIS AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
-declare -a failure=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing SCIS AutomotiveSecurity lab package requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue retrieving the SCIS AutomotiveSecurity lab branch${txtDEFAULT}' '${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}')
+declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully preparing the AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
+declare -a failure=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}' '${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}')
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
@@ -117,7 +117,8 @@ declare -r txtDEFAULT='\033[0m'
 
 ## Initialize variables
 somethingfailed=0
-resetlab=0
+notOptimalGit=0
+tmpexitstatus=0
 
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
@@ -162,12 +163,21 @@ sudo apt-get -y update
 exitstatus=$?
 update_terminal step
 
-## Install the SCIS AutomotiveSecurity lab package requirements
+## Install the AutomotiveSecurity lab package requirements
+# Install git
 sudo apt-get -y install git
 exitstatus=$?
 update_terminal step
 
-## Clone the SCIS AutomotiveSecurity Lab github repo
+## Prepare the Automotive Security Lab
+# Setup open-vm-tools if this is a VM
+if [[ dmidecode -s system-product-name | egrep -i 'vmware|virtual machine|qemu|kvm|hvm domu|bochs' ]]; then
+  sudo apt-get -y install open-vm-tools-desktop fuse
+  tmpexitstatus=$?
+  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+fi
+
+# Setup the AutomotiveSecurity Lab github repo
 if [[ ! -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop
   git clone -b ${githubTag} --single-branch --recursive https://github.com/JonZeolla/Lab -q
@@ -176,10 +186,9 @@ elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
-  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") ]]; then
-    git reset --hard ${githubTag}
-    exitstatus=$?
-    if [[ ${exitstatus} == 0 ]]; then resetlab=1; fi
+  if [[ $(git status -uno | grep "up-to-date") ]]; then gitUTD=true; else gitUTD=false; fi
+  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && gitUTD == "false" ]]; then
+    notOptimalGit=1
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
     echo -e "${txtRED}ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
     exitstatus=1
@@ -195,7 +204,7 @@ update_terminal step
 
 ## Kick off the appropriate lab setup script
 if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
-  ${HOME}/Desktop/Lab/setup/debian_setup.sh ${option}
+  ${HOME}/Desktop/Lab/setup/setup.sh ${option}
   exitstatus=$?
   update_terminal step
 else

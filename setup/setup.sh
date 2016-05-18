@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-17
+# Last update:     2016-05-18
 # File Type:       Bash Script
-# Version:         1.14
+# Version:         1.15
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -117,10 +117,10 @@ function update_terminal() {
 
 ## Set up arrays
 declare -a status=('Start')
-declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
-declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the SCIS AutomotiveSecurity Lab')
-declare -a failurefull=('${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab${txtDEFAULT}')
-declare -a failuremin=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the SCIS AutomotiveSecurity Lab${txtDEFAULT}')
+declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
+declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
+declare -a failurefull=('${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}')
+declare -a failuremin=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}')
 
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
@@ -200,7 +200,8 @@ else
 fi
 
 echo -en "${txtORANGE}"
-read -rsp $'WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...\n' -n1 key
+timeout 30 read -rsp $'WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...\n' -n1 key
+if [[ $? == 124 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; fi
 echo -en "${txtDEFAULT}"
 
 ## Start up the main part of the script
