@@ -6,8 +6,8 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-18
 # File Type:       Bash Script
-# Version:         1.11
-# Repository:      https://github.com/JonZeolla/Lab
+# Version:         1.12
+# Repository:      https://github.com/JonZeolla/lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
 # Notes
@@ -75,14 +75,14 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
+        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
-        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
-        echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
+        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
+        echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/lab/tutorials and work on the tutorials"
         exit 0
       fi
       ;;
@@ -132,7 +132,7 @@ fi
 ## Check input
 if [ $# -eq 0 ]; then
   while [ -z "${prompt}" ]; do
-    read -r -p "Do you want to do the full or minimum configuration?  " prompt
+    read -p "Do you want to do the full or minimum configuration?  " prompt
     case ${prompt} in
       [fF][uU][lL][lL])
         option=full
@@ -180,13 +180,13 @@ if sudo dmidecode -s system-product-name | egrep -i 'vmware|virtual machine|qemu
 fi
 
 # Setup the AutomotiveSecurity Lab github repo
-if [[ ! -d ${HOME}/Desktop/Lab ]]; then
+if [[ ! -d ${HOME}/Desktop/lab ]]; then
   cd ${HOME}/Desktop
-  git clone -b ${githubTag} --single-branch --recursive https://github.com/JonZeolla/Lab
+  git clone -b ${githubTag} --single-branch --recursive https://github.com/JonZeolla/lab
   exitstatus=$?
   notGitUTD="false"
-elif [[ -d ${HOME}/Desktop/Lab ]]; then
-  cd ${HOME}/Desktop/Lab
+elif [[ -d ${HOME}/Desktop/lab ]]; then
+  cd ${HOME}/Desktop/lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
   if git status -uno | grep "up-to-date"; then notGitUTD="false"; else notGitUTD="true"; fi
@@ -195,7 +195,7 @@ elif [[ -d ${HOME}/Desktop/Lab ]]; then
   elif [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && ${notGitUTD} == "true" ]]; then
     notOptimalGit="true"
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
-    echo -e "${txtRED}ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
+    echo -e "${txtRED}ERROR:\t${HOME}/Desktop/lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
     notOptimalGit="true"
     exitstatus=1
   else
@@ -211,7 +211,7 @@ update_terminal step
 
 ## Kick off the appropriate lab setup script
 if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
-  ${HOME}/Desktop/Lab/setup/setup.sh ${option}
+  ${HOME}/Desktop/lab/setup/setup.sh ${option}
   exitstatus=$?
   update_terminal step
 else

@@ -6,8 +6,8 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-18
 # File Type:       Bash Script
-# Version:         1.15
-# Repository:      https://github.com/JonZeolla/Lab
+# Version:         1.16
+# Repository:      https://github.com/JonZeolla/lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
 # Notes
@@ -40,7 +40,7 @@ function update_terminal() {
   for x in ${status[@]}; do
     if [[ ${x} == 'Start' ]]; then
       # Check for the carhax user and watermark
-      if [ ${usrCurrent} == 'carhax' ] && [ -f /etc/scis.conf ] && grep -q W8wnTFMhhU7RHHAnLIPJdWPKdbySMgIpnh3qwf4uEKnSlytbbB1EWKAEvkTHLAX7uE51T2BDkQqMmttziyErC0kmQLiUeScEmYWo /etc/scis.conf; then
+      if [ ${usrCurrent} == 'carhax' ] && [ -f /etc/scis.conf ] && grep -q ${UUID} /etc/scis.conf; then
         echo -e 'INFO:\tIt appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times'
       fi
     elif [[ ${x} == 0 ]]; then
@@ -91,15 +91,17 @@ function update_terminal() {
       if [[ ${somethingfailed} != 0 ]]; then
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
         if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
-        echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"
+        if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
         exit 1
       else
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
         if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
-        echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"
+        if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
         echo -e 'INFO:\tSuccessfully configured the AutomotiveSecurity lab'
         exit 0
       fi
@@ -129,6 +131,7 @@ declare -r osVersion="$(lsb_release -r | awk '{print $3}')"
 declare -r txtRED='\033[0;31m'
 declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
+declare -r UUID='W8wnTFMhhU7RHHAnLIPJdWPKdbySMgIpnh3qwf4uEKnSlytbbB1EWKAEvkTHLAX7uE51T2BDkQqMmttziyErC0kmQLiUeScEmYWo'
 
 ## Initialize variables
 i=0
@@ -138,6 +141,8 @@ tmpexitstatus=0
 wrongruby=0
 kayakmvn=0
 revert=0
+timeout=0
+rclocaloverwrite=0
 
 ## Check the OS version
 # Testing Kali Rolling
@@ -172,7 +177,7 @@ fi
 ## Check input
 if [ $# -eq 0 ]; then
   while [ -z "${prompt}" ]; do
-    read -r -p "Do you want to do the full or minimum configuration?  " prompt
+    read -p "Do you want to do the full or minimum configuration?  " prompt
     case ${prompt} in
       [fF][uU][lL][lL])
         option=full
@@ -200,8 +205,8 @@ else
 fi
 
 echo -en "${txtORANGE}"
-timeout 30 read -rsp $'WARN:\tThis script overwrites /etc/rc.local.  Please press any key to continue or ctrl+c to stop the script...\n' -n1 key
-if [[ $? == 124 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; fi
+read -t 30 -rsp $'WARN:\tThis script overwrites /etc/rc.local if it isn't properly configured for this lab.  You have 30 seconds to press any key to continue or ctrl+c to stop the script...\n' -n1 key
+if [[ $? == 142 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; timeout=1; fi
 echo -en "${txtDEFAULT}"
 
 ## Start up the main part of the script
@@ -224,11 +229,12 @@ update_terminal fullstep
 
 ## Setup the lab
 while [ -z "${prompt}" ]; do
-  read -r -p "Do you plan to use hardware? (y/N)  " prompt
+  read -t 30 -p "Do you plan to use hardware? (y/N)  " prompt
+  if [[ $? == 142 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; timeout=1; fi
   case ${prompt} in
     [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
       hw=1
-      read -r -p "What baud rate would you like to use?  " baudrate
+      read -p "What baud rate would you like to use?  " baudrate
 
       # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
       [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
@@ -259,6 +265,8 @@ if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 if ! grep -q "^can$" /etc/modules 2>/dev/null; then echo -e "can" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^vcan$" /etc/modules 2>/dev/null; then echo -e "vcan" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
 if ! grep -q "^can_raw$" /etc/modules 2>/dev/null; then echo -e "can_raw" | sudo tee -a /etc/modules 1>/dev/null; tmpexitstatus=$?; if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi; fi
+if ! grep -q "${UUID}" /etc/rc.local 2>/dev/null; then
+  rclocaloverwrite=1
   sudo tee /etc/rc.local 1>/dev/null << ENDSTARTUPSCRIPTS
 #!/bin/bash
 #
@@ -271,6 +279,8 @@ if ! grep -q "^can_raw$" /etc/modules 2>/dev/null; then echo -e "can_raw" | sudo
 # bits.
 #
 # By default this script does nothing.
+
+# UUID:  ${UUID}
 if [[ -L /dev/serial/by-id/*CANtact*-if00 ]]; then
   sudo slcand -o -S 500000 -c /dev/serial/by-id/*CANtact*-if00 can0
   sudo ip link set up can0
@@ -280,6 +290,7 @@ else
 fi
 
 ENDSTARTUPSCRIPTS
+fi
 
 if [[ "${option}" == 'full' ]]; then
   # Setup Kayak
@@ -327,7 +338,7 @@ declare -r txtRED='\033[0;31m'
 declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
 
-read -r -p "What baud rate would you like to use?  " baudrate
+read -p "What baud rate would you like to use?  " baudrate
 # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
 [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
 if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
