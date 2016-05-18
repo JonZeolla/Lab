@@ -75,11 +75,13 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${notOptimalGit} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
+        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is not considered up to date with master.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
-        if [[ ${notOptimalGit} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
+        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the Lab is not considered up to date with master.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the Lab is non-optimal.  Please review ${HOME}/Desktop/Lab manually.${txtDEFAULT}"; fi
         echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/Lab/tutorials and work on the tutorials"
         exit 0
       fi
@@ -101,11 +103,6 @@ if [[ $? != 0 ]]; then
   exit 1
 fi
 
-## Set up arrays
-declare -a status=()
-declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully preparing the AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
-declare -a failure=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}' '${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}')
-
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
@@ -117,8 +114,13 @@ declare -r txtDEFAULT='\033[0m'
 
 ## Initialize variables
 somethingfailed=0
-notOptimalGit=0
+notOptimalGit="false"
 tmpexitstatus=0
+
+## Set up arrays
+declare -a status=()
+declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully preparing the AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
+declare -a failure=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}" "${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}"")
 
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
@@ -171,7 +173,7 @@ update_terminal step
 
 ## Prepare the Automotive Security Lab
 # Setup open-vm-tools if this is a VM
-if [[ dmidecode -s system-product-name | egrep -i 'vmware|virtual machine|qemu|kvm|hvm domu|bochs' ]]; then
+if sudo dmidecode -s system-product-name | egrep -i 'vmware|virtual machine|qemu|kvm|hvm domu|bochs'; then
   sudo apt-get -y install open-vm-tools-desktop fuse
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
@@ -180,20 +182,25 @@ fi
 # Setup the AutomotiveSecurity Lab github repo
 if [[ ! -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop
-  git clone -b ${githubTag} --single-branch --recursive https://github.com/JonZeolla/Lab -q
+  git clone -b ${githubTag} --single-branch --recursive https://github.com/JonZeolla/Lab
   exitstatus=$?
+  notGitUTD="false"
 elif [[ -d ${HOME}/Desktop/Lab ]]; then
   cd ${HOME}/Desktop/Lab
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
-  if [[ $(git status -uno | grep "up-to-date") ]]; then gitUTD=true; else gitUTD=false; fi
-  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && gitUTD == "false" ]]; then
-    notOptimalGit=1
+  if git status -uno | grep "up-to-date"; then notGitUTD="false"; else notGitUTD="true"; fi
+  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && notGitUTD == "false" ]]; then
+    notOptimalGit="false"
+  elif [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && notGitUTD == "true" ]]; then
+    notOptimalGit="true"
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
     echo -e "${txtRED}ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
+    notOptimalGit="true"
     exitstatus=1
   else
     echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
+    notOptimalGit="true"
     exitstatus=1
   fi
 else
