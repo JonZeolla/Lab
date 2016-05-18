@@ -120,7 +120,7 @@ tmpexitstatus=0
 ## Set up arrays
 declare -a status=()
 declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully preparing the AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
-declare -a failure=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}" "${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}"")
+declare -a failure=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}" "${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}")
 
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
