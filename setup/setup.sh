@@ -205,7 +205,7 @@ else
 fi
 
 echo -en "${txtORANGE}"
-read -t 30 -rsp $'WARN:\tThis script overwrites /etc/rc.local if it isn't properly configured for this lab.  You have 30 seconds to press any key to continue or ctrl+c to stop the script...\n' -n1 key
+read -t 30 -rsp $'WARN:\tThis script overwrites /etc/rc.local if it isn\'t properly configured for this lab.  You have 30 seconds to press any key to continue or ctrl+c to stop the script...\n' -n1 key
 if [[ $? == 142 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; timeout=1; fi
 echo -en "${txtDEFAULT}"
 
