@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-14
+# Last update:     2016-05-17
 # File Type:       Bash Script
-# Version:         1.8
+# Version:         1.9
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -158,12 +158,12 @@ update_terminal
 
 ## Re-synchronize the package index files
 # In cases where apt-get update does not succeed perfectly, it will often only create a warning, which means the exit status will still be 0
-sudo apt-get -y -qq update
+sudo apt-get -y update
 exitstatus=$?
 update_terminal step
 
 ## Install the SCIS AutomotiveSecurity lab package requirements
-sudo apt-get -y -qq install git
+sudo apt-get -y install git
 exitstatus=$?
 update_terminal step
 

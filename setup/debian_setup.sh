@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-14
+# Last update:     2016-05-17
 # File Type:       Bash Script
-# Version:         1.13
+# Version:         1.14
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -17,17 +17,23 @@
 # =========================
 
 function update_terminal() {
-  ## Clear the screen
-  clear
-  
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && ${1} == 'fullstep' ]]; then
     status+=('0')
+
+    ## Clear the screen
+    clear
   elif [[ ${exitstatus} == 0 && ${1} == 'minstep' ]]; then
     status+=('0')
+
+    ## Clear the screen
+    clear
   elif [[ ${1} == 'fullstep' || ${1} == 'minstep' ]]; then
     status+=('1')
     somethingfailed=1
+
+    ## Clear the screen
+    clear
   fi
   
   ## Provide the user with the status of all completed steps until this point
@@ -69,7 +75,7 @@ function update_terminal() {
   case ${#status[@]} in
     1)
       if [[ "${1}" == 'fullstep' ]]; then
-        echo -e 'Updating apt package index files and all currently installed packages...\n\n'
+        echo -e 'Updating apt package index files and all currently installed packages (this may take a while)...\n\n'
       elif [[ "${1}" == 'minstep' ]]; then
         echo -e 'Updating apt package index files...\n\n'
       fi
@@ -202,7 +208,7 @@ update_terminal
 
 ## Re-synchronize the package index files, then install the newest versions of all packages currently installed
 if [[ "${option}" == 'full' ]]; then
-  sudo apt-get -y -qq upgrade
+  sudo apt-get -y upgrade
   exitstatus=$?
   update_terminal fullstep
 else
@@ -211,7 +217,7 @@ fi
 
 ## Install dependancies
 # For details regarding can-utils, see https://github.com/linux-can
-sudo apt-get -y -qq install git libtool can-utils dh-autoreconf bison flex wireshark libsdl2-dev libsdl2-image-dev maven libconfig-dev gcc autoconf
+sudo apt-get -y install git libtool can-utils dh-autoreconf bison flex wireshark libsdl2-dev libsdl2-image-dev maven libconfig-dev gcc autoconf ant netbeans python3
 exitstatus=$?
 update_terminal fullstep
 
@@ -275,9 +281,12 @@ fi
 ENDSTARTUPSCRIPTS
 
 if [[ "${option}" == 'full' ]]; then
+  # Setup Kayak
   cd ${HOME}/Desktop/Lab/external/Kayak
   mvn clean install
   kayakmvn=$?
+
+  # Setup socketcand
   cd ${HOME}/Desktop/Lab/external/socketcand
   autoconf
   tmpexitstatus=$?
@@ -291,6 +300,11 @@ if [[ "${option}" == 'full' ]]; then
   sudo make install
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+
+  # Setup cantact-app
+  cd ${HOME}/Desktop/Lab/external/cantact-app
+  export CLASSPATH=$CLASSPATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar
+  ant build
 fi
 
 # Attempt to setup the hardware lab
@@ -319,7 +333,7 @@ if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with t
 createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
 tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
-#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "${txtRED}ERROR:\tIssue bringing up the can0 interface${txtDEFAULT}"; fi; fi
+#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtRED}ERROR:\\tIssue bringing up the can0 interface\${txtDEFAULT}"; fi; fi
 if [[ \${tmpexitstatus} != 0 ]]; then exitstatus="\${tmpexitstatus}"; fi
 sudo ip link set up can0
 
@@ -362,7 +376,7 @@ declare -r txtDEFAULT='\033[0m'
 
 createinterface=\$(sudo ip link add dev vcan0 type vcan 2>&1)
 tmpexitstatus=\$?
-if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "${txtRED}ERROR:\tIssue bringing up the vcan0 interface${txtDEFAULT}"; fi; fi
+if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtRED}ERROR:\\tIssue bringing up the vcan0 interface\${txtDEFAULT}"; fi; fi
 sudo ip link set up vcan0
 
 ENDSTARTVCAN
