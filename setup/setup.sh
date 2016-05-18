@@ -90,7 +90,7 @@ function update_terminal() {
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
         if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
         if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
@@ -98,7 +98,7 @@ function update_terminal() {
         exit 1
       else
         if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/Lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
+        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
         if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
         if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
         if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
@@ -294,12 +294,12 @@ fi
 
 if [[ "${option}" == 'full' ]]; then
   # Setup Kayak
-  cd ${HOME}/Desktop/Lab/external/Kayak
+  cd ${HOME}/Desktop/lab/external/Kayak
   mvn clean install
   kayakmvn=$?
 
   # Setup socketcand
-  cd ${HOME}/Desktop/Lab/external/socketcand
+  cd ${HOME}/Desktop/lab/external/socketcand
   autoconf
   tmpexitstatus=$?
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
@@ -314,7 +314,7 @@ if [[ "${option}" == 'full' ]]; then
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 
   # Setup cantact-app
-  cd ${HOME}/Desktop/Lab/external/cantact-app
+  cd ${HOME}/Desktop/lab/external/cantact-app
   export CLASSPATH=$CLASSPATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar
   ant build
 fi
@@ -363,7 +363,7 @@ fi
 if [ "${hw}" == '0' ]; then
   if [[ "${option}" == 'full' ]]; then
     # There is a good writeup for how to use this code at http://dn5.ljuska.org/cyber-attacks-on-vehicles-2.html
-    cd ${HOME}/Desktop/Lab/external/vircar
+    cd ${HOME}/Desktop/lab/external/vircar
     sudo make
     tmpexitstatus=$?
     if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi

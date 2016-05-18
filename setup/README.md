@@ -24,8 +24,8 @@ A VM has been provided for the lab [here](https://drive.google.com/open?id=0B2ND
     * `sudo logrotate -f /etc/logrotate.conf`  
     * `sudo rm -rf /var/log/*1 /var/log/*old /var/log/*gz`  
     * `cd ${HOME}/Desktop`  
-    * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
-    * `Lab/setup/configure.sh full`  
+    * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
+    * `lab/setup/configure.sh full`  
       * Answer the prompts as appropriate.  
     * `history -c`  
   * Shutdown the virtual machine using the GUI  
