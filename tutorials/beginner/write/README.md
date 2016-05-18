@@ -1,7 +1,7 @@
 # Writing to the CAN bus via CLI  
 ## Preparations  
 First, you need to make sure that you have a can interface up (either vcan0 or can0).  You can verify this by running `ip addr | grep can0`.  
-* If you are using the VM, or if you've already run `${HOME}/Desktop/Lab/setup/configure.sh`, the correct interface should already be available.  If not, you can run `${HOME}/Desktop/setup_can.sh` or `${HOME}/Desktop/setup_vcan.sh`, whichever is appropriate.  You should only have the `setup_can.sh` script available if you've successfully configured a can0 interface in the past using the `setup` scripts.  
+* If you are using the VM, or if you've already run `${HOME}/Desktop/lab/setup/configure.sh`, the correct interface should already be available.  If not, you can run `${HOME}/Desktop/setup_can.sh` or `${HOME}/Desktop/setup_vcan.sh`, whichever is appropriate.  You should only have the `setup_can.sh` script available if you've successfully configured a can0 interface in the past using the `setup` scripts.  
 
 Next, in one terminal window, setup a listener and let it run so that you can examine all of your CAN bus writes.  
 `candump -tA vcan0,0:0`  
@@ -35,6 +35,6 @@ There are also some handy switches such as `-t` which will send the CAN messages
 ## `socketcand`
 The socketcand tool connects a network interface to a CAN interface on a host.  This means that you are able to connect to one or multiple CAN busses that are connected to a host running this software, over an ethernet network connection.  
 You could then send/receive messages to/from that CAN bus remotely.  Below is an example of how you'd set that up.  
-`cd ${HOME}/Desktop/Lab/external/socketcand`  
+`cd ${HOME}/Desktop/lab/external/socketcand`  
 `./socketcand -i vcan0 -v`  
 

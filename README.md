@@ -3,9 +3,9 @@ http://www.meetup.com/Steel-City-InfoSec/events/226195653/
 http://www.meetup.com/Steel-City-InfoSec/boards/thread/49839423  
 
 ## How to clone this branch  
-* `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
+* `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
   * Clone the latest revision of the AutomotiveSecurity branch, and automatically bring in the related submodules.  
-* `git clone -b 2016-05-12_SCIS_AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/Lab`  
+* `git clone -b 2016-05-12_SCIS_AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
   * Clone the revision of the AutomotiveSecurity branch used during the 2016-05-12 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
 
 ## How to use this branch  

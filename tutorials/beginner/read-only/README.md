@@ -1,7 +1,7 @@
 # Reading from the CAN bus via CLI
 ## Preparations  
 First, you need to make sure that you have a can interface up (either vcan0 or can0).  You can verify this by running `ip addr | grep can0`.  
-* If you are using the VM, or if you've already run `${HOME}/Desktop/Lab/setup/configure.sh`, the correct interface should already be available.  If not, you can run `${HOME}/Desktop/setup_can.sh` or `${HOME}/Desktop/setup_vcan.sh`, whichever is appropriate.  You should only have the `setup_can.sh` script available if you've successfully configured a can0 interface in the past using the `setup` scripts.  
+* If you are using the VM, or if you've already run `${HOME}/Desktop/lab/setup/configure.sh`, the correct interface should already be available.  If not, you can run `${HOME}/Desktop/setup_can.sh` or `${HOME}/Desktop/setup_vcan.sh`, whichever is appropriate.  You should only have the `setup_can.sh` script available if you've successfully configured a can0 interface in the past using the `setup` scripts.  
 
 Also, you need to have something to prove that your reads are working.  Run the below command to send some CAN frames onto the can bus.  
 `cangen vcan0`  
@@ -31,11 +31,11 @@ Even the tried-and-true wireshark can capture and display CAN frames.  Try this:
   
 ## `kayak`  
 Kayak is a great tool for parsing through CAN recordings.  To run it, execute:  
-`${HOME}/Desktop/Lab/external/Kayak/application/target/kayak/bin/kayak`  
+`${HOME}/Desktop/lab/external/Kayak/application/target/kayak/bin/kayak`  
 
 ## `icsim`  
 ICSim is an Instrument Cluster Simulator.  The standard method of interfacing with the display is by using the control, as you will see once you run the below commands.  
-`cd ${HOME}/Desktop/Lab/external/ICSim/`  
+`cd ${HOME}/Desktop/lab/external/ICSim/`  
 `./icsim vcan0 &`  
 `./control vcan0 &`  
 For something more interesting, fire up some of the tools described in the `write` folder and try and make the instruments change.  You could also listen to what's being sent across the can bus in a more raw format by using the `candump` or `cansniffer` tools from above.  

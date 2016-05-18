@@ -1,6 +1,6 @@
 # Writing to the CAN bus via CLI  
 ## Preparations  
-You need to make sure you are in the vircar directory, which should be located in `${HOME}/Desktop/Lab/external/vircar/`  
+You need to make sure you are in the vircar directory, which should be located in `${HOME}/Desktop/lab/external/vircar/`  
 
 See the related blog post [here](http://dn5.ljuska.org/cyber-attacks-on-vehicles-2.html).  
 
@@ -15,10 +15,10 @@ or you can "blow the car up", which is a bit funner.  Do that by running:
 ## `vircar-fuzzer`  
 `vircar-fuzzer` is a ruby script written by the author of `vircar`, which was meant to do some fuzzing and brute forcing of the virtual `vircar`, in order to prove a point.  Something similar could be done for real cars, although it would be much more expensive if you were successful =)  
   
-In order to run `vircar-fuzzer`, ensure you are in `${HOME}/Desktop/Lab/external/vircar-fuzzer/src` and run:  
+In order to run `vircar-fuzzer`, ensure you are in `${HOME}/Desktop/lab/external/vircar-fuzzer/src` and run:  
 `ruby vircar-fuzzer.rb`  
 This script essentially is a wrapper for `cangen` and allows for slightly more directed fuzzing using `vircar-fuzzer/src/frames` as an input.  Feel free to take a look around in the script.  
 
 ## `canbus_send.py`  
-Play around with `${HOME}/Desktop/Lab/external/Python_Can/canbus_send.py`  
+Play around with `${HOME}/Desktop/lab/external/Python_Can/canbus_send.py`  
 
