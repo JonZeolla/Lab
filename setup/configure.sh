@@ -190,9 +190,9 @@ elif [[ -d ${HOME}/Desktop/Lab ]]; then
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
   if git status -uno | grep "up-to-date"; then notGitUTD="false"; else notGitUTD="true"; fi
-  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && notGitUTD == "false" ]]; then
+  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && ${notGitUTD} == "false" ]]; then
     notOptimalGit="false"
-  elif [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && notGitUTD == "true" ]]; then
+  elif [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && ${notGitUTD} == "true" ]]; then
     notOptimalGit="true"
   elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
     echo -e "${txtRED}ERROR:\t${HOME}/Desktop/Lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
