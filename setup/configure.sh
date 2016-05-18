@@ -6,7 +6,7 @@
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
 # Last update:     2016-05-18
 # File Type:       Bash Script
-# Version:         1.10
+# Version:         1.11
 # Repository:      https://github.com/JonZeolla/Lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
