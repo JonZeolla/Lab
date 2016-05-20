@@ -223,7 +223,7 @@ fi
 
 ## Install dependancies
 # For details regarding can-utils, see https://github.com/linux-can
-sudo apt-get -y install git git-core libtool can-utils dh-autoreconf bison flex wireshark libsdl2-dev libsdl2-image-dev maven libconfig-dev gcc autoconf ant netbeans python3 python-serial bluetooth bluez-utils blueman python-wxgtk2.8 python-wxtools wx2.8-i18n libwxgtk2.8-dev
+sudo apt-get -y install git git-core libtool can-utils dh-autoreconf bison flex wireshark libsdl2-dev libsdl2-image-dev maven libconfig-dev gcc autoconf ant netbeans python3 python-serial bluetooth bluez bluez-tools blueman python-wxtools
 exitstatus=$?
 update_terminal fullstep
 
