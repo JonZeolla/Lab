@@ -117,13 +117,6 @@ function update_terminal() {
   tmpexitstatus=0
 }
 
-## Set up arrays
-declare -a status=('Start')
-declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
-declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
-declare -a failurefull=('${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}')
-declare -a failuremin=('${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}' '${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}' '${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}')
-
 ## Set static variables
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
@@ -143,6 +136,13 @@ kayakmvn=0
 revert=0
 timeout=0
 rclocaloverwrite=0
+
+## Set up arrays
+declare -a status=('Start')
+declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
+declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
+declare -a failurefull=("${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}")
+declare -a failuremin=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}")
 
 ## Check the OS version
 # Testing Kali Rolling
