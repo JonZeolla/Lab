@@ -314,10 +314,10 @@ if [[ "${option}" == 'full' ]]; then
   if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 
   # Setup cantact-app
-  cd ${HOME}/Desktop/lab/external/cantact-app
-  ant build
-  tmpexitstatus=$?
-  if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
+  #cd ${HOME}/Desktop/lab/external/cantact-app
+  #ant build
+  #tmpexitstatus=$?
+  #if [[ ${tmpexitstatus} != 0 ]]; then exitstatus="${tmpexitstatus}"; fi
 fi
 
 # Attempt to setup the hardware lab
