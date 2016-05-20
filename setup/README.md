@@ -27,6 +27,7 @@ A VM has been provided for the lab [here](https://drive.google.com/open?id=0B2ND
     * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
     * `lab/setup/configure.sh full`  
       * Answer the prompts as appropriate.  
+    * `sudo systemctl enable rsyslog`  
     * `rm ~/.bash_history;history -c`  
   * Shutdown the virtual machine using the GUI  
 * Create the OVA  

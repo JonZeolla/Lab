@@ -16,3 +16,9 @@
 [submodule "external/socketcand"]
 	path = external/socketcand
 	url = https://github.com/dschanoeh/socketcand
+[submodule "external/pyobd-pi"]
+	path = external/pyobd-pi
+	url = https://github.com/Pbartek/pyobd-pi
+[submodule "external/pyobd-pi-TFT"]
+	path = external/pyobd-pi-TFT
+	url = https://github.com/Pbartek/pyobd-pi-TFT
