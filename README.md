@@ -2,19 +2,19 @@
 http://www.meetup.com/Steel-City-InfoSec/events/226195653/  
 http://www.meetup.com/Steel-City-InfoSec/boards/thread/49839423  
 
-## Updating  
-If you'd like to update this branch, open a terminal and `cd` into the repo (if you are following the lab, this is `${HOME}/Desktop/lab/`) and then run:
-```
-git pull
-setup/configure.sh
-```
- * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
-
 ## How to clone this branch  
 * `git clone -b AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
   * Clone the latest revision of the AutomotiveSecurity branch, and automatically bring in the related submodules.  
 * `git clone -b 2016-05-12_SCIS_AutomotiveSecurity --single-branch --recursive https://github.com/JonZeolla/lab`  
   * Clone the revision of the AutomotiveSecurity branch used during the 2016-05-12 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
+
+## Updating this branch  
+If you'd like to update this branch, open a terminal and `cd` into the repo (if you are following the lab, this is `${HOME}/Desktop/lab/`) and then run:  
+```
+git pull
+setup/configure.sh
+```
+ * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
 
 ## How to use this branch  
 * `setup`  
