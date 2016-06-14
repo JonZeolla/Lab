@@ -31,3 +31,7 @@ http://www.meetup.com/Steel-City-InfoSec/events/227075388/
 * https://developer.apple.com/ibeacon/  
 * https://support.apple.com/en-us/HT203027  
 
+### Misc  
+* http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/  
+* https://kontakt.io/blog/beacon-security/  
+
