@@ -37,6 +37,6 @@ Kayak is a great tool for parsing through CAN recordings.  To run it, execute:
 ICSim is an Instrument Cluster Simulator.  The standard method of interfacing with the display is by using the control, as you will see once you run the below commands.  
 `cd ${HOME}/Desktop/lab/external/ICSim/`  
 `./icsim vcan0 &`  
-`./control vcan0 &`  
+`./controls vcan0 &`  
 For something more interesting, fire up some of the tools described in the `write` folder and try and make the instruments change.  You could also listen to what's being sent across the can bus in a more raw format by using the `candump` or `cansniffer` tools from above.  
 
