@@ -35,7 +35,7 @@ A VM will be provided for the lab (TODO)
     echo -e "# Add additional sbin and bin directories to \$PATH\nexport PATH=\$PATH:\${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin\n\n# Include .bashrc if it exists\nif [ -f "\${HOME}/.bashrc" ]; then\n  . "\${HOME}/.bashrc"\nfi\n" > /etc/skel/.bash_profile  
     echo -e "# Kali rolling repos\ndeb http://http.kali.org/kali kali-rolling main contrib non-free\n#deb-src http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list
     echo -e "\n\n# Add additional sbin directories to \$PATH\nexport PATH=\$PATH:/sbin:/usr/sbin:/usr/local/sbin\n" >> /etc/skel/.profile
-    echo "G9JbEy8jADlFXCt0gDeCpSE3vkr48xSumfMWZ2b5Veu5tkPLsO3oGgw6nnHknbsV1tMCkaGHommvx71hlCSmMEIM2DQo6lSkYQEP" >> /etc/scis.conf
+    echo "pXloRpmKEasnWPCUihcQcx1WeUo9fo2hQJAXh1uoAOQ1ooz3xLUCbPYDItfeULA9zItnZaQqfell0LLBzSuQhxl98dyP8y7DY1hE" >> /etc/scis.conf
     useradd -m -p $(openssl passwd -1 P@ssword) -s /bin/bash -c "SCIS Proximity Attacks User" -G sudo prox
     history -c && gnome-session-quit
     ```
