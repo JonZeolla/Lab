@@ -76,12 +76,12 @@ function update_terminal() {
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
         if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
         echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
         exit 1
       else
         if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\t\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
+        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
         echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/lab/tutorials and work on the tutorials"
         exit 0
       fi
