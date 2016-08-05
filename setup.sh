@@ -4,7 +4,7 @@
 
 # =========================
 # Author:	Jon Zeolla (JZeolla, JonZeolla)
-# Last update:	2016-08-02
+# Last update:	2016-08-04
 # File Type:	Bash Script
 # Version:	1.0
 # Repository:	https://github.com/JonZeolla/lab
@@ -189,12 +189,8 @@ else
 fi
 update_terminal nextstep
 
-## Kick off the appropriate lab configuration script
-if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
-	${HOME}/Desktop/lab/configure.sh
-	checkexitstatus
-	update_terminal nextstep
-else
-	feedback ABORT "Your OS has not been tested with this script"
-fi
+## Kick off the lab configuration script
+${HOME}/Desktop/lab/configure.sh
+checkexitstatus
+update_terminal nextstep
 

@@ -1,0 +1,3 @@
+[submodule "external/proxmark3"]
+	path = external/proxmark3
+	url = https://github.com/Proxmark/proxmark3.git
