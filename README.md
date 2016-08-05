@@ -88,6 +88,7 @@ A VM will be provided for the lab (TODO)
 * http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/
 * https://kontakt.io/blog/beacon-security/
 * http://www.radio-electronics.com/info/wireless/nfc/near-field-communications-modulation-rf-signal-interface.php
+* https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
 
 
 [1]:  I typically make sure to create VMs as harware version 10 under Compatibility because I've found it fixes some issues with transferring VMs between VMware Fusion and ESXi 5.5.

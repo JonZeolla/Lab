@@ -125,8 +125,8 @@ notOptimalGit=0
 
 ## Set up arrays
 declare -a status=('start')
-declare -a success=('Successfully updated apt package index files and all currently installed packages' 'Successfully installed the ${githubTag} lab requirements' 'Successfully set up the ${githubTag} lab environment' 'Successfully set up the ${githubTag} lab')
-declare -a failure=('Issue updating apt package index files and all currently installed packages' 'Issue installing the ${githubTag} lab requirements' 'Issue setting up the ${githubTag} lab environment' 'Issue setting up the ${githubTag} lab')
+declare -a success=('Successfully updated apt package index files and all currently installed packages' "Successfully installed the ${githubTag} lab requirements" "Successfully set up the ${githubTag} lab environment" "Successfully set up the ${githubTag} lab")
+declare -a failure=('Issue updating apt package index files and all currently installed packages' "Issue installing the ${githubTag} lab requirements" "Issue setting up the ${githubTag} lab environment" "Issue setting up the ${githubTag} lab")
 
 ## Check the OS version
 # Testing Kali Rolling

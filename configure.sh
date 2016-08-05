@@ -60,13 +60,14 @@ sudo apt-get -y install p7zip build-essential libreadline5 libreadline-dev gcc-a
 checkexitstatus
 
 ## Set up the lab environment
-sudo mkdir –p /opt/devkitpro/
+sudo mkdir -p /opt/devkitpro/
 checkexitstatus
 if [[ -e ${HOME}/Desktop/lab/.storage/devkitARM_r41-x86_64-linux.tar.bz2 ]]; then
+	cd ${HOME}/Desktop/lab/.storage
 	tar -jxvf ${HOME}/Desktop/lab/.storage/devkitARM_r41-x86_64-linux.tar.bz2
 	checkexitstatus
 fi
-sudo mv ${HOME}/Desktop/lab/.storage/devkitARM_r41-x86_64-linux /opt/devkitpro/
+sudo mv ${HOME}/Desktop/lab/.storage/devkitARM /opt/devkitpro/
 checkexitstatus
 cd ${HOME}/Desktop/lab/external/proxmark3
 checkexitstatus
