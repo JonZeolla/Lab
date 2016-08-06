@@ -153,7 +153,7 @@ sudo apt-get -y install git imvirt wget
 
 ## Check virtualization
 if ! imvirt | grep -i vmware; then
-	feedback ABORT "Unsupported hypervisor"
+	feedback WARN "Unsupported hypervisor"
 fi
 
 ## Check Network Connection
