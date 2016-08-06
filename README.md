@@ -13,7 +13,7 @@ If you'd like to configure this lab on your own system, from the top level of th
 `./setup.sh`
 
 ### Use the provided Virtual Machine
-A VM will be provided for the lab (TODO)
+A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been tested with the following configuration.  
 ##### Login Credentials
 * Username:  prox
 * Password:  P@ssword

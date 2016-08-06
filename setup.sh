@@ -148,6 +148,14 @@ if [[ "${osDistro}" != 'Kali' && "${osVersion}" != 'Rolling' ]]; then
 	feedback ABORT "Your OS has not been tested with this script"
 fi
 
+## Install requirements
+apt-get -y install git imvirt wget
+
+## Check virtualization
+if ! imvirt | grep -i vmware; then
+	feedback ABORT "Unsupported hypervisor"
+fi
+
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
