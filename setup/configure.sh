@@ -156,6 +156,13 @@ else
   read -rsp $'Input was neither full nor minimum.  Assuming full, please press any key to continue or ctrl+c to stop the script...\n' -n1 key
 fi
 
+## Check virtualization
+sudo apt-get -y install imvirt
+if ! imvirt | grep -i vmware; then
+	echo -e "${txtORANGE}WARN:\tYou are running an unsupported hypervisor.${txtDEFAULT}"
+fi
+
+
 ## Update the terminal
 update_terminal
 
