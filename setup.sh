@@ -149,7 +149,7 @@ if [[ "${osDistro}" != 'Kali' && "${osVersion}" != 'Rolling' ]]; then
 fi
 
 ## Install requirements
-apt-get -y install git imvirt wget
+sudo apt-get -y install git imvirt wget
 
 ## Check virtualization
 if ! imvirt | grep -i vmware; then
