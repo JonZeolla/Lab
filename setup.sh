@@ -4,9 +4,9 @@
 
 # =========================
 # Author:	Jon Zeolla (JZeolla, JonZeolla)
-# Last update:	2016-08-04
+# Last update:	2016-08-05
 # File Type:	Bash Script
-# Version:	1.0
+# Version:	1.1
 # Repository:	https://github.com/JonZeolla/lab
 # Description:	This is a general purpose bash script to set up my labs.
 #
@@ -16,13 +16,26 @@
 # =========================
 
 feedback() {
-	color=txt${1}
-	if [[ ${1} == "ABORT" ]]; then
-		echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
-		exit 1
-	else
-		echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
-	fi
+        color=txt${1:-DEFAULT}
+        if [ $# -eq 0 ]; then
+		clear
+                for line in "${allfeedback[@]}"; do
+			level=$(cut -f1 -d' ' <<< ${line})
+			text=$(sed "s_^${level} __" <<< ${line})
+			feedback "${level}" "${text}" "internal"
+                done
+        else
+                if [[ ${1} == "ABORT" ]]; then
+                        echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
+                        exit 1
+                else
+                        echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
+                fi
+
+                if [[ ${3} != "internal" ]]; then
+                        allfeedback+=("${1} ${2}")
+                fi
+        fi
 }
 
 checkexitstatus() {
@@ -77,7 +90,7 @@ update_terminal() {
 			echo -e 'Updating apt package index files and all currently installed packages (this may take a while)...\n\n'
 			;;
 		2)
-			echo -e '\nInstalling some ${githubTag} lab package requirements...\n\n'
+			echo -e "\nInstalling some ${githubTag} lab package requirements...\n\n"
 			;;
 		3)
 			echo -e '\nSetting up the lab environment...\n\n'
@@ -90,8 +103,7 @@ update_terminal() {
 			if [[ ${somethingfailed} != 0 ]]; then
 				feedback ABORT "Something went wrong during the installation process"
 			else
-				feedback INFO "Successfully set up the ${githubTag} lab"
-				exit 0
+				exit ${exitstatus}
 			fi
 			;;
 		*)
@@ -122,6 +134,8 @@ declare -r txtABORT='\033[1;31m'
 somethingfailed=0
 i=0
 notOptimalGit=0
+internalcall=0
+declare -a allfeedback
 
 ## Set up arrays
 declare -a status=('start')

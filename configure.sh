@@ -4,9 +4,9 @@
 
 # =========================
 # Author:	Jon Zeolla (JZeolla, JonZeolla)
-# Last update:	2016-08-04
+# Last update:	2016-08-05
 # File Type:	Bash Script
-# Version:	1.0
+# Version:	1.1
 # Repository:	https://github.com/JonZeolla/lab
 # Description:	This is a bash script to configure the Proximity Attacks lab.
 #
@@ -16,12 +16,25 @@
 # =========================
 
 feedback() {
-	color=txt${1}
-	if [[ ${1} == "ABORT" ]]; then
-		echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
-		exit 1
+	color=txt${1:-DEFAULT}
+	if [ $# -eq 0 ]; then
+		clear
+		for line in "${allfeedback[@]}"; do
+			level=$(cut -f1 -d' ' <<< ${line})
+			text=$(sed "s_^${level} __" <<< ${line})
+			feedback "${level}" "${text}" "internal"
+		done
 	else
-		echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
+		if [[ ${1} == "ABORT" ]]; then
+			echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
+			exit 1
+		else
+			echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
+		fi
+
+		if [[ ${3} != "internal" ]]; then
+			allfeedback+=("${1} ${2}")
+		fi
 	fi
 }
 
@@ -49,6 +62,7 @@ declare -r txtABORT='\033[1;31m'
 ## Initialize variables
 exitstatus=0
 tmpexitstatus=0
+declare -a allfeedback
 
 ## Check for the carhax user and watermark
 if [ ${usrCurrent} == 'prox' ] && [ -f /etc/scis.conf ] && grep -q ${UUID} /etc/scis.conf; then
@@ -93,4 +107,5 @@ fi
 feedback INFO "Nothing to do right now."
 checkexitstatus
 
+feedback
 exit ${exitstatus}
