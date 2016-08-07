@@ -60,6 +60,15 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
     ./ovftool --acceptAllEulas /path/to/VM.vmx /path/to/VM.ova
     ```
 
+## Updating this branch  
+If you'd like to update this branch, open a terminal and `cd` into the repo (if you are following the lab, this is `${HOME}/Desktop/lab/`) and then run:  
+
+```
+git pull
+setup/setup.sh
+```
+ * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
+
 ## Some other good materials
 ### Hardware
 * http://news.mit.edu/2016/hack-proof-rfid-chips-0203
