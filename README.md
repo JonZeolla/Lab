@@ -65,7 +65,7 @@ If you'd like to update this branch, open a terminal and `cd` into the repo (if 
 
 ```
 git pull
-setup/setup.sh
+./setup.sh
 ```
  * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
 
