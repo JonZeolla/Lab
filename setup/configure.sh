@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-18
+# Last update:     2016-08-06
 # File Type:       Bash Script
-# Version:         1.12
+# Version:         1.13
 # Repository:      https://github.com/JonZeolla/lab
 # Description:     This is a bash script to configure the Steel City InfoSec Automotive Security Lab.
 #
@@ -15,7 +15,17 @@
 #
 # =========================
 
-function update_terminal() {
+feedback() {
+	color=txt${1:-DEFAULT}
+	if [[ ${1} == "ABORT" ]]; then
+		echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
+		exit 1
+	else
+		echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
+	fi
+}
+
+update_terminal() {
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && $1 == 'step' ]]; then
     status+=('0')
@@ -33,18 +43,17 @@ function update_terminal() {
     fi
     if [[ ${x} == 0 ]]; then
       # Echo the correct success message
-      echo -e ${success[${i}]}
+      feedback INFO ${success[${i}]}
       # Increment i
       ((i++))
     elif [[ ${x} == 1 ]]; then
       # Echo the correct failure message
-      echo -e ${failure[${i}]}
+      feedback ERROR ${failure[${i}]}
       # Increment i
       ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "\n${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
-      exit 1
+      feedback ABORT "Unknown error evaluating ${x} in the status array"
     fi
   done
 
@@ -59,15 +68,14 @@ function update_terminal() {
       echo -e 'Re-synchronizing the package index files...\n\n'
       ;;
     1)
-      echo -e '\nInstalling some AutomotiveSecurity lab package requirements...\n\n'
+      echo -e "\nInstalling some ${githubTag} lab package requirements...\n\n"
       ;;
     2)
       echo -e "\nRetrieving the ${githubTag} branch...\n\n"
       ;;
     3)
       if [[ $somethingfailed != 0 ]]; then
-        echo -e "\n${txtRED}ERROR:\tSomething went wrong during the setup process${txtDEFAULT}"
-        exit 1
+        feedback ABORT "Something went wrong during the setup process"
       else
         echo -e '\nKicking off the lab setup script...\n\n'
       fi
@@ -75,20 +83,18 @@ function update_terminal() {
     4)
       # Give a summary update
       if [[ $somethingfailed != 0 ]]; then
-        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
-        echo -e "${txtRED}ERROR:\tSomething went wrong during the AutomotiveSecurity lab ${option} installation${txtDEFAULT}"
-        exit 1
+        if [[ ${notGitUTD} != "false" ]]; then feedback WARN "Your local git instance of the lab is not considered up to date with master."; fi
+        if [[ ${notOptimalGit} != "false" ]]; then feedback WARN "Your local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually."; fi
+        feedback ABORT "Something went wrong during the ${githubTag} lab ${option} installation"
       else
-        if [[ ${notGitUTD} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is not considered up to date with master.${txtDEFAULT}"; fi
-        if [[ ${notOptimalGit} != "false" ]]; then echo -e "${txtORANGE}WARN:\tYour local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually.${txtDEFAULT}"; fi
-        echo -e "INFO:\tSuccessfully configured the AutomotiveSecurity lab ${option} install\n\nYou can now go to ${HOME}/Desktop/lab/tutorials and work on the tutorials"
+        if [[ ${notGitUTD} != "false" ]]; then feedback WARN "Your local git instance of the lab is not considered up to date with master."; fi
+        if [[ ${notOptimalGit} != "false" ]]; then feedback WARN "Your local git instance of the lab is non-optimal.  Please review ${HOME}/Desktop/lab manually."; fi
+        feedback INFO "Successfully configured the ${githubTag} lab ${option} install\n\nYou can now go to ${HOME}/Desktop/lab/tutorials and work on the tutorials"
         exit 0
       fi
       ;;
     *)
-      echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
-      exit 1
+      feedback ABORT "Unknown error"
       ;;
   esac
   
@@ -99,8 +105,7 @@ function update_terminal() {
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
-  echo -e "${txtRED}ERROR:\tUnable to contact github.com${txtDEFAULT}"
-  exit 1
+  feedback ABORT "Unable to contact github.com"
 fi
 
 ## Set static variables
@@ -108,9 +113,12 @@ declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(cat /etc/issue | awk '{print $3}')"
 declare -r githubTag="AutomotiveSecurity"
-declare -r txtRED='\033[0;31m'
-declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
+declare -r txtDEBUG='\033[33;34m'
+declare -r txtINFO='\033[0;30m'
+declare -r txtWARN='\033[0;33m'
+declare -r txtERROR='\033[0;31m'
+declare -r txtABORT='\033[1;31m'
 
 ## Initialize variables
 somethingfailed=0
@@ -119,14 +127,13 @@ tmpexitstatus=0
 
 ## Set up arrays
 declare -a status=()
-declare -a success=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab package requirements' 'INFO:\tSuccessfully preparing the AutomotiveSecurity lab branch' 'INFO:\tSuccessfully ran the lab setup script')
-declare -a failure=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab package requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue preparing the AutomotiveSecurity lab branch${txtDEFAULT}" "${txtRED}ERROR:\tIssue running the lab setup script${txtDEFAULT}")
+declare -a success=('Successfully updated apt package index files' "Successfully installed ${githubTag} lab package requirements" "Successfully preparing the ${githubTag} lab branch" 'Successfully ran the lab setup script')
+declare -a failure=("Issue updating apt package index files" "Issue installing ${githubTag} lab package requirements" "Issue preparing the ${githubTag} lab branch" "Issue running the lab setup script")
 
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
   clear
-  echo -e "${txtRED}ERROR:\tIt's a bad idea to run any script when logged in as root - please login with a less privileged account that has sudo access${txtDEFAULT}"
-  exit 1
+  feedback ABORT "It's a bad idea to run scripts when logged in as root - please login with a less privileged account that has sudo access"
 fi
 
 ## Check input
@@ -159,7 +166,7 @@ fi
 ## Check virtualization
 sudo apt-get -y install imvirt
 if ! imvirt | grep -i vmware; then
-	echo -e "${txtORANGE}WARN:\tYou are running an unsupported hypervisor.${txtDEFAULT}"
+	feedback WARN "You are running an unsupported hypervisor."
 fi
 
 
@@ -197,21 +204,21 @@ elif [[ -d ${HOME}/Desktop/lab ]]; then
   isgit=$(git rev-parse --is-inside-work-tree || echo false)
   curBranch=$(git branch | grep \* | awk '{print $2}')
   if git status -uno | grep "up-to-date"; then notGitUTD="false"; else notGitUTD="true"; fi
-  if [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && ${notGitUTD} == "false" ]]; then
+  if [[ ${isgit} == "true" && (${curBranch} == "${githubTag}" || ${curBranch} == "(no branch)") && ${notGitUTD} == "false" ]]; then
     notOptimalGit="false"
-  elif [[ ${isgit} == "true" && (${curBranch} == "AutomotiveSecurity" || ${curBranch} == "(no branch)") && ${notGitUTD} == "true" ]]; then
+  elif [[ ${isgit} == "true" && (${curBranch} == "${githubTag}" || ${curBranch} == "(no branch)") && ${notGitUTD} == "true" ]]; then
     notOptimalGit="true"
-  elif [[ ${isgit} == "false" || (${curBranch} != "AutomotiveSecurity" && ${curBranch} != "(no branch)") ]]; then
-    echo -e "${txtRED}ERROR:\t${HOME}/Desktop/lab exists, but is not a functional git working tree or is pointing to the wrong branch.${txtDEFAULT}"
+  elif [[ ${isgit} == "false" || (${curBranch} != "${githubTag}" && ${curBranch} != "(no branch)") ]]; then
+    feedback ERROR "${HOME}/Desktop/lab exists, but is not a functional git working tree or is pointing to the wrong branch."
     notOptimalGit="true"
     exitstatus=1
   else
-    echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
+    feedback ERROR "Unknown error"
     notOptimalGit="true"
     exitstatus=1
   fi
 else
-  echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
+  feedback ERROR "Unknown error"
   exitstatus=1
 fi
 update_terminal step
@@ -222,7 +229,6 @@ if [[ "${osDistro}" == 'Kali' && "${osVersion}" == 'Rolling' ]]; then
   exitstatus=$?
   update_terminal step
 else
-  echo -e "${txtRED}ERROR:\tYour OS has not been tested with this script${txtDEFAULT}"
-  exit 1
+  feedback ABORT "Your OS has not been tested with this script"
 fi
 

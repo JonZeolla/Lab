@@ -4,9 +4,9 @@
 
 # =========================
 # Author:          Jon Zeolla (JZeolla, JonZeolla)
-# Last update:     2016-05-18
+# Last update:     2016-08-06
 # File Type:       Bash Script
-# Version:         1.16
+# Version:         1.17
 # Repository:      https://github.com/JonZeolla/lab
 # Description:     This is a bash script to setup various Debian-based systems for the Steel City InfoSec Automotive Security Lab.
 #
@@ -16,7 +16,17 @@
 #
 # =========================
 
-function update_terminal() {
+feedback() {
+	color=txt${1:-DEFAULT}
+	if [[ ${1} == "ABORT" ]]; then
+		echo -e "${!color}ERROR:\t${2}, aborting...${txtDEFAULT}"
+		exit 1
+	else
+		echo -e "${!color}${1}:\t${2}${txtDEFAULT}"
+	fi
+}
+
+update_terminal() {
   ## Set the status for the current stage appropriately
   if [[ ${exitstatus} == 0 && ${1} == 'fullstep' ]]; then
     status+=('0')
@@ -41,30 +51,29 @@ function update_terminal() {
     if [[ ${x} == 'Start' ]]; then
       # Check for the carhax user and watermark
       if [ ${usrCurrent} == 'carhax' ] && [ -f /etc/scis.conf ] && grep -q ${UUID} /etc/scis.conf; then
-        echo -e 'INFO:\tIt appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times'
+        feedback INFO "It appears that you are using the Steel City InfoSec Automotive Security lab machine.  This may already be setup, but there is no harm in running it multiple times"
       fi
     elif [[ ${x} == 0 ]]; then
       # Echo the correct success message
       if [[ ${1} == 'fullstep' ]]; then
-        echo -e ${successfull[${i}]}
+        feedback INFO ${successfull[${i}]}
       elif [[ ${1} == 'minstep' ]]; then
-        echo -e ${successmin[${i}]}
+        feedback INFO ${successmin[${i}]}
       fi
       # Increment i
       ((i++))
     elif [[ ${x} == 1 ]]; then
       # Echo the correct failure message
       if [[ ${1} == 'fullstep' ]]; then
-        echo -e ${failurefull[${i}]}
+        feedback ERROR ${failurefull[${i}]}
       elif [[ ${1} == 'minstep' ]]; then
-        echo -e ${failuremin[${i}]}
+        feedback ERROR ${failuremin[${i}]}
       fi
       # Increment i
       ((i++))
     else
       # Echo that there was an unknown error
-      echo -e "${txtRED}ERROR:\tUnknown error evaluating ${x} in the status array${txtDEFAULT}"
-      exit 1
+      feedback ABORT "Unknown error evaluating ${x} in the status array"
     fi
   done
 
@@ -89,26 +98,25 @@ function update_terminal() {
     4)
       # Give a summary update and cleanup messages
       if [[ ${somethingfailed} != 0 ]]; then
-        if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
-        if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
-        if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
-        if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
-        echo -e "${txtRED}ERROR:\tSomething went wrong during the installation process${txtDEFAULT}"
+        if [[ ${wrongruby} != 0 ]]; then feedback WARN "Ruby is the incorrect version.  vircar-fuzzer may not function properly"; fi
+        if [[ ${kayakmvn} != 0 ]]; then feedback WARN "There are some known issues with the Kayak setup."; feedback WARN "There is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success"; fi
+        if [[ ${timeout} != 0 ]]; then feedback WARN "One or more of the prompts timed out after 30 seconds and used the default without user input."; fi
+        if [[ ${revert} != 0 ]]; then feedback WARN "You selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab"; fi
+        if [[ ${rclocaloverwrite} != 0 ]]; then feedback WARN "Your /etc/rc.local file has been overwritten"; fi
+        feedback ERROR Something went wrong during the installation process
         exit 1
       else
-        if [[ ${wrongruby} != 0 ]]; then echo -e "${txtORANGE}WARN:\tRuby is the incorrect version.  vircar-fuzzer may not function properly${txtDEFAULT}"; fi
-        if [[ ${kayakmvn} != 0 ]]; then echo -e "${txtORANGE}WARN:\tThere are some known issues with the Kayak setup.\nWARN:\tThere is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success${txtDEFAULT}"; fi
-        if [[ ${timeout} != 0 ]]; then echo -e "${txtORANGE}WARN:\tOne or more of the prompts timed out after 30 seconds and used the default without user input.${txtDEFAULT}"; fi
-        if [[ ${revert} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYou selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab${txtDEFAULT}"; fi
-        if [[ ${rclocaloverwrite} != 0 ]]; then echo -e "${txtORANGE}WARN:\tYour /etc/rc.local file has been overwritten${txtDEFAULT}"; fi
-        echo -e 'INFO:\tSuccessfully configured the AutomotiveSecurity lab'
+        if [[ ${wrongruby} != 0 ]]; then feedback WARN "Ruby is the incorrect version.  vircar-fuzzer may not function properly"; fi
+        if [[ ${kayakmvn} != 0 ]]; then feedback WARN "There are some known issues with the Kayak setup."; feedback WARN "There is no need to re-run the setup scripts, however please run `cd ${HOME}/Desktop/lab/external/Kayak;mvn clean install` until it reports success"; fi
+        if [[ ${timeout} != 0 ]]; then feedback WARN "One or more of the prompts timed out after 30 seconds and used the default without user input."; fi
+        if [[ ${revert} != 0 ]]; then feedback WARN "You selected to use the hardware lab, but a supported hardware device was not detected, so the script reverted to setting up the virtual lab"; fi
+        if [[ ${rclocaloverwrite} != 0 ]]; then feedback WARN "Your /etc/rc.local file has been overwritten"; fi
+        feedback INFO "Successfully configured the ${githubTag} lab"
         exit 0
       fi
       ;;
     *)
-      echo -e "${txtRED}ERROR:\tUnknown error${txtDEFAULT}"
-      exit 1
+      feedback ABORT "Unknown error"
       ;;
   esac
   
@@ -121,9 +129,12 @@ function update_terminal() {
 declare -r usrCurrent="${SUDO_USER:-$USER}"
 declare -r osDistro="$(cat /etc/issue | awk '{print $1}')"
 declare -r osVersion="$(lsb_release -r | awk '{print $3}')"
-declare -r txtRED='\033[0;31m'
-declare -r txtORANGE='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
+declare -r txtDEBUG='\033[33;34m'
+declare -r txtINFO='\033[0;30m'
+declare -r txtWARN='\033[0;33m'
+declare -r txtERROR='\033[0;31m'
+declare -r txtABORT='\033[1;31m'
 declare -r UUID='W8wnTFMhhU7RHHAnLIPJdWPKdbySMgIpnh3qwf4uEKnSlytbbB1EWKAEvkTHLAX7uE51T2BDkQqMmttziyErC0kmQLiUeScEmYWo'
 
 ## Initialize variables
@@ -139,23 +150,21 @@ rclocaloverwrite=0
 
 ## Set up arrays
 declare -a status=('Start')
-declare -a successfull=('INFO:\tSuccessfully updated apt package index files and all currently installed packages' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
-declare -a successmin=('INFO:\tSuccessfully updated apt package index files' 'INFO:\tSuccessfully installed AutomotiveSecurity lab requirements' 'INFO:\tSuccessfully setup the lab environment' 'INFO:\tSuccessfully set up the AutomotiveSecurity Lab')
-declare -a failurefull=("${txtRED}ERROR:\tIssue updating apt package index files and all currently installed packages${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}")
-declare -a failuremin=("${txtRED}ERROR:\tIssue updating apt package index files${txtDEFAULT}" "${txtRED}ERROR:\tIssue installing AutomotiveSecurity lab requirements${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the lab environment${txtDEFAULT}" "${txtRED}ERROR:\tIssue setting up the AutomotiveSecurity Lab${txtDEFAULT}")
+declare -a successfull=('Successfully updated apt package index files and all currently installed packages' "Successfully installed ${githubTag} lab requirements" 'Successfully setup the lab environment' "Successfully set up the ${githubTag} Lab")
+declare -a successmin=('Successfully updated apt package index files' "Successfully installed ${githubTag} lab requirements" 'Successfully setup the lab environment' "Successfully set up the ${githubTag} Lab")
+declare -a failurefull=("Issue updating apt package index files and all currently installed packages" "Issue installing ${githubTag} lab requirements" "Issue setting up the lab environment" "Issue setting up the ${githubTag} Lab")
+declare -a failuremin=("Issue updating apt package index files" "Issue installing ${githubTag} lab requirements" "Issue setting up the lab environment" "Issue setting up the ${githubTag} Lab")
 
 ## Check the OS version
 # Testing Kali Rolling
 if [[ "${osDistro}" != 'Kali' && "${osVersion}" != 'Rolling' ]]; then
-  echo -e "${txtRED}ERROR:\tYour OS has not been tested with this script${txtDEFAULT}"
-  exit 1
+  feedback ABORT "Your OS has not been tested with this script"
 fi
 
 ## Check Network Connection
 wget -q --spider 'www.github.com'
 if [[ $? != 0 ]]; then
-  echo -e "${txtRED}ERROR:\tUnable to contact github.com${txtDEFAULT}"
-  exit 1
+  feedback ABORT "Unable to contact github.com"
 fi
 
 ## Check the version of ruby
@@ -170,8 +179,7 @@ clear
 ## Check if the user running this is root
 if [[ "${usrCurrent}" == "root" ]]; then
   clear
-  echo -e "${txtRED}ERROR:\tIt's a bad idea to run scripts when logged in as root - please login with a less privileged account that has sudo access${txtDEFAULT}"
-  exit 1
+  feedback ABORT "It's a bad idea to run scripts when logged in as root - please login with a less privileged account that has sudo access"
 fi
 
 ## Check input
@@ -204,9 +212,9 @@ else
   read -rsp $'Input was neither full nor minimum.  Assuming full, please press any key to continue or ctrl+c to stop the script...\n' -n1 key
 fi
 
-echo -en "${txtORANGE}"
+echo -en "${txtWARN}"
 read -t 30 -rsp $'WARN:\tThis script overwrites /etc/rc.local if it isn\'t properly configured for this lab.  You have 30 seconds to press any key to continue or ctrl+c to stop the script...\n' -n1 key
-if [[ $? == 142 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; timeout=1; fi
+if [[ $? == 142 ]]; then feedback WARN "Timed out, continuing with the script..."; timeout=1; fi
 echo -en "${txtDEFAULT}"
 
 ## Start up the main part of the script
@@ -230,7 +238,7 @@ update_terminal fullstep
 ## Setup the lab
 while [ -z "${prompt}" ]; do
   read -t 30 -p "Do you plan to use hardware? (y/N)  " prompt
-  if [[ $? == 142 ]]; then echo -e "${txtORANGE}WARN:\tTimed out, continuing with the script...${txtDEFAULT}"; timeout=1; fi
+  if [[ $? == 142 ]]; then feedback WARN "Timed out, continuing with the script..."; timeout=1; fi
   case ${prompt} in
     [yY]|[yY][eE][sS]|[sS][uU][rR][eE]|[yY][uU][pP]|[yY][eE][pP]|[yY][eE][aA][hH]|[yY][aA]|[iI][nN][dD][eE][eE][dD]|[aA][bB][ss][oO][lL][uU][tT][eE][lL][yY]|[aA][fF][fF][iI][rR][mM][aA][tT][iI][vV][eE])
       hw=1
@@ -238,7 +246,7 @@ while [ -z "${prompt}" ]; do
 
       # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
       [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
-      if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
+      if [[ $? != 1 ]]; then baudrate=500000; feedback WARN "Issue with the input baud rate, defaulting to 500000"; fi
 
       read -rsp $'Please plug in your hardware device now, and then press any key to continue...\n' -n1 key
       ;;
@@ -335,18 +343,18 @@ if [ "${hw}" == '1' ]; then
     cat > ${HOME}/Desktop/start_can.sh << ENDSTARTCAN
 #!/bin/bash
 
-declare -r txtRED='\033[0;31m'
-declare -r txtORANGE='\033[0;33m'
+declare -r txtERROR='\033[0;31m'
+declare -r txtWARN='\033[0;33m'
 declare -r txtDEFAULT='\033[0m'
 
 read -p "What baud rate would you like to use?  " baudrate
 # Check to make sure ${baudrate} is an integer (no strings, decimals, etc.).  If not, default to 500000
 [ "${baudrate}" -ne "${baudrate}" ] 2>/dev/null
-if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtORANGE}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
+if [[ $? != 1 ]]; then baudrate=500000; echo -e "${txtWARN}WARN:\tIssue with the input baud rate, defaulting to 500000${txtDEFAULT}"; fi
 createinterface=\$(sudo slcand -o -S ${baudrate} -c /dev/serial/by-id/*CANtact*-if00 can0 2>&1)
 tmpexitstatus=\$?
 # TODO:  Catch when can0 already exists and don't count it as a failure - something like:
-#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtRED}ERROR:\\tIssue bringing up the can0 interface\${txtDEFAULT}"; fi; fi
+#if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtERROR}ERROR:\\tIssue bringing up the can0 interface\${txtDEFAULT}"; fi; fi
 if [[ \${tmpexitstatus} != 0 ]]; then exitstatus="\${tmpexitstatus}"; fi
 sudo ip link set up can0
 
@@ -384,12 +392,12 @@ if [ "${hw}" == '0' ]; then
   cat > ${HOME}/Desktop/start_vcan.sh << ENDSTARTVCAN
 #!/bin/bash
 
-declare -r txtRED='\033[0;31m'
+declare -r txtERROR='\033[0;31m'
 declare -r txtDEFAULT='\033[0m'
 
 createinterface=\$(sudo ip link add dev vcan0 type vcan 2>&1)
 tmpexitstatus=\$?
-if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtRED}ERROR:\\tIssue bringing up the vcan0 interface\${txtDEFAULT}"; fi; fi
+if [[ "\${createinterface}" != "RTNETLINK answers: File exists" ]]; then if [[ \${tmpexitstatus} != 0 ]]; then echo -e "\${txtERROR}ERROR:\\tIssue bringing up the vcan0 interface\${txtDEFAULT}"; fi; fi
 sudo ip link set up vcan0
 
 ENDSTARTVCAN
