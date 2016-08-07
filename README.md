@@ -71,21 +71,19 @@ git pull
  * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
 
 ## Some other good materials
-### Hardware
+### General Hardware / Software
 * https://www.kickstarter.com/projects/rysccorp/proxmark-pro-proxmark3-without-a-pc
 * http://news.mit.edu/2016/hack-proof-rfid-chips-0203
 * http://shop.riftrecon.com/products/rfidler
+* https://github.com/linklayer/BLEKey
 * https://store.ryscc.com/products/new-proxmark3-kit
 * http://www.bishopfox.com/resources/tools/rfid-hacking/attack-tools/
 * http://www.boscloner.com/build-instructions.html
 * https://silent-pocket.com/
 * http://rfidguardian.org/index.php/Main_Page
 * https://github.com/emsec/ChameleonMini
-
-### Software
 * https://github.com/coldfusion39/VertXploit
 * https://github.com/AdamLaurie/RFIDIOt
-* https://github.com/linklayer/BLEKey
 * https://github.com/ApertureLabsLtd/RFIDler
 * https://github.com/Proxmark/proxmark3
 * https://github.com/samyk/magspoof
