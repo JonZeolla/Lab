@@ -49,9 +49,10 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
     cd ${HOME}/Desktop
     git clone -b ProximityAttacks --single-branch --recursive https://github.com/JonZeolla/lab
     lab/setup.sh
+    exitcode=$?
     sudo systemctl enable rsyslog
     rm ~/.bash_history
-    history -c && shutdown -P now
+    if [[ ${exitcode} == 0 ]]; then history -c && shutdown -P now; fi
     ```
 8. Create the OVA. On a Mac using VMware Fusion, this looks something like:
 
@@ -71,6 +72,7 @@ git pull
 
 ## Some other good materials
 ### Hardware
+* https://www.kickstarter.com/projects/rysccorp/proxmark-pro-proxmark3-without-a-pc
 * http://news.mit.edu/2016/hack-proof-rfid-chips-0203
 * http://shop.riftrecon.com/products/rfidler
 * https://store.ryscc.com/products/new-proxmark3-kit
