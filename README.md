@@ -79,6 +79,8 @@ git pull
 * http://www.bishopfox.com/resources/tools/rfid-hacking/attack-tools/
 * http://www.boscloner.com/build-instructions.html
 * https://silent-pocket.com/
+* http://rfidguardian.org/index.php/Main_Page
+* https://github.com/emsec/ChameleonMini
 
 ### Software
 * https://github.com/coldfusion39/VertXploit
@@ -88,11 +90,13 @@ git pull
 * https://github.com/Proxmark/proxmark3
 * https://github.com/samyk/magspoof
 * https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
+* https://github.com/brad-anton/proxbrute
 
 ### Android
 * https://developers.google.com/nearby/
 * https://developers.google.com/beacons/
 * https://developer.android.com/guide/topics/connectivity/nfc/hce.html
+* https://sourceforge.net/projects/nfcproxy/
 
 ### Apple iOS
 * https://developer.apple.com/ibeacon/
@@ -103,6 +107,9 @@ git pull
 * https://kontakt.io/blog/beacon-security/
 * http://www.radio-electronics.com/info/wireless/nfc/near-field-communications-modulation-rf-signal-interface.php
 * http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1033&context=techmasters
+* https://www.youtube.com/watch?v=1Xz5HgOL_Gc&list=PLDIb0pk-F3fXXsU90h3WZS9uxyj1rMW0E
+* https://www.youtube.com/watch?v=Bttr7fEfxiE ([slides](https://www.blackhat.com/presentations/bh-dc-08/Franken/Presentation/bh-dc-08-franken.pdf))
+* https://www.youtube.com/watch?v=seKas8KFcSI
 
 
 [1]:  I typically make sure to create VMs as harware version 10 under Compatibility because I've found it fixes some issues with transferring VMs between VMware Fusion and ESXi 5.5.
