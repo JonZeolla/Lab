@@ -66,6 +66,8 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
 * http://shop.riftrecon.com/products/rfidler
 * https://store.ryscc.com/products/new-proxmark3-kit
 * http://www.bishopfox.com/resources/tools/rfid-hacking/attack-tools/
+* http://www.boscloner.com/build-instructions.html
+* https://silent-pocket.com/
 
 ### Software
 * https://github.com/coldfusion39/VertXploit
@@ -74,6 +76,7 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
 * https://github.com/ApertureLabsLtd/RFIDler
 * https://github.com/Proxmark/proxmark3
 * https://github.com/samyk/magspoof
+* https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
 
 ### Android
 * https://developers.google.com/nearby/
@@ -88,7 +91,7 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
 * http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/
 * https://kontakt.io/blog/beacon-security/
 * http://www.radio-electronics.com/info/wireless/nfc/near-field-communications-modulation-rf-signal-interface.php
-* https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
+* http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1033
 
 
 [1]:  I typically make sure to create VMs as harware version 10 under Compatibility because I've found it fixes some issues with transferring VMs between VMware Fusion and ESXi 5.5.
