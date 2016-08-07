@@ -91,7 +91,7 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
 * http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/
 * https://kontakt.io/blog/beacon-security/
 * http://www.radio-electronics.com/info/wireless/nfc/near-field-communications-modulation-rf-signal-interface.php
-* http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1033
+* http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1033&context=techmasters
 
 
 [1]:  I typically make sure to create VMs as harware version 10 under Compatibility because I've found it fixes some issues with transferring VMs between VMware Fusion and ESXi 5.5.
