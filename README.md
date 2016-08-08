@@ -108,6 +108,7 @@ git pull
 * https://www.youtube.com/watch?v=1Xz5HgOL_Gc&list=PLDIb0pk-F3fXXsU90h3WZS9uxyj1rMW0E
 * https://www.youtube.com/watch?v=Bttr7fEfxiE ([slides](https://www.blackhat.com/presentations/bh-dc-08/Franken/Presentation/bh-dc-08-franken.pdf))
 * https://www.youtube.com/watch?v=seKas8KFcSI
+* http://proxclone.com/
 
 
 [1]:  I typically make sure to create VMs as harware version 10 under Compatibility because I've found it fixes some issues with transferring VMs between VMware Fusion and ESXi 5.5.

@@ -39,10 +39,13 @@ feedback() {
 }
 
 checkexitstatus() {
-	tmpexitstatus=$?
-	if [[ ${tmpexitstatus} != 0 ]]; then
-		exitstatus="${tmpexitstatus}"
-	fi
+        tmpexitstatus=$?
+        if [[ ${tmpexitstatus} != 0 ]]; then
+                exitstatus="${tmpexitstatus}"
+        fi
+        if [[ ${1} == "clear" ]]; then
+                tmpexitstatus=0
+        fi
 }
 
 update_terminal() {

@@ -2,3 +2,9 @@
 	path = external/proxmark3
 	url = https://github.com/Proxmark/proxmark3.git
 	branch = v2.3.0
+[submodule "external/BLEKey"]
+	path = external/BLEKey
+	url = https://github.com/linklayer/BLEKey
+[submodule "external/pygatt"]
+	path = external/pygatt
+	url = https://github.com/blark/pygatt
