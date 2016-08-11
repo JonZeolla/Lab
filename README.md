@@ -16,7 +16,7 @@ From the top level of the source code repository run:
 `./setup.sh`
 
 #### Windows
-From the top level of the source code repository, right click the `setup.ps1` file and click "Run with PowerShell".  
+From the top level of the source code repository, right click the `setup.ps1` file and click "Run with PowerShell".  These scripts are not currently signed, so you may need to set `Set-ExecutionPolicy` improperly.  
 
 ### Use the provided Virtual Machine
 A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been tested with the following configuration.  

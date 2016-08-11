@@ -26,23 +26,6 @@ $startTimeResults = Get-Date
 $Log = "$dirLogs\$startTime.txt"
 $githubTag = "ProximityAttacks"
 
-## Setup window size for better logging
-# If you want to adjust this be sure that the buffersize for width is at a minimum the same size as the windowsize for width
-$pshost = get-host
-$pswindow = $pshost.ui.rawui
-
-# Set buffer
-$newsize = $pswindow.buffersize
-$newsize.height = 3000
-$newsize.width = 100
-$pswindow.buffersize = $newsize
-
-# Set window
-$newsize = $pswindow.windowsize
-$newsize.height = 50
-$newsize.width = 100
-$pswindow.windowsize = $newsize
-
 ## Start logging
 Start-Transcript -path $Log -append | Out-Null
 
@@ -60,24 +43,21 @@ Write-Host "====================================================================
 ## Start the install process
 # Install the driver first
 $driver=Start-Process "$dirInstallers\MSR605_driver.exe" -Wait
-if ($driver.exitcode -eq 0)
+if ($LASTEXITCODE -eq 0)
 { Write-Host "Successfully installed the driver for the MSR605" }
 else
 { Write-Host "Error installing the driver for the MSR605" }
 
 # Prompt to plug in the device
-Write-Host "Please plug in the MSR605.`n`nPress any key to continue . . .
+Write-Host "Please plug in the MSR605.`n`nPress any key to continue . . ."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
 
 # Install the software
 $software=Start-Process "$dirInstallers\MSR605_software.exe" -Wait
-if ($software.exitcode -eq 0)
+if ($LASTEXITCODE -eq 0)
 { Write-Host "Successfully installed the software for the MSR605" }
 else
 { Write-Host "Error installing the software for the MSR605" }
-
-Write-Host "`n`nPress any key to continue . . ."
-$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
 
 # Stop logging
 Stop-Transcript | Out-Null
@@ -87,3 +67,4 @@ Stop-Transcript | Out-Null
 # or manually duplicating all terminal output to the log
 $FixFormat = Get-Content $Log
 $FixFormat > $Log
+
