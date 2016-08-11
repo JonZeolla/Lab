@@ -7,10 +7,17 @@ http://www.meetup.com/Steel-City-InfoSec/events/227075388/
 * `git clone -b 2016-08-11_SCIS_ProximityAttacks --single-branch --recursive https://github.com/JonZeolla/lab`
   * Clone the revision of the ProximityAttacks branch used during the 2016-08-11 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.
 
+This assumes that you have git installed on either your Linux or Windows box (instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)).  
+
 ## How to setup the lab
 ### Configure the lab manually  
-If you'd like to configure this lab on your own system, from the top level of the source code repository run:
+#### Linux
+From the top level of the source code repository run:  
 `./setup.sh`
+
+#### Windows
+From the top level of the source code repository run:  
+`./setup.ps1`  
 
 ### Use the provided Virtual Machine
 A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been tested with the following configuration.  
@@ -91,18 +98,13 @@ git pull
 * https://github.com/brad-anton/proxbrute
 
 ### Android
-* https://developers.google.com/nearby/
-* https://developers.google.com/beacons/
 * https://developer.android.com/guide/topics/connectivity/nfc/hce.html
 * https://sourceforge.net/projects/nfcproxy/
 
 ### Apple iOS
-* https://developer.apple.com/ibeacon/
 * https://support.apple.com/en-us/HT203027
 
 ### Misc
-* http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/
-* https://kontakt.io/blog/beacon-security/
 * http://www.radio-electronics.com/info/wireless/nfc/near-field-communications-modulation-rf-signal-interface.php
 * http://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1033&context=techmasters
 * https://www.youtube.com/watch?v=1Xz5HgOL_Gc&list=PLDIb0pk-F3fXXsU90h3WZS9uxyj1rMW0E
