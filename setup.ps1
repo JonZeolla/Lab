@@ -14,8 +14,9 @@
 
 ## Set directories
 $dirDesktop = "C:\Users\testing\Desktop"
-$dirInstallers = "$dirDesktop\lab\.storage\"
-$dirLogs = "$dirDesktop\lab\logs\"
+$dirInstallers = "$dirDesktop\lab\.storage"
+$dirLogs = "$dirDesktop\lab\logs"
+$dirRepo = "$dirDesktop\lab"
 
 ## Set meta
 $ver = "1.0"
@@ -55,6 +56,8 @@ Write-Host "Last updated: $lastUpdate"
 Write-Host "==================================================================================================="
 Write-Host "Start time: $startTimeResults"
 Write-Host "===================================================================================================`n"
+
+Invoke-Expression $dirRepo\configure.ps1
 
 Write-Host "`n`nPress any key to continue . . ."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")

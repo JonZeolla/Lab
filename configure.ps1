@@ -14,8 +14,9 @@
 
 ## Set directories
 $dirDesktop = "C:\Users\testing\Desktop"
-$dirInstallers = "$dirDesktop\lab\.storage\"
-$dirLogs = "$dirDesktop\lab\logs\"
+$dirInstallers = "$dirDesktop\lab\.storage"
+$dirLogs = "$dirDesktop\lab\logs"
+$dirRepo = "$dirDesktop\lab"
 
 ## Set meta
 $ver = "1.0"
