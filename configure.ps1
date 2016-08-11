@@ -2,7 +2,7 @@
 # Author:          Jon Zeolla (JZeolla)
 # Last update:     2016-08-10
 # File Type:       PowerShell Script
-# Version:         1.0
+# Version:         1.1
 # Repository:      https://github.com/JonZeolla/lab
 # Description:     This is a PowerShell script to set up a MSR605 on a windows system using the ProximityAttacks lab.
 #
@@ -19,7 +19,7 @@ $dirLogs = "$dirDesktop\lab\logs"
 $dirRepo = "$dirDesktop\lab"
 
 ## Set meta
-$ver = "1.0"
+$ver = "1.1"
 $lastUpdate = "2016-08-10"
 $startTime = Get-Date -format yyyy-MM-dd-HH.mm.ss
 $startTimeResults = Get-Date
