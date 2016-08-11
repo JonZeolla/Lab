@@ -7,7 +7,7 @@ http://www.meetup.com/Steel-City-InfoSec/events/227075388/
 * `git clone -b 2016-08-11_SCIS_ProximityAttacks --single-branch --recursive https://github.com/JonZeolla/lab`
   * Clone the revision of the ProximityAttacks branch used during the 2016-08-11 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.
 
-This assumes that you have git installed on either your Linux or Windows box (instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)).  
+This assumes that you have git installed on either your Linux or Windows box (instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) and that you have cloned it to your Desktop.  
 
 ## How to setup the lab
 ### Configure the lab manually  
