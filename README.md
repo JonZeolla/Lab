@@ -101,6 +101,7 @@ There is no current way to update this branch on a Windows machine.
 * https://github.com/samyk/magspoof
 * https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
 * https://github.com/brad-anton/proxbrute
+* https://github.com/brad-anton/VertX
 
 ### Android
 * https://developer.android.com/guide/topics/connectivity/nfc/hce.html
