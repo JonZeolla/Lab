@@ -8,3 +8,9 @@
 [submodule "external/pygatt"]
 	path = external/pygatt
 	url = https://github.com/blark/pygatt
+[submodule "external/magspoof"]
+	path = external/magspoof
+	url = https://github.com/samyk/magspoof
+[submodule "external/VertXploit"]
+	path = external/VertXploit
+	url = https://github.com/coldfusion39/VertXploit

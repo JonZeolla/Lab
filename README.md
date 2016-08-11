@@ -25,6 +25,8 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
 * Password:  P@ssword
 
 ### Configure a new VM for distribution
+Note:  This setup will only handle the RFID stations.  Because of Windows licensing and the fact that my MSR605 only works on Windows, I am unable to distribute that as a VM.  
+
 1. Install Kali 2016.1 in a VM[1]
 2. Login as root, then open a terminal
 3. (optional) Take a snapshot
@@ -68,6 +70,7 @@ A VM will be provided for the lab (TODO).  Only **VMWare hypervisors** have been
     ```
 
 ## Updating this branch  
+### Linux
 If you'd like to update this branch, open a terminal and `cd` into the repo (if you are following the lab, this is `${HOME}/Desktop/lab/`) and then run:  
 
 ```
@@ -75,6 +78,9 @@ git pull
 ./setup.sh
 ```
  * It is possible that you will need to first run `git reset --mixed`, depending on if the `git merge` can be successful without manual intervention.  Note that running this command will reset your index, but not the working tree.  If you don't know what that means, and would like to, read [this](https://git-scm.com/docs/git-reset).  
+
+### Windows
+There is no current way to update this branch on a Windows machine.  
 
 ## Some other good materials
 ### General Hardware / Software
