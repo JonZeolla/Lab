@@ -77,7 +77,8 @@ git pull
 
 ## Some other good materials
 ### General Hardware / Software
-* TODO
+* https://github.com/pwnieexpress/blue_hydra
+* https://greatscottgadgets.com/ubertoothone/
 
 ### Android
 * https://developers.google.com/nearby/
@@ -87,6 +88,8 @@ git pull
 * https://developer.apple.com/ibeacon/
 
 ### Misc
+* https://www.youtube.com/watch?v=aVun9cLZRUA
+* https://www.youtube.com/watch?v=0FfvLxW_cZg
 * http://blog.beaconstac.com/2015/10/rfid-vs-ibeacon-ble-technology/
 * https://kontakt.io/blog/beacon-security/
 
