@@ -10,11 +10,7 @@ http://www.meetup.com/Steel-City-InfoSec/events/?
 This assumes that you have git installed on either your Linux or Windows box (instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) and that you have cloned it to your Desktop.  
 
 ## Contributing
-1. Fork the repo
-1. Create your feature branch (git checkout -b feature_branch_name)
-1. Commit your changes (git commit -am 'Changed some things')
-1. Push to the branch you made (git push origin feature_branch_name)
-1. Create a new Pull Request
+1. Coming soon!
 
 
 ## How to setup the lab
