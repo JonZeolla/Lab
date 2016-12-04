@@ -1,11 +1,27 @@
-# Lab Materials  
-This is the repo where I host **branches** which **have the materials** used during events, presentations, labs, etc.  Additionally, I create **tags** to point to the specific version of a branch which was used for a particular event or presentation.  
-  
-The reason I do this is so that you do not need to download all of the labs just to get the one that you're interested in (see below for an example of how to do this).  Some labs are rather large, and someone may want to retrieve a branch in locations where Internet connections are slow.  If you intend to store large files, see `git lfs`.  
-  
-**In order to use this repo as intended, you MUST switch to the appropriate branch**, via the web UI or CLI.  See `git branch -r` and `git checkout -b <remote>` to list and then checkout the appropriate branch via the command line.  In the web UI, use the dropdown directly to the left of the "New pull request" button to select a specific branch or tag.  
-  
-Examples:  
+# Lab Materials (deprecated)  
+This is the repo where I **used to host** branches which have the materials used during events, presentations, labs, etc.  However, **starting on 2016-12-03 I began a project to migrate these materials to standalone repositories**.  The releases will continue to exist here for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
+
+## Status
+As of 2016-12-03, this is the status of the migration  
+
+| Current Branch | Future Repository | Status |
+| -------------- | ----------------- | ------ |
+| [AudioSurveillance](https://github.com/JonZeolla/Lab/tree/AudioSurveillance) | [lab-LaserMicrophones](https://github.com/JonZeolla/lab-LaserMicrophones) | Complete |
+| [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | lab-WifiSecurity | Not Started |
+| [AutomotiveSecurity](https://github.com/JonZeolla/Lab/tree/AutomotiveSecurity) | lab-AutomotiveSecurity | Not Started |
+| [DropBoxes](https://github.com/JonZeolla/Lab/tree/DropBoxes) | lab-DropBoxes | Not Started |
+| [InternetofInsecurity](https://github.com/JonZeolla/Lab/tree/InternetofInsecurity) | lab-InternetofInsecurity | Not Started |
+| [PasswordCracking](https://github.com/JonZeolla/Lab/tree/PasswordCracking) | lab-PasswordCracking | Not Started |
+| [ProximityAttacks](https://github.com/JonZeolla/Lab/tree/ProximityAttacks) | lab-ProximityAttacks* | Not Started |
+| [SoftwareDefinedRadio](https://github.com/JonZeolla/Lab/tree/SoftwareDefinedRadio) | lab-SoftwareDefinedRadio | Not Started |
+
+\* After migration, this should be split into separate labs for RFID, Mag Stripe, NFC, etc.
+
+## How to use this repo
+
+In order to use this repo as intended, you MUST switch to the appropriate branch, via the web UI or CLI. See `git branch -r` and `git checkout <remote>` to list and then checkout the appropriate branch via the command line. In the web UI, use the dropdown directly to the left of the "New pull request" button to select a specific branch or tag.
+
+For materials that still solely exist here, please use the following methods for retrieval and updating:  
 * `git clone -b SoftwareDefinedRadio --single-branch --recursive https://github.com/JonZeolla/Lab`  
   * Clone the latest revision of the SoftwareDefinedRadio branch.  
 * `git clone -b 2015-09-24_SCIS_PasswordCracking --single-branch --recursive https://github.com/JonZeolla/Lab`  
