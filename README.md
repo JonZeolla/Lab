@@ -4,7 +4,7 @@ This is the repo where I **used to host** branches which have the materials used
 ## Status
 As of 2016-12-03, this is the status of the migration  
 
-| Current Branch | Future Repository | Status |
+| Previous Branch | Future Repository | Status |
 | -------------- | ----------------- | ------ |
 | [AudioSurveillance](https://github.com/JonZeolla/Lab/tree/AudioSurveillance) | [lab-LaserMicrophones](https://github.com/JonZeolla/lab-LaserMicrophones) | Complete |
 | [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | lab-WifiSecurity | Not Started |
