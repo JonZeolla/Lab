@@ -1,5 +1,5 @@
 # Lab Materials (deprecated)  
-This is the repo where I **used to host** branches which have the materials used during events, presentations, labs, etc.  However, **starting on 2016-12-03 I began a project to migrate these materials to standalone repositories**.  The releases will continue to exist here for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
+This is the repo where I **used to host** branches which have the materials used during events, presentations, labs, etc.  However, **starting on 2016-12-03 I began a project to migrate these materials to standalone repositories**.  The [releases](https://github.com/JonZeolla/Lab/releases) will continue to exist here for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
 
 ## Status
 As of 2016-12-03, this is the status of the migration  
