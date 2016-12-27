@@ -1,12 +1,2 @@
-# 2015-07-07 Pittsburgh Code and Supply event
-## Breaking Wireless:  The Dos and Donts of Wi-FI  
-http://www.meetup.com/Pittsburgh-Code-Supply/events/222346335/
-
-## How to clone this branch
-* `git clone -b WLANSecurity --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the latest revision of the WLANSecurity branch.  
-* `git clone -b 2015-07-07_JZ_WLANSecurity --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the revision of the WLANSecurity branch used during the 2015-07-07 Pittsburgh Code and Supply event.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
-
-## Potential Future Enhancements
-* https://github.com/P0cL4bs/WiFi-Pumpkin
+# This branch has been migrated
+On 2016-12-26, these materials were migrated from the [WLANSecurity branch](https://github.com/JonZeolla/Lab/tree/WLANSecurity) of https://github.com/JonZeolla/Lab to its own standalone repository.  The [release](https://github.com/JonZeolla/Lab/releases/tag/2015-07-07_JZ_WLANSecurity) for this branch still exists for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
