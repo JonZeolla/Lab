@@ -2,12 +2,12 @@
 This is the repo where I **used to host** branches which have the materials used during events, presentations, labs, etc.  However, **starting on 2016-12-03 I began a project to migrate these materials to standalone repositories**.  The [releases](https://github.com/JonZeolla/Lab/releases) will continue to exist here for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
 
 ## Status
-As of 2016-12-03, this is the status of the migration  
+As of 2016-12-26, this is the status of the migration  
 
 | Previous Branch | Future Repository | Status |
 | -------------- | ----------------- | ------ |
 | [AudioSurveillance](https://github.com/JonZeolla/Lab/tree/AudioSurveillance) | [lab-LaserMicrophones](https://github.com/JonZeolla/lab-LaserMicrophones) | Complete |
-| [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | lab-WifiSecurity | Not Started |
+| [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | [lab-WifiSecurity](https://github.com/JonZeolla/lab-WifiSecurity) | Complete |
 | [AutomotiveSecurity](https://github.com/JonZeolla/Lab/tree/AutomotiveSecurity) | lab-AutomotiveSecurity | Not Started |
 | [DropBoxes](https://github.com/JonZeolla/Lab/tree/DropBoxes) | lab-DropBoxes | Not Started |
 | [InternetofInsecurity](https://github.com/JonZeolla/Lab/tree/InternetofInsecurity) | lab-InternetofInsecurity | Not Started |
