@@ -8,7 +8,7 @@ As of 2016-12-26, this is the status of the migration
 | -------------- | ----------------- | ------ |
 | [AudioSurveillance](https://github.com/JonZeolla/Lab/tree/AudioSurveillance) | [lab-LaserMicrophones](https://github.com/JonZeolla/lab-LaserMicrophones) | Complete |
 | [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | [lab-WifiSecurity](https://github.com/JonZeolla/lab-WifiSecurity) | Complete |
-| [AutomotiveSecurity](https://github.com/JonZeolla/Lab/tree/AutomotiveSecurity) | lab-AutomotiveSecurity | Not Started |
+| [AutomotiveSecurity](https://github.com/JonZeolla/Lab/tree/AutomotiveSecurity) | [lab-AutomotiveSecurity](https://github.com/JonZeolla/lab-AutomotiveSecurity) | Complete |
 | [DropBoxes](https://github.com/JonZeolla/Lab/tree/DropBoxes) | lab-DropBoxes | Not Started |
 | [InternetofInsecurity](https://github.com/JonZeolla/Lab/tree/InternetofInsecurity) | lab-InternetofInsecurity | Not Started |
 | [PasswordCracking](https://github.com/JonZeolla/Lab/tree/PasswordCracking) | lab-PasswordCracking | Not Started |
