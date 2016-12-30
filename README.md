@@ -1,12 +1,2 @@
-# 2015-04-09 Steel City Information Security Lab  
-
-http://www.meetup.com/Steel-City-InfoSec/events/219881505/  
-http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/48872874/0/#127938640  
-
-As of 2015-09-14, this moved from github.com/BrianWGray/keysweeper
-
-## How to clone this branch
-* `git clone -b DropBoxes --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the latest revision of the DropBoxes branch.  
-* `git clone -b 2015-04-09_SCIS_DropBoxes --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the revision of the DropBoxes branch used during the 2015-04-09 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
+# This branch has been migrated
+On 2016-12-29, these materials were migrated from the [DropBoxes branch](https://github.com/JonZeolla/Lab/tree/DropBoxes) of [my lab repo](https://github.com/JonZeolla/Lab) to its own [standalone repository](https://github.com/JonZeolla/lab-DropBoxes).  The [release](https://github.com/JonZeolla/Lab/releases/tag/2015-04-09_SCIS_DropBoxes) for this branch still exists for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
