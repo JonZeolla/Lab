@@ -2,7 +2,7 @@
 This is the repo where I **used to host** branches which have the materials used during events, presentations, labs, etc.  However, **starting on 2016-12-03 I began a project to migrate these materials to standalone repositories**.  The [releases](https://github.com/JonZeolla/Lab/releases) will continue to exist here for maintenance reasons, but no new releases or updates will be made to this location.  Please refer to the new location for the most updated materials.
 
 ## Status
-As of 2016-12-29, this is the status of the migration  
+As of 2016-01-01, this is the status of the migration  
 
 | Previous Branch | Future Repository | Status |
 | -------------- | ----------------- | ------ |
@@ -10,7 +10,7 @@ As of 2016-12-29, this is the status of the migration
 | [WLANSecurity](https://github.com/JonZeolla/Lab/tree/WLANSecurity) | [lab-WifiSecurity](https://github.com/JonZeolla/lab-WifiSecurity) | Complete |
 | [AutomotiveSecurity](https://github.com/JonZeolla/Lab/tree/AutomotiveSecurity) | [lab-AutomotiveSecurity](https://github.com/JonZeolla/lab-AutomotiveSecurity) | Complete |
 | [DropBoxes](https://github.com/JonZeolla/Lab/tree/DropBoxes) | [lab-DropBoxes](https://github.com/JonZeolla/lab-DropBoxes) | Complete |
-| [InternetofInsecurity](https://github.com/JonZeolla/Lab/tree/InternetofInsecurity) | lab-InternetofInsecurity | Not Started |
+| [InternetofInsecurity](https://github.com/JonZeolla/Lab/tree/InternetofInsecurity) | [lab-InternetofInsecurity](https://github.com/JonZeolla/lab-InternetofInsecurity) | Complete |
 | [PasswordCracking](https://github.com/JonZeolla/Lab/tree/PasswordCracking) | lab-PasswordCracking | Not Started |
 | [ProximityAttacks](https://github.com/JonZeolla/Lab/tree/ProximityAttacks) | lab-ProximityAttacks* | Not Started |
 | [SoftwareDefinedRadio](https://github.com/JonZeolla/Lab/tree/SoftwareDefinedRadio) | lab-SoftwareDefinedRadio | Not Started |
