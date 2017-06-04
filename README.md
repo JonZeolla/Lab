@@ -102,6 +102,7 @@ There is no current way to update this branch on a Windows machine.
 * https://pmwdzvbyvnmwobk5.onion.link/project/freakcard
 * https://github.com/brad-anton/proxbrute
 * https://github.com/brad-anton/VertX
+* https://github.com/exploitagency/github-proxmark3-standalone-lf-emulator
 
 ### Android
 * https://developer.android.com/guide/topics/connectivity/nfc/hce.html
