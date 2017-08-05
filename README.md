@@ -30,4 +30,4 @@ http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/49279875
 ## Some other good materials  
 * https://hashes.org/public.php  
 * http://dumps.bhafsec.com/infosec/  
-
+* https://haveibeenpwned.com/Passwords
