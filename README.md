@@ -1,10 +1,2 @@
-# 2016-02-11 Steel City Information Security Lab  
-  
-http://www.meetup.com/Steel-City-InfoSec/events/224383512/  
-http://www.meetup.com/Steel-City-InfoSec/messages/boards/thread/49592594  
-
-## How to clone this branch
-* `git clone -b SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the latest revision of the SoftwareDefinedRadio branch.  
-* `git clone -b 2016-02-11_SCIS_SoftwareDefinedRadio --single-branch https://github.com/JonZeolla/Lab`  
-  * Clone the revision of the SoftwareDefinedRadio branch used during the 2016-02-11 Steel City InfoSec lab.  Cloning any of the pointers (tags) will put you in a detached HEAD state, which is expected.  
+# This branch has been migrated
+On 2019-04-27, these materials were migrated from the [SoftwareDefinedRadio branch](https://github.com/JonZeolla/Lab/tree/SoftwareDefinedRadio) of [my lab repo](https://github.com/JonZeolla/Lab) to its own [standalone repository](http://github.com/jonzeolla/lab-SoftwareDefinedRadio). No new releases or updates will be made to this location. Please refer to the new location for the most updated materials.
